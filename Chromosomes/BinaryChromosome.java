@@ -12,19 +12,19 @@ public class BinaryChromosome implements Chromosome {
 
 
     public BinaryChromosome(int chromosomeLength) {
-        this.chromosomeLength = chromosomeLength;
-        chromosome = new ArrayList<>(chromosomeLength);
-        for(int i = 0; i < chromosomeLength; i++) {
-            chromosome.add(0);
-        }
+        // this.chromosomeLength = chromosomeLength;
+        // chromosome = new ArrayList<>(chromosomeLength);
+        // for(int i = 0; i < chromosomeLength; i++) {
+        //     chromosome.add(0);
+        // }
     }
 
     @Override
     public void InitializeChromosome() {
 
-        for(int i = 0;i < chromosomeLength;i++) {
-                chromosome.set(i, random.nextBoolean() ? 1 : 0);
-        }
+        // for(int i = 0;i < chromosomeLength;i++) {
+        //         chromosome.set(i, random.nextBoolean() ? 1 : 0);
+        // }
 
     }
 
