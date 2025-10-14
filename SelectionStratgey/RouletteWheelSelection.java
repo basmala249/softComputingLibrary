@@ -3,8 +3,10 @@ package SelectionStratgey;
 import Chromosomes.Chromosome;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
 
 public class RouletteWheelSelection implements SelectionInterface {
 
@@ -20,19 +22,20 @@ public class RouletteWheelSelection implements SelectionInterface {
             }
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {
-                val = (double) Math.round(totalFitness / res.get(i));
+                val = res.get(i) / totalFitness ;
                 val *= 100;
-                val = 100 - val;
+                val = customRound(val); 
+                val = 100 - val; 
                 res.set(i, val);
             }
             for(int i = 1; i < chromosomes.size(); i++) {
                  res.set(i, res.get(i) + res.get(i - 1));
             }
             Random rand = new Random();
-            double num = rand.nextDouble() * 100;
+            double num = rand.nextDouble() * res.get(res.size() - 1);
             int indx = -1;
             for(int i = 0; i < numberToBeSelected; i++) {
-                 num = rand.nextDouble() * 100;
+                 num = rand.nextDouble() * res.get(res.size() - 1);
                  indx = lowerBound(res, num);
                  selected.add(chromosomes.get(indx));
                  
@@ -50,5 +53,14 @@ public class RouletteWheelSelection implements SelectionInterface {
             }
         }
         return left;
+    }
+    int customRound(double num) {
+        int integerPart = (int) num;
+        double decimalPart = num - integerPart;
+
+        if (decimalPart >= 0.5)
+            return integerPart + 1;
+        else
+            return integerPart;
     }
 }
