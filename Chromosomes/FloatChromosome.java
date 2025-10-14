@@ -1,6 +1,15 @@
 package Chromosomes;
 
+//import java.util.List;
+
 public class FloatChromosome implements Chromosome{
+    private int chromosomeLength;
+   // private List<Integer> chromosome;
+
+
+    public FloatChromosome(int chromosomeLength) {
+        this.chromosomeLength = chromosomeLength ;
+    }
     @Override
     public void InitializeChromosome() {
 

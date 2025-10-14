@@ -1,12 +1,12 @@
 package Chromosomes;
 
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+//import java.util.Random;
 
 public class BinaryChromosome implements Chromosome {
-    private Random random = new Random();
+    //private Random random = new Random();
     private int chromosomeLength;
     private List<Integer> chromosome;
 
