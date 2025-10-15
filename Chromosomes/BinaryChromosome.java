@@ -39,4 +39,8 @@ public class BinaryChromosome implements Chromosome<Integer> {
     public Integer getIndex(int index) {
         return chromosome.get(index);
     }
+    @Override
+    public int getSize() {
+        return chromosomeLength;
+    }
 }

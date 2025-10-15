@@ -32,4 +32,8 @@ public class FloatChromosome implements Chromosome <Double>{
     public Double getIndex(int index) {
         return chromosome.get(index);
     }
+    @Override
+    public int getSize() {
+        return chromosomeLength;
+    }   
 }

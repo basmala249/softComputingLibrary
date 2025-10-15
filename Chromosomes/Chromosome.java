@@ -6,4 +6,5 @@ public interface  Chromosome <T>{
     void setIndex(int index, T value);
     T getIndex(int index);
     void PrintChromosome();
+    int getSize();
 }
