@@ -3,7 +3,6 @@ package CrossOverStrategy;
 import Chromosomes.Chromosome;
 
 import java.util.List;
-
-public interface ICrossOver {
-    List<Chromosome> crossOver(List<Chromosome> chromosomes);
+public interface ICrossOver<T> {
+    List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes);
 }

@@ -2,7 +2,7 @@ package Chromosomes;
 
 import java.util.List;
 
-public class IntegerChromosome implements Chromosome {
+public class IntegerChromosome implements Chromosome <Integer> {
     private int chromosomeLength;
     private List<Integer> chromosome;
 
@@ -23,5 +23,12 @@ public class IntegerChromosome implements Chromosome {
     public void PrintChromosome() {
 
     }
-   
+    @Override
+    public void setIndex(int index, Integer value) {
+        chromosome.set(index, value);
+    }
+    @Override
+    public Integer getIndex(int index) {
+        return chromosome.get(index);
+    }
 }

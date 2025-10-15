@@ -2,10 +2,10 @@ package MutationStratgey;
 
 import Chromosomes.Chromosome;
 
-public class InversionMutationStrategy implements IMutation<Chromosome> {
+public class InversionMutationStrategy <T extends Chromosome<T>> implements IMutation<T> {
 
     @Override
-    public Chromosome mutate(Chromosome chromosome) {
+    public T mutate(T chromosome) {
         return null;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PermutationChromosome implements Chromosome  {
+public class PermutationChromosome implements Chromosome <Integer>{
     private int chromosomeLength;
     private List<Integer> chromosome;
 
@@ -28,5 +28,13 @@ public class PermutationChromosome implements Chromosome  {
         System.out.println(chromosome);
     }
 
-     
+    @Override
+    public void setIndex(int index, Integer value) {
+        chromosome.set(index, value);
+    }
+
+    @Override
+    public Integer getIndex(int index) {
+        return chromosome.get(index);
+    }
 }

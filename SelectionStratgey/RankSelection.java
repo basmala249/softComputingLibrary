@@ -4,11 +4,10 @@ import Chromosomes.Chromosome;
 
 import java.util.List;
 
-public class RankSelection implements SelectionInterface {
-
+public class RankSelection<T extends Chromosome<T>> implements SelectionInterface<T> {
 
     @Override
-    public List<Chromosome> select(List<Chromosome> chromosomes, int numberToBeSelected) {
+    public List<T> select(List<T> chromosomes, int numberToBeSelected) {
         return null;
     }
 }

@@ -4,9 +4,9 @@ import Chromosomes.Chromosome;
 
 import java.util.List;
 
-public class UniformCrossOver implements  ICrossOver{
+public class UniformCrossOver<T> implements ICrossOver<T> {
     @Override
-    public List<Chromosome> crossOver(List<Chromosome> chromosomes) {
+    public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes) {
         return null;
     }
 }

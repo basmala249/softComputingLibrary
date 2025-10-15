@@ -1,7 +1,9 @@
 package Chromosomes;
 
-public interface  Chromosome {
+public interface  Chromosome <T>{
     
     void InitializeChromosome();
+    void setIndex(int index, T value);
+    T getIndex(int index);
     void PrintChromosome();
 }

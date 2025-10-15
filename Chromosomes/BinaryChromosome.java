@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryChromosome implements Chromosome  {
+public class BinaryChromosome implements Chromosome<Integer> {
     private int chromosomeLength;
     private List<Integer> chromosome;
 
@@ -30,5 +30,13 @@ public class BinaryChromosome implements Chromosome  {
          
     }
 
-     
+    @Override
+    public void setIndex(int index, Integer value) {
+        chromosome.set(index, value);
+    }
+
+    @Override
+    public Integer getIndex(int index) {
+        return chromosome.get(index);
+    }
 }

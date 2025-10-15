@@ -2,11 +2,12 @@ package MutationStratgey;
 
 import Chromosomes.BinaryChromosome;
 //import Chromosomes.Chromosome;
+import Chromosomes.Chromosome;
 
 
-public class FlipBitMutation implements IMutation<BinaryChromosome> {
+public class FlipBitMutation <T extends Chromosome<T>> implements IMutation<T> {
     @Override
-    public BinaryChromosome mutate(BinaryChromosome chromosome) {
+    public T mutate(T chromosome) {
         return null;
     }
 }
