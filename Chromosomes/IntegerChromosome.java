@@ -1,10 +1,10 @@
 package Chromosomes;
 
-//import java.util.List;
+import java.util.List;
 
 public class IntegerChromosome implements Chromosome{
     private int chromosomeLength;
-    //private List<Integer> chromosome;
+    private List<Integer> chromosome;
 
 
     public IntegerChromosome(int chromosomeLength) {

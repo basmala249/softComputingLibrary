@@ -1,10 +1,10 @@
 package Chromosomes;
 
-//import java.util.List;
+import java.util.List;
 
 public class FloatChromosome implements Chromosome{
     private int chromosomeLength;
-   // private List<Integer> chromosome;
+   private List<Double> chromosome;
 
 
     public FloatChromosome(int chromosomeLength) {

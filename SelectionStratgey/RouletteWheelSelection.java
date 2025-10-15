@@ -3,7 +3,6 @@ package SelectionStratgey;
 import Chromosomes.Chromosome;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -20,6 +19,7 @@ public class RouletteWheelSelection implements SelectionInterface {
                 // res.add(calculateFitness(chromosomes.get(i)));
                 //totalFitness += calculateFitness(chromosomes.get(i));
             }
+            // Support Minimization Problems
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {
                 val = res.get(i) / totalFitness ;
@@ -28,20 +28,23 @@ public class RouletteWheelSelection implements SelectionInterface {
                 val = 100 - val; 
                 res.set(i, val);
             }
+            // Cumulative Sum
             for(int i = 1; i < chromosomes.size(); i++) {
                  res.set(i, res.get(i) + res.get(i - 1));
             }
             Random rand = new Random();
             double num = rand.nextDouble() * res.get(res.size() - 1);
             int indx = -1;
+            // Select numberToBeSelected chromosomes based on Random numbers
             for(int i = 0; i < numberToBeSelected; i++) {
                  num = rand.nextDouble() * res.get(res.size() - 1);
-                 indx = lowerBound(res, num);
+                 indx = lowerBound(res, num); // O(log n)
                  selected.add(chromosomes.get(indx));
                  
             }
         return selected;
     }
+    // Search Function for faster access
     int lowerBound(List<Double> arr, double target) {
         int left = 0, right = arr.size() - 1;
         while (left < right) {
@@ -54,6 +57,7 @@ public class RouletteWheelSelection implements SelectionInterface {
         }
         return left;
     }
+    // Ceil Function
     int customRound(double num) {
         int integerPart = (int) num;
         double decimalPart = num - integerPart;
