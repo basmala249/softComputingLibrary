@@ -3,7 +3,7 @@ package Chromosomes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FloatChromosome implements Chromosome {
+public class FloatChromosome implements Chromosome <Double>{
     private int chromosomeLength;
     private List<Double> chromosome;
 
@@ -24,5 +24,12 @@ public class FloatChromosome implements Chromosome {
     public void PrintChromosome() {
 
     }
-    
+    @Override
+    public void setIndex(int index, Double value) {
+        chromosome.set(index, value);
+    }
+    @Override
+    public Double getIndex(int index) {
+        return chromosome.get(index);
+    }
 }
