@@ -11,7 +11,7 @@ public class RouletteWheelSelection <T extends Chromosome<T>> implements Selecti
 
 
     @Override
-    public List<T> select(List<T> chromosomes, int numberToBeSelected) {
+    public List<T> select(List<T> chromosomes, int numberToBeSelected , boolean isMinimization) {
             List<Double> res = new ArrayList<>();
             List<T> selected = new ArrayList<>();
             Long totalFitness = 0L;
@@ -25,7 +25,7 @@ public class RouletteWheelSelection <T extends Chromosome<T>> implements Selecti
                 val = res.get(i) / totalFitness ;
                 val *= 100;
                 val = customRound(val); 
-                val = 100 - val; 
+                val = (isMinimization ? 100 - val : val); 
                 res.set(i, val);
             }
             // Cumulative Sum
