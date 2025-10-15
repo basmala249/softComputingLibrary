@@ -2,9 +2,9 @@ package MutationStratgey;
 
 import Chromosomes.Chromosome;
 
-public class InsertMutationStrategy implements IMutation<Chromosome> {
+public class InsertMutationStrategy<T extends Chromosome<T>> implements IMutation<T> {
     @Override
-    public Chromosome mutate(Chromosome chromosome) {
+    public T mutate(T chromosome) {
         return null;
     }
 }

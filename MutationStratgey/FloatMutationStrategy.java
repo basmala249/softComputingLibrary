@@ -1,13 +1,14 @@
 package MutationStratgey;
 
+import Chromosomes.Chromosome;
 import Chromosomes.FloatChromosome;
 
 // Might need to split this class into two classes (uniform & non-uniform)
 // depending on our implementation
 
-public class FloatMutationStrategy implements IMutation<FloatChromosome> {
+public class FloatMutationStrategy<T extends Chromosome<T>> implements IMutation<T> {
     @Override
-    public FloatChromosome mutate(FloatChromosome chromosome) {
+    public T mutate(T chromosome) {
         return null;
     }
 }

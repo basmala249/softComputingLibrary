@@ -4,11 +4,11 @@ import Chromosomes.Chromosome;
 
 import java.util.List;
 
-public class NPointCrossOver implements ICrossOver {
+public class NPointCrossOver<T> implements ICrossOver<T> {
+
     @Override
-    public List<Chromosome> crossOver(List<Chromosome> chromosomes) {
+    public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes) {
         // Implementation of multiple-point crossover
         return null;
     }
-    
 }

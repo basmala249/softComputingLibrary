@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Random;
 
 
-public class RouletteWheelSelection implements SelectionInterface {
+public class RouletteWheelSelection <T extends Chromosome<T>> implements SelectionInterface<T> {
 
 
     @Override
-    public List<Chromosome> select(List<Chromosome> chromosomes, int numberToBeSelected) {
+    public List<T> select(List<T> chromosomes, int numberToBeSelected) {
             List<Double> res = new ArrayList<>();
-            List<Chromosome> selected = new ArrayList<>();
+            List<T> selected = new ArrayList<>();
             Long totalFitness = 0L;
             for(int i = 0; i < chromosomes.size(); i++) {
                 // res.add(calculateFitness(chromosomes.get(i)));
