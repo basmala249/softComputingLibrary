@@ -10,14 +10,12 @@ public class PermutationChromosome implements Chromosome <Integer>{
 
     public PermutationChromosome(int chromosomeLength) {
         this.chromosomeLength = chromosomeLength;
-        this.chromosome = new ArrayList<>(chromosomeLength);
         InitializeChromosome();
     }
 
     @Override
     public void InitializeChromosome() {
-        chromosome.clear();
-        chromosome = new ArrayList<>(chromosomeLength);
+        chromosome = new ArrayList<>();
         for (int i = 0; i < chromosomeLength; i++) {
             chromosome.add(i);
         }

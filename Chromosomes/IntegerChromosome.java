@@ -11,14 +11,11 @@ public class IntegerChromosome implements Chromosome <Integer> {
 
     public IntegerChromosome(int chromosomeLength) {
         this.chromosomeLength = chromosomeLength;
-        chromosome = new ArrayList<>(chromosomeLength);
-        for(int i = 0; i < chromosomeLength; i++) {
-            chromosome.add(0);
-        }
+        InitializeChromosome();
     }
     @Override
     public void InitializeChromosome() {
-        chromosome = new ArrayList<>(chromosomeLength);
+        chromosome = new ArrayList<>();
         for(int i = 0; i < chromosomeLength; i++) {
             Random rand = new Random();
             int r = rand.nextInt();

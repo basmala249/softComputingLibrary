@@ -16,8 +16,8 @@ public class RouletteWheelSelection <T extends Chromosome<T>> implements Selecti
             List<T> selected = new ArrayList<>();
             Long totalFitness = 0L;
             for(int i = 0; i < chromosomes.size(); i++) {
-                // res.add(calculateFitness(chromosomes.get(i)));
-                //totalFitness += calculateFitness(chromosomes.get(i));
+                // res.add(.evalute(chromosomes.get(i)));
+                //totalFitness += .evaluate(chromosomes.get(i));
             }
             // Support Minimization Problems
             double val = 0.0 ;
