@@ -29,22 +29,19 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
         List<Chromosome<T>> childGenes = new ArrayList<>();
         int start = (int)(Math.random() * size);
         int k = (int)(Math.random() * (size - start)) ;  
-        List<T> child1Genes = new ArrayList<>(size);
-        List<T> child2Genes = new ArrayList<>(size);
-        for(int i = 0; i < size; i++) {
-            child1Genes.add(null);
-            child2Genes.add(null);
-        }
+        Chromosome<T> child1Genes = parent1.copy();
+        Chromosome<T> child2Genes = parent2.copy();
+
         for(int i = start; i < Math.min((int)size , (int)start + k); i++) {
-            child1Genes.set(i, parent1.getIndex(i));
-            child2Genes.set(i, parent2.getIndex(i));
+            child1Genes.setIndex(i, null);
+            child2Genes.setIndex(i, null);
         }
         int currentIndex1 = (start + k) % size;
         int current = currentIndex1;
         while(child1Genes.contains(null)) {
             T gene = parent2.getIndex(currentIndex1);
             if(!child1Genes.contains(gene)) {
-                child1Genes.set(current, gene);
+                child1Genes.setIndex(current, gene);
                 current = (current + 1) % size;
             }
             currentIndex1 = (currentIndex1 + 1) % size;
@@ -54,13 +51,13 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
         while(child2Genes.contains(null)) {
             T gene = parent1.getIndex(currentIndex2);
             if(!child2Genes.contains(gene)) {
-                child2Genes.set(current, gene);
+                child2Genes.setIndex(current, gene);
                 current = (current + 1) % size;
             }
             currentIndex2 = (currentIndex2 + 1) % size;
         }
-        // childGenes.add(new Chromosome<T>(child1Genes));
-        // childGenes.add(new Chromosome<T>(child2Genes));
+         childGenes.add(child1Genes);
+         childGenes.add(child2Genes);
         return childGenes;
     }
     

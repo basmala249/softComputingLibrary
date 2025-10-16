@@ -42,4 +42,16 @@ public class PermutationChromosome implements Chromosome <Integer>{
     public int getSize() {  
         return chromosomeLength;
     }
+    @Override
+    public Chromosome<Integer> copy() {
+        Chromosome<Integer> newChromosome = new PermutationChromosome(this.chromosomeLength);
+        for(int i = 0; i < this.chromosomeLength; i++) {
+            newChromosome.setIndex(i, this.getIndex(i));
+        }
+        return newChromosome;
+    }
+    @Override
+    public boolean contains(Integer value) {
+        return chromosome.contains(value);
+    }
 }

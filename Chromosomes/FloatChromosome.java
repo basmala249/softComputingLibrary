@@ -36,4 +36,16 @@ public class FloatChromosome implements Chromosome <Double>{
     public int getSize() {
         return chromosomeLength;
     }   
+    @Override
+    public Chromosome<Double> copy() {
+        Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength);
+        for(int i = 0; i < this.chromosomeLength; i++) {
+            newChromosome.setIndex(i, this.getIndex(i));
+        }
+        return newChromosome;
+    }
+    @Override
+    public boolean contains(Double value) {
+        return chromosome.contains(value);
+    }
 }
