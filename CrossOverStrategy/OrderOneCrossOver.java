@@ -7,7 +7,7 @@ import java.util.List;
 
 public class OrderOneCrossOver<T> implements ICrossOver <T> {
     @Override
-    public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes) {
+    public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes , boolean isMinimization) {
         List<Chromosome<T>> offsprings = new ArrayList<Chromosome<T>>();
          
         for(int i = 0; i < chromosomes.size(); i += 2) {

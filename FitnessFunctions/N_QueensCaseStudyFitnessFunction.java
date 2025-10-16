@@ -11,7 +11,7 @@ public class N_QueensCaseStudyFitnessFunction implements IFitnessFunction<Chromo
     @Override
     public double evaluate(Chromosome<Integer> chromosome) {
         //Implement Fitness Function
-        int conflicts = 0;
+        double conflicts = 0.0;
         for (int i = 0; i < N; i++) {
             for (int j = i + 1; j < N; j++) {
                 // queens attack each other if they share a diagonal
