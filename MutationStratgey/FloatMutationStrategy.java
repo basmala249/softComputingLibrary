@@ -8,7 +8,7 @@ import Chromosomes.FloatChromosome;
 
 public class FloatMutationStrategy<T extends Chromosome<T>> implements IMutation<T> {
     @Override
-    public T mutate(T chromosome) {
+    public Chromosome<T> mutate(Chromosome<T> chromosome) {
         return null;
     }
 }
