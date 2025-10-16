@@ -1,12 +1,12 @@
 package CrossOverStrategy;
 
 import Chromosomes.Chromosome;
+import Problem.CaseStudyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ibm.security.jgss.n;
-import com.ibm.security.krb5.internal.crypto.l;
+
 
 public class OrderOneCrossOver<T> implements ICrossOver <T> {
     @Override
@@ -20,17 +20,17 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
             offsprings.add(childlrenGenes.get(1));
         }
         if(chromosomes.size() % 2 != 0) {
-            Chromosome<T> last = null;
-            // double fit1 = .evaluate(offsprings.get(offsprings.size() - 1));
-            // double fit2 = .evaluate(offsprings.get(0));
-            if(isMinimization) {
+            // Chromosome<T> last = null;
+            // double fit1 = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)offsprings.get(offsprings.size() - 1));
+            // double fit2 = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)offsprings.get(0));
+            // if(isMinimization) {
              
-                // last = (fit1 <= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
-            }else{
-               // last = (fit1 >= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
-            }
-            offsprings.set(0, last);
-            offsprings.remove(offsprings.size() - 1);
+            //     last = (fit1 <= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
+            // }else{
+            //     last = (fit1 >= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
+            // }
+            // offsprings.set(0, last);
+            // offsprings.remove(offsprings.size() - 1);
         }
 
         return offsprings;

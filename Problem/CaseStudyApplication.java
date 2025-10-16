@@ -1,12 +1,12 @@
+package Problem;
+import FitnessFunctions.*;
+import Chromosomes.Chromosome;
 public class CaseStudyApplication {
-    public static void main(String[] args) {
-        // Define the fitness function
-        // FitnessFunction fitnessFunction = new FitnessFunction() {
-        // @Override
-        // public double evaluate(Chromosome individual) {
-        // // Implement according to the chosen problem
-        // }
-        // };
+        // Define the fitness Object
+        //public static IFitnessFunction<Chromosome<Integer>> fitnessObject = new N_QueensCaseStudyFitnessFunction(8);
+        public static void main(String[] args) {
+        
+        
 
         GeneticAlgorithmParameters geneticParams =
                 new GeneticAlgorithmParameters(50,

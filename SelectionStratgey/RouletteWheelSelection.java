@@ -6,19 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-public class RouletteWheelSelection <T extends Chromosome<T>> implements SelectionInterface<T> {
+import Problem.CaseStudyApplication;
+public class RouletteWheelSelection<T> implements SelectionInterface<T> {
 
 
     @Override
-    public List<T> select(List<T> chromosomes, int numberToBeSelected , boolean isMinimization) {
+    public List<Chromosome<T>> select(List<Chromosome<T>> chromosomes, int numberToBeSelected , boolean isMinimization) {
             List<Double> res = new ArrayList<>();
-            List<T> selected = new ArrayList<>();
+            List<Chromosome<T>> selected = new ArrayList<>();
             Long totalFitness = 0L;
-            for(int i = 0; i < chromosomes.size(); i++) {
-                // res.add(.evalute(chromosomes.get(i)));
-                //totalFitness += .evaluate(chromosomes.get(i));
-            }
+
+        // for (Chromosome<T> chromosome : chromosomes) {
+        //     double fitnessValue = CaseStudyApplication.fitnessObject.evaluate(()chromosome);
+        //     res.add(fitnessValue);
+        //     totalFitness += (long) fitnessValue;
+        // }
             // Support Minimization Problems
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {
