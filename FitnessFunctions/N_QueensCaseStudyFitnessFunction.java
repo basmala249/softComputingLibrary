@@ -10,7 +10,6 @@ public class N_QueensCaseStudyFitnessFunction implements IFitnessFunction<Chromo
 
     @Override
     public double evaluate(Chromosome<Integer> chromosome) {
-        double fitness = 0.0 ;
         //Implement Fitness Function
         int conflicts = 0;
         for (int i = 0; i < N; i++) {
@@ -21,9 +20,7 @@ public class N_QueensCaseStudyFitnessFunction implements IFitnessFunction<Chromo
                 }
             }
         }
-        int maxPairs = N * (N - 1) / 2;
-        fitness = maxPairs - conflicts;
-        return fitness;
+        return conflicts;
     }
     
 }
