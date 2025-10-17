@@ -1,16 +1,16 @@
 package FitnessFunctions;
+
 import Chromosomes.Chromosome;
 
-public class N_QueensCaseStudyFitnessFunction  implements IFitnessFunction<Integer> {
-    private final int N;
+public class NQueensInfeasibilityCheck implements InfeasibilityCheck <Integer> {
+    private int N;
 
-    public N_QueensCaseStudyFitnessFunction(int N) {
+    public NQueensInfeasibilityCheck(int N) {
         this.N = N;
     }
 
     @Override
-    public double evaluate(Chromosome<Integer> chromosome) {
-        //Implement Fitness Function
+    public boolean isInfeasible(Chromosome<Integer> chromosome) {
         int conflicts = 0;
         for (int i = 0; i < N; i++) {
             for (int j = i + 1; j < N; j++) {
@@ -20,7 +20,6 @@ public class N_QueensCaseStudyFitnessFunction  implements IFitnessFunction<Integ
                 }
             }
         }
-        return conflicts + (conflicts > 0 ? 1000 * conflicts : 0); // Penalty for infeasibility
+        return conflicts > 0;
     }
-    
 }
