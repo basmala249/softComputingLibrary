@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import FitnessFunctions.IFitnessFunction;
+
 public class IntegerChromosome implements Chromosome <Integer> {
     private int chromosomeLength;
     private List<Integer> chromosome;
+    private IFitnessFunction<Integer> fitnessFunction;
 
-
-    public IntegerChromosome(int chromosomeLength) {
+    public IntegerChromosome(int chromosomeLength, IFitnessFunction<Integer> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
+        this.fitnessFunction = fitnessFunction;
         InitializeChromosome();
     }
     @Override
@@ -41,7 +44,7 @@ public class IntegerChromosome implements Chromosome <Integer> {
     }
     @Override
     public Chromosome<Integer> copy() {
-        Chromosome<Integer> newChromosome = new IntegerChromosome(this.chromosomeLength);
+        Chromosome<Integer> newChromosome = new IntegerChromosome(this.chromosomeLength, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
         }
@@ -50,5 +53,9 @@ public class IntegerChromosome implements Chromosome <Integer> {
     @Override
     public boolean contains(Integer value) {
         return chromosome.contains(value);
+    }
+    @Override
+    public IFitnessFunction<Integer> getFitnessFunction() {
+        return fitnessFunction;
     }
 }

@@ -3,13 +3,15 @@ package Chromosomes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import FitnessFunctions.IFitnessFunction;
 public class PermutationChromosome implements Chromosome <Integer>{
     private int chromosomeLength;
     private List<Integer> chromosome;
+    private IFitnessFunction<Integer> fitnessFunction;
 
-    public PermutationChromosome(int chromosomeLength) {
+    public PermutationChromosome(int chromosomeLength, IFitnessFunction<Integer> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
+        this.fitnessFunction = fitnessFunction;
         InitializeChromosome();
     }
 
@@ -42,7 +44,7 @@ public class PermutationChromosome implements Chromosome <Integer>{
     }
     @Override
     public Chromosome<Integer> copy() {
-        Chromosome<Integer> newChromosome = new PermutationChromosome(this.chromosomeLength);
+        Chromosome<Integer> newChromosome = new PermutationChromosome(this.chromosomeLength, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
         }
@@ -51,5 +53,9 @@ public class PermutationChromosome implements Chromosome <Integer>{
     @Override
     public boolean contains(Integer value) {
         return chromosome.contains(value);
+    }
+    @Override
+    public IFitnessFunction<Integer> getFitnessFunction() {
+        return fitnessFunction;
     }
 }

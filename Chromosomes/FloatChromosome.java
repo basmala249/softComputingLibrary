@@ -3,13 +3,16 @@ package Chromosomes;
 import java.util.ArrayList;
 import java.util.List;
 
+import FitnessFunctions.IFitnessFunction;
+
 public class FloatChromosome implements Chromosome <Double>{
     private int chromosomeLength;
     private List<Double> chromosome;
+    private IFitnessFunction<Double> fitnessFunction;
 
-
-    public FloatChromosome(int chromosomeLength) {
+    public FloatChromosome(int chromosomeLength , IFitnessFunction<Double> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
+        this.fitnessFunction = fitnessFunction;
         chromosome = new ArrayList<>(chromosomeLength);
         for(int i = 0; i < chromosomeLength; i++) {
             chromosome.add(0.0);
@@ -38,7 +41,7 @@ public class FloatChromosome implements Chromosome <Double>{
     }   
     @Override
     public Chromosome<Double> copy() {
-        Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength);
+        Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength , this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
         }
@@ -47,5 +50,9 @@ public class FloatChromosome implements Chromosome <Double>{
     @Override
     public boolean contains(Double value) {
         return chromosome.contains(value);
+    }
+    @Override
+    public IFitnessFunction<Double> getFitnessFunction() {
+        return fitnessFunction;
     }
 }

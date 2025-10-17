@@ -1,7 +1,7 @@
 package MutationStratgey;
 
 import Chromosomes.Chromosome;
-import Chromosomes.FloatChromosome;
+//import Chromosomes.FloatChromosome;
 
 // Might need to split this class into two classes (uniform & non-uniform)
 // depending on our implementation

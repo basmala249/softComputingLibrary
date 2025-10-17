@@ -1,12 +1,13 @@
 package SelectionStratgey;
 
 import Chromosomes.Chromosome;
+import FitnessFunctions.IFitnessFunction;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import Problem.CaseStudyApplication;
+
 public class RouletteWheelSelection<T> implements SelectionInterface<T> {
 
 
@@ -16,8 +17,9 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
             List<Chromosome<T>> selected = new ArrayList<>();
             Long totalFitness = 0L;
         // Get Fitness Values and Total Fitness
+        IFitnessFunction<T> fitnessFunction = chromosomes.get(0).getFitnessFunction();
         for (Chromosome<T> chromosome : chromosomes) {
-            double fitnessValue = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)chromosome);
+            double fitnessValue = fitnessFunction.evaluate(chromosome);
             res.add(fitnessValue);
             totalFitness += (long) fitnessValue;
         }

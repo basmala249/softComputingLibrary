@@ -1,7 +1,7 @@
 package CrossOverStrategy;
 
 import Chromosomes.Chromosome;
-import Problem.CaseStudyApplication;
+import FitnessFunctions.IFitnessFunction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,9 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
         }
         if(chromosomes.size() % 2 != 0) {
             Chromosome<T> last = null;
-            double fit1 = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)offsprings.get(offsprings.size() - 1));
-            double fit2 = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)offsprings.get(0));
+            IFitnessFunction<T> fitnessFunction = offsprings.get(0).getFitnessFunction();
+            double fit1 = fitnessFunction.evaluate(offsprings.get(offsprings.size() - 1));
+            double fit2 = fitnessFunction.evaluate(offsprings.get(0));
             if(isMinimization) {
              
                 last = (fit1 <= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);

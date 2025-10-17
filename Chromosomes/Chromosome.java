@@ -1,5 +1,7 @@
 package Chromosomes;
 
+import FitnessFunctions.IFitnessFunction;
+
 public interface  Chromosome <T>{
     
     void InitializeChromosome();
@@ -9,4 +11,5 @@ public interface  Chromosome <T>{
     int getSize();
     Chromosome<T> copy();
     boolean contains(T value);
+    IFitnessFunction<T> getFitnessFunction();
 }
