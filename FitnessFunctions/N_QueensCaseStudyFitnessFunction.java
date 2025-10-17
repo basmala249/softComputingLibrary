@@ -1,7 +1,7 @@
 package FitnessFunctions;
 import Chromosomes.Chromosome;
 
-public class N_QueensCaseStudyFitnessFunction implements IFitnessFunction<Chromosome<Integer>> {
+public class N_QueensCaseStudyFitnessFunction implements IFitnessFunction<Integer> {
     private final int N;
 
     public N_QueensCaseStudyFitnessFunction(int N) {

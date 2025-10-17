@@ -1,6 +1,7 @@
 package FitnessFunctions;
 
-public interface IFitnessFunction<T> {
+import Chromosomes.Chromosome;
 
-    double evaluate(T chromosome);
+public interface IFitnessFunction<T> {
+    double evaluate(Chromosome<T> chromosome);
 }

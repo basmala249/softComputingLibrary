@@ -15,12 +15,12 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
             List<Double> res = new ArrayList<>();
             List<Chromosome<T>> selected = new ArrayList<>();
             Long totalFitness = 0L;
-
-        // for (Chromosome<T> chromosome : chromosomes) {
-        //     double fitnessValue = CaseStudyApplication.fitnessObject.evaluate(()chromosome);
-        //     res.add(fitnessValue);
-        //     totalFitness += (long) fitnessValue;
-        // }
+        // Get Fitness Values and Total Fitness
+        for (Chromosome<T> chromosome : chromosomes) {
+            double fitnessValue = CaseStudyApplication.fitnessObject.evaluate((Chromosome<Integer>)chromosome);
+            res.add(fitnessValue);
+            totalFitness += (long) fitnessValue;
+        }
             // Support Minimization Problems
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {

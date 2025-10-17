@@ -1,9 +1,9 @@
 package Problem;
 import FitnessFunctions.*;
-import Chromosomes.Chromosome;
+//import Chromosomes.Chromosome;
 public class CaseStudyApplication {
         // Define the fitness Object
-        //public static IFitnessFunction<Chromosome<Integer>> fitnessObject = new N_QueensCaseStudyFitnessFunction(8);
+        public static IFitnessFunction<Integer> fitnessObject = new N_QueensCaseStudyFitnessFunction(8);
         public static void main(String[] args) {
         
         
