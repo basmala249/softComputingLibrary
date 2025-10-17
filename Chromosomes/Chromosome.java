@@ -2,7 +2,7 @@ package Chromosomes;
 
 import FitnessFunctions.IFitnessFunction;
 
-public interface  Chromosome <T>{
+public interface  Chromosome <T> {
     
     void InitializeChromosome();
     void setIndex(int index, T value);

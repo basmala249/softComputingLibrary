@@ -2,7 +2,7 @@ package MutationStratgey;
 
 import Chromosomes.Chromosome;
 
-public class InsertMutationStrategy<T extends Chromosome<T>> implements IMutation<T> {
+public class InsertMutationStrategy<T> implements IMutation<T> {
     @Override
     public Chromosome<T> mutate(Chromosome<T> chromosome) {
         int lenth = chromosome.getSize();
