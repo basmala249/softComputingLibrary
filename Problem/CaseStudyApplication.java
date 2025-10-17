@@ -8,6 +8,8 @@ public class CaseStudyApplication {
         public static IFitnessFunction<Integer> fitnessObject = new N_QueensCaseStudyFitnessFunction(8);
         public static void main(String[] args) {
         
+
+                System.out.println("Starting Genetic Algorithm for N-Queens Problem...");
         
 
         GeneticAlgorithmParameters geneticParams =
