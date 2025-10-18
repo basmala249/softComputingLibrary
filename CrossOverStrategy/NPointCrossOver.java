@@ -49,7 +49,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
     private List<Integer> generateRandomCrossPoints(int chromosomeLength) {
         List<Integer> points = new ArrayList<>();
         for(int i = 0;i < crossPointsNum;i++) {
-            int point = random.nextInt(0,chromosomeLength - 1);
+            int point = random.nextInt(chromosomeLength - 2) + 1; // to avoid 0
             points.add(point);
         }
 
