@@ -14,7 +14,7 @@ public class UniformCrossOver<T> implements ICrossOver<T> {
         }
         for(int i=0;i<chromosomes.size();i+=2){
             Chromosome<T> parent1 = chromosomes.get(i);
-            Chromosome<T> parent2 = chromosomes.get(i+1);
+            Chromosome<T> parent2 = chromosomes.get((i+1) % chromosomes.size());
             int length = parent1.getSize();
             for(int j=0;j<length;j++){
                 if(Math.random() < 0.5){

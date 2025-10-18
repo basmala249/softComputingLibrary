@@ -10,7 +10,7 @@ public class CaseStudyApplication {
                                     8,
                                     0.8,
                                     0.02);
-                GeneticAlgorithmMethod ga_engine = new GeneticAlgorithmMethod(geneticParams);
+                GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(geneticParams);
                 ga_engine.run();
         
         }

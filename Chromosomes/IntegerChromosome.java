@@ -28,7 +28,7 @@ public class IntegerChromosome implements Chromosome <Integer> {
 
     @Override
     public void PrintChromosome() {
-
+        System.out.println(chromosome);
     }
     @Override
     public void setIndex(int index, Integer value) {

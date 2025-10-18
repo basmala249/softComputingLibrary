@@ -21,7 +21,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
         if(chromosomes.size() <= 1)
             return null;
 
-        Chromosome<T> firstOffSpring = chromosomes.getFirst();
+        Chromosome<T> firstOffSpring = chromosomes.get(1);
         Chromosome<T> secondOffSpring = chromosomes.get(1);
 
         List<Integer> crossPoints = generateRandomCrossPoints(firstOffSpring.getSize());

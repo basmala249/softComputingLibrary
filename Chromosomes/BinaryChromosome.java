@@ -19,13 +19,13 @@ public class BinaryChromosome implements Chromosome<Integer> {
 
     @Override
     public void InitializeChromosome() {
-        chromosome = new ArrayList<>(chromosomeLength);
+        chromosome = new ArrayList<>();
         // Initialize with random 0s and 1s
     }
 
     @Override
     public void PrintChromosome() {
-         
+         System.out.println(chromosome);
     }
 
     @Override
