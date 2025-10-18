@@ -29,7 +29,7 @@ public class RankSelection<T> implements SelectionInterface<T> {
         int upper_limit = (n * (n + 1) / 2) + 1;
 
         for(int i = 0; i < numberToBeSelected;i++) {
-            int randomNum = random.nextInt(1, upper_limit);
+            int randomNum = random.nextInt(upper_limit-1) + 1;
             int targetChromosomeIndex = SearchHelpers.lowerBound(ranks, randomNum);
             selectedChromosomes.add(copyOfChromosomes.get(targetChromosomeIndex));
 
