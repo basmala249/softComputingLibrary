@@ -29,8 +29,8 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
       
         SelectionInterface<Integer> selectionStrategy = new RouletteWheelSelection<Integer>();
         ICrossOver<Integer> crossoverStrategy = new OrderOneCrossOver<Integer>();
-        // IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
-        // IReplacement<Integer> replacementStrategy = new SteadyStateReplacement<Integer>();
+        IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
+        IReplacement<Integer> replacementStrategy = new SteadyStateReplacement<Integer>();
 
         while(currentGeneration < geneticParams.getGenerations()){
 
@@ -70,17 +70,17 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                
             }
 
-            // for(int i = 0;i < newPopulation.size();i++) {
-            //     double randomNum = getRandomNumber();
-            //     if(randomNum < geneticParams.getMutationRate()) {
-            //         newPopulation.set(i, mutationStrategy.mutate(newPopulation.get(i)));    
-            //     }
+            for(int i = 0;i < newPopulation.size();i++) {
+                double randomNum = getRandomNumber();
+                if(randomNum < geneticParams.getMutationRate()) {
+                    newPopulation.set(i, mutationStrategy.mutate(newPopulation.get(i)));    
+                }
 
-            // }
+            }
 
              currentGeneration++;
-            // population = replacementStrategy.replace(population, newPopulation, fitnessFunction, true);
-            break; 
+            population = replacementStrategy.replace(population, newPopulation, fitnessFunction, true);
+            
            
         }
             
