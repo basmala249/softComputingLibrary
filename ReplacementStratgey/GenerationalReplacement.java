@@ -1,0 +1,12 @@
+package ReplacementStratgey;
+import Chromosomes.Chromosome;
+import FitnessFunctions.IFitnessFunction;
+
+import java.util.List;
+
+public class GenerationalReplacement<T> implements IReplacement<T>{
+    @Override
+    public List<Chromosome<T>> replace(List<Chromosome<T>> oldPopulation, List<Chromosome<T>> newPopulation, IFitnessFunction<T> fitnessFunction, boolean minimize) {
+        return newPopulation;
+    }
+}
