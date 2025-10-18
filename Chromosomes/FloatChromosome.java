@@ -2,6 +2,7 @@ package Chromosomes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import FitnessFunctions.IFitnessFunction;
 
@@ -18,12 +19,16 @@ public class FloatChromosome implements Chromosome <Double>{
     @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
-        // Intalize with random float values 
+        Random rand = new Random();
+        for(int i = 0; i < chromosomeLength; i++) {
+            double r = rand.nextDouble();
+            chromosome.add(r);
+        }
     }
 
     @Override
     public void PrintChromosome() {
-
+        System.out.println(chromosome);
     }
     @Override
     public void setIndex(int index, Double value) {
