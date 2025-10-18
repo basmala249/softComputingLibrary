@@ -18,7 +18,7 @@ public class PermutationChromosome implements Chromosome <Integer>{
     @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
-        for (int i = 0; i < chromosomeLength; i++) {
+        for (int i = 1; i <= chromosomeLength; i++) {
             chromosome.add(i);
         }
         Collections.shuffle(chromosome);

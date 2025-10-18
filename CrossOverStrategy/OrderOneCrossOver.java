@@ -5,12 +5,19 @@ import FitnessFunctions.IFitnessFunction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 
 public class OrderOneCrossOver<T> implements ICrossOver <T> {
     @Override
     public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes , boolean isMinimization) {
+        System.out.println("Order One Crossover Applied ");
+        System.out.println("Parent Chromosomes: ");
+        for (Chromosome<T> chromosome : chromosomes) {
+            System.out.print("Chromosome :: ");
+            chromosome.PrintChromosome();
+        }
         List<Chromosome<T>> offsprings = new ArrayList<Chromosome<T>>();
         for(int i = 0; i < chromosomes.size(); i += 2) {
             Chromosome<T> parent1 = chromosomes.get(i);
@@ -38,9 +45,16 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
     }
     private List<Chromosome<T>> createOffspring(Chromosome<T> parent1, Chromosome<T> parent2) {
         int size = parent1.getSize();
+        Random rand = new Random();
         List<Chromosome<T>> childGenes = new ArrayList<>(); // return list
-        int start = (int)(Math.random() * size); // get random start point
-        int k = (int)(Math.random() * (size - start)) ;  // size of subset
+        System.out.println("Chromosome Size: " + size);
+        int start = (int)(rand.nextDouble() * size); // get random start point
+        int k = (int)(rand.nextDouble() * (size - start)) ;  // size of subset
+        System.out.println("start: " + start + " k: " + ( k));
+        System.out.println("Parent1: ");
+        parent1.PrintChromosome();
+        System.out.println("Parent2: ");
+        parent2.PrintChromosome();
         Chromosome<T> child1Genes = parent1.copy();
         Chromosome<T> child2Genes = parent2.copy();
        
@@ -48,11 +62,11 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
             child1Genes.setIndex(i, null);
             child2Genes.setIndex(i, null);
         }
-        for(int i = start; i < Math.min((int)size , (int)start + k); i++) {
+        for(int i = start; i <= Math.min((int)size - 1 , (int)start + k); i++) {
             child1Genes.setIndex(i, parent1.getIndex(i));
             child2Genes.setIndex(i, parent2.getIndex(i));
         }
-        int currentIndex1 = (start + k) % size;
+        int currentIndex1 = (start + k + 1) % size;
         int current = currentIndex1;
         while(child1Genes.contains(null)) {
             T gene = parent2.getIndex(currentIndex1);
@@ -62,7 +76,7 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
             }
             currentIndex1 = (currentIndex1 + 1) % size;
         }
-        int currentIndex2 = (start + k) % size;
+        int currentIndex2 = (start + k + 1) % size;
         current = currentIndex2;
         while(child2Genes.contains(null)) {
             T gene = parent1.getIndex(currentIndex2);
@@ -74,6 +88,10 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
         }
          childGenes.add(child1Genes);
          childGenes.add(child2Genes);
+         System.out.println("Child1: ");
+         child1Genes.PrintChromosome();
+         System.out.println("Child2: ");
+         child2Genes.PrintChromosome();
         return childGenes;
     }
     

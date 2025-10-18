@@ -13,6 +13,12 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
 
     @Override
     public List<Chromosome<T>> select(List<Chromosome<T>> chromosomes, int numberToBeSelected , boolean isMinimization) {
+            System.out.println("Roulette Wheel Selection Applied ");
+            System.out.println("Input Chromosomes: ");
+            for (Chromosome<T> chromosome : chromosomes) {
+                System.out.print("Chromosome :: ");
+                chromosome.PrintChromosome();
+            }
             List<Double> res = new ArrayList<>();
             List<Chromosome<T>> selected = new ArrayList<>();
             Long totalFitness = 0L;
@@ -23,28 +29,38 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
             res.add(fitnessValue);
             totalFitness += (long) fitnessValue;
         }
+            System.out.println("Total Fitness : " + totalFitness);
+            System.out.println("Fitness Values before Normalization : " + res);
             // Support Minimization Problems
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {
                 val = res.get(i) / totalFitness ;
                 val *= 100;
-                val = customRound(val); 
+                //val = customRound(val); 
                 val = (isMinimization ? 100 - val : val); 
                 res.set(i, val);
             }
+            System.out.println("Fitness Values after Normalization : " + res);
             // Cumulative Sum
             for(int i = 1; i < chromosomes.size(); i++) {
                  res.set(i, res.get(i) + res.get(i - 1));
             }
+            System.out.println("Cumulative Fitness Values : " + res);
             Random rand = new Random();
             double num = rand.nextDouble() * res.get(res.size() - 1);
             int indx = -1;
             // Select numberToBeSelected chromosomes based on Random numbers
             for(int i = 0; i < numberToBeSelected; i++) {
                  num = rand.nextDouble() * res.get(res.size() - 1);
+                 System.out.println("Random Number Generated : " + num);
                  indx = lowerBound(res, num); // O(log n)
                  selected.add(chromosomes.get(indx));
                  
+            }
+            System.out.println("Selected Chromosomes : ");
+            for (Chromosome<T> chromosome : selected) {
+                System.out.print("Chromosome :: ");
+                chromosome.PrintChromosome();
             }
         return selected;
     }

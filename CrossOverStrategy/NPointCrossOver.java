@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+
 public class NPointCrossOver<T> implements ICrossOver<T> {
 
     private final Random random = new Random();
