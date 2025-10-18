@@ -13,14 +13,12 @@ public class FloatChromosome implements Chromosome <Double>{
     public FloatChromosome(int chromosomeLength , IFitnessFunction<Double> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
         this.fitnessFunction = fitnessFunction;
-        chromosome = new ArrayList<>(chromosomeLength);
-        for(int i = 0; i < chromosomeLength; i++) {
-            chromosome.add(0.0);
-        }
+        InitializeChromosome();
     }
     @Override
     public void InitializeChromosome() {
-
+        chromosome = new ArrayList<>();
+        // Intalize with random float values 
     }
 
     @Override

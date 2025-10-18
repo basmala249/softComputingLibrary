@@ -20,22 +20,21 @@ public class GeneticAlgorithmMethod {
        
     }
     void run(){
-      
+       
         int currentGeneration = 0;
         List<Chromosome<Integer>> population = new ArrayList<>();
         IFitnessFunction<Integer> fitnessFunction = new N_QueensCaseStudyFitnessFunction(8);
      
         for(int i = 0;i < geneticParams.getPopulationSize();i++) {
             Chromosome<Integer> newChromosome = new PermutationChromosome(geneticParams.getChromosomeLength(), fitnessFunction);
-            newChromosome.InitializeChromosome();
             population.add(newChromosome);
         }
       
-        SelectionInterface<Integer> selectionStrategy = new RankSelection<>();
-        ICrossOver<Integer> crossoverStrategy = new NPointCrossOver<>(2);
-        IMutation<Integer> mutationStrategy = new InsertMutationStrategy<>();
-        IReplacement<Integer> replacementStrategy = new SteadyStateReplacement<>();
-       
+        SelectionInterface<Integer> selectionStrategy = new RankSelection<Integer>();
+        ICrossOver<Integer> crossoverStrategy = new NPointCrossOver<Integer>(2);
+        IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
+        IReplacement<Integer> replacementStrategy = new SteadyStateReplacement<Integer>();
+
         while(currentGeneration < geneticParams.getGenerations()){
 
     

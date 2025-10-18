@@ -14,15 +14,13 @@ public class BinaryChromosome implements Chromosome<Integer> {
     public BinaryChromosome(int chromosomeLength, IFitnessFunction<Integer> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
         this.fitnessFunction = fitnessFunction;
-        chromosome = new ArrayList<>(chromosomeLength);
-        for (int i = 0; i < chromosomeLength; i++) {
-            chromosome.add(0);
-        }
+        InitializeChromosome();
     }
 
     @Override
     public void InitializeChromosome() {
-
+        chromosome = new ArrayList<>(chromosomeLength);
+        // Initialize with random 0s and 1s
     }
 
     @Override
