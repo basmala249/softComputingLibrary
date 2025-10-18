@@ -9,6 +9,8 @@ import FitnessFunctions.*;
 import MutationStratgey.*;
 import ReplacementStratgey.*;
 import SelectionStratgey.*;
+
+// implementation of N-Queens problem using Genetic Algorithm
 public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
     
     public NQueensGeneticAlgorithmImplement(GeneticAlgorithmParameters geneticParams) {
