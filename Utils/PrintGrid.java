@@ -10,7 +10,7 @@ public class PrintGrid {
         String empty = "·"; // Empty cell symbol
 
         // === Print column numbers (1-based) ===
-        System.out.print("    "); // left margin for row labels
+        System.out.print("    ");  
         for (int col = 1; col <= n; col++) {
             System.out.printf("  %2d  ", col);
         }
