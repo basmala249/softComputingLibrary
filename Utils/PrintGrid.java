@@ -6,7 +6,7 @@ public class PrintGrid {
 
     public static void printNQueensGrid(Chromosome<Integer> chromosome) {
         int n = chromosome.getSize();
-        String queen = "♛"; // Queen symbol
+        String queen = "Q"; // Queen symbol
         String empty = "·"; // Empty cell symbol
 
         // === Print column numbers (1-based) ===
