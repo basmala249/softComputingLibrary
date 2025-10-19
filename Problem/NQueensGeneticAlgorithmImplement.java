@@ -1,6 +1,7 @@
 package Problem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -122,8 +123,17 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
             
            
         }
-            
-        
+
+
+        System.out.println("No Solution Found in " + geneticParams.getGenerations() + " generations.");
+        System.out.println("Best Solution Found: ");        
+        population.stream()
+                .min(Comparator.comparingDouble(fitnessFunction::evaluate))
+                .ifPresent(chromosome -> {
+                    System.out.println("Chromosome: ");
+                    chromosome.PrintChromosome();
+                    PrintGrid.printNQueensGrid(chromosome);
+                });
     }
     
 }
