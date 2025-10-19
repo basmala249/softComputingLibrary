@@ -17,7 +17,7 @@ public interface FloatMutationStrategy<T extends Number> extends IMutation<T> {
             double mx = r <= 0.5 ? val - L : R - val;
             double r1 = random.nextDouble() * mx;
             double newVal = r <= 0.5 ? val - r1 : val + r1;
-            chromosome.setIndex(i, (T) Double.valueOf(newVal));
+            chromosome.setIndex(i,  (T)Double.valueOf(newVal));
         }
         return chromosome;
     }
