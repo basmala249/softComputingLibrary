@@ -10,18 +10,22 @@ public class IntegerChromosome implements Chromosome <Integer> {
     private int chromosomeLength;
     private List<Integer> chromosome;
     private IFitnessFunction<Integer> fitnessFunction;
+    private int min;
+    private int max;
 
-    public IntegerChromosome(int chromosomeLength, IFitnessFunction<Integer> fitnessFunction) {
+    public IntegerChromosome(int chromosomeLength , int min, int max, IFitnessFunction<Integer> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
         this.fitnessFunction = fitnessFunction;
+        this.min = min;
+        this.max = max;
         InitializeChromosome();
     }
     @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
+        Random rand = new Random();
         for(int i = 0; i < chromosomeLength; i++) {
-            Random rand = new Random();
-            int r = rand.nextInt();
+            int r = rand.nextInt(max - min + 1) + min;
             chromosome.add(r);
         }
     }
@@ -44,7 +48,7 @@ public class IntegerChromosome implements Chromosome <Integer> {
     }
     @Override
     public Chromosome<Integer> copy() {
-        Chromosome<Integer> newChromosome = new IntegerChromosome(this.chromosomeLength, this.fitnessFunction);
+        Chromosome<Integer> newChromosome = new IntegerChromosome(this.chromosomeLength, this.min, this.max, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
         }
