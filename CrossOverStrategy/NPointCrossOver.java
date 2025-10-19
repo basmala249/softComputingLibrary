@@ -2,8 +2,10 @@ package CrossOverStrategy;
 import Chromosomes.Chromosome;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 public class NPointCrossOver<T> implements ICrossOver<T> {
@@ -19,7 +21,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
     public List<Chromosome<T>> crossOver(Chromosome<T> firstChromosome, Chromosome<T> secondChromosome) {
        
         // Get a copy of the parents
-        Chromosome<T> firstOffSpring =firstChromosome.copy();
+        Chromosome<T> firstOffSpring = firstChromosome.copy();
         Chromosome<T> secondOffSpring = secondChromosome.copy();
 
         // Generate sorted Random Cross Points
@@ -28,7 +30,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
 
         crossPoints.add(firstOffSpring.getSize());
 
-        for(int i = 0;i < crossPointsNum - 1;i += 2) {
+        for(int i = 0;i < crossPointsNum;i += 2) {
             int l = crossPoints.get(i);
             int r = crossPoints.get(i + 1);
             // For each two consecutive points, swap the genes between them
@@ -48,15 +50,15 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
     }
 
     private List<Integer> generateRandomCrossPoints(int chromosomeLength) {
-        List<Integer> points = new ArrayList<>();
+        Set<Integer> pointSet = new HashSet<>();
 
-        // Generate unique random cross points in range [0 , chromosomeLength - 1]
-        // because here we are dealing with arrays 0 based index
-        for(int i = 0;i < crossPointsNum;i++) {
-            int point = random.nextInt(chromosomeLength - 1); 
-            points.add(point);
+        
+        while (pointSet.size() < crossPointsNum) {
+            int point = random.nextInt(1, chromosomeLength); 
+            pointSet.add(point);
         }
 
+        List<Integer> points = new ArrayList<>(pointSet);
         Collections.sort(points);
         return points;
 

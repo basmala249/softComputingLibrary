@@ -1,9 +1,8 @@
 package Problem;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
+import java.util.Random;
 import java.util.stream.Collectors;
 import Chromosomes.*;
 import CrossOverStrategy.*;
@@ -15,6 +14,7 @@ import Utils.*;
 
 // implementation of N-Queens problem using Genetic Algorithm
 public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
+    Random rand = new Random();
     List<Chromosome<Integer>> population = new ArrayList<>();
     IFitnessFunction<Integer> fitnessFunction = new N_QueensCaseStudyFitnessFunction(geneticParams.getChromosomeLength());
     SelectionInterface<Integer> selectionStrategy = new RankSelection<Integer>();
@@ -68,7 +68,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
             
             // Apply mutation to offspring
             for(int i = 0;i < newOffsprings.size();i++) {
-                double randomNum = getRandomNumber();
+                double randomNum = rand.nextDouble();
                 if(randomNum < dynamicMutationRate) {
                     newOffsprings.set(i, mutationStrategy.mutate(newOffsprings.get(i)));    
                 }
@@ -99,7 +99,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
     private List<Chromosome<Integer>> applyCrossover(List<Chromosome<Integer>> selectedChromosomes) {
         List<Chromosome<Integer>> newOffsprings = new ArrayList<>();
         for(int i = 0;i < selectedChromosomes.size() ;i += 2) {
-                double randomNum = getRandomNumber();
+                double randomNum =  rand.nextDouble();;
                 if(randomNum < geneticParams.getCrossoverRate()) {
                     
                     Chromosome<Integer> firstParent = selectedChromosomes.get(i);

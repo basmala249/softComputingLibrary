@@ -5,8 +5,8 @@ public class CaseStudyApplication {
 
         // Default Parameters
         public static int populationSize = 6;
-        public static int generations = 100;
-        public static int chromosomeLength = 8;
+        public static int generations = 800;
+        public static int chromosomeLength = 10;
         public static double crossoverRate = 0.5;
         public static double mutationRate = 0.02;
 
