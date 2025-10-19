@@ -1,7 +1,6 @@
 package CrossOverStrategy;
 
 import Chromosomes.Chromosome;
-import FitnessFunctions.IFitnessFunction;
 
 import java.util.ArrayList;
 import java.util.List;
