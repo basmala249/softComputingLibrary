@@ -49,7 +49,7 @@ public class FloatChromosome implements Chromosome <Double>{
     }   
     @Override
     public Chromosome<Double> copy() {
-        Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength , this.fitnessFunction);
+        Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength , this.min, this.max, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
         }

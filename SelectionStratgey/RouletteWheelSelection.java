@@ -78,13 +78,13 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
         return left;
     }
     // Ceil Function
-    int customRound(double num) {
-        int integerPart = (int) num;
-        double decimalPart = num - integerPart;
+    // int customRound(double num) {
+    //     int integerPart = (int) num;
+    //     double decimalPart = num - integerPart;
 
-        if (decimalPart >= 0.5)
-            return integerPart + 1;
-        else
-            return integerPart;
-    }
+    //     if (decimalPart >= 0.5)
+    //         return integerPart + 1;
+    //     else
+    //         return integerPart;
+    // }
 }
