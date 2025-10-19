@@ -23,22 +23,6 @@ public class OrderOneCrossOver<T> implements ICrossOver <T> {
             offsprings.add(childlrenGenes.get(1));
         }
 
-        // Odd Size Choose Best
-        if(chromosomes.size() % 2 != 0) {
-            Chromosome<T> last = null;
-            IFitnessFunction<T> fitnessFunction = offsprings.get(0).getFitnessFunction();
-            double fit1 = fitnessFunction.evaluate(offsprings.get(offsprings.size() - 1));
-            double fit2 = fitnessFunction.evaluate(offsprings.get(0));
-            if(isMinimization) {
-             
-                last = (fit1 <= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
-            }else{
-                last = (fit1 >= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
-            }
-            offsprings.set(0, last);
-            offsprings.remove(offsprings.size() - 1);
-        }
-
         return offsprings;
     }
     private List<Chromosome<T>> createOffspring(Chromosome<T> parent1, Chromosome<T> parent2) {

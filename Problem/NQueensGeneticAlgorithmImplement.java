@@ -85,6 +85,21 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                 }
                
             }
+                 // Odd Size Choose Best
+    //     if(chromosomes.size() % 2 != 0) {
+    //         Chromosome<T> last = null;
+    //         IFitnessFunction<T> fitnessFunction = offsprings.get(0).getFitnessFunction();
+    //         double fit1 = fitnessFunction.evaluate(offsprings.get(offsprings.size() - 1));
+    //         double fit2 = fitnessFunction.evaluate(offsprings.get(0));
+    //         if(isMinimization) {
+             
+    //             last = (fit1 <= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
+    //         }else{
+    //             last = (fit1 >= fit2) ? offsprings.get(offsprings.size() - 1) : offsprings.get(0);
+    //         }
+    //         offsprings.set(0, last);
+    //         offsprings.remove(offsprings.size() - 1);
+    //     }
 
             // Adjust mutation rate based on diversity
             double dynamicMutationRate = geneticParams.getMutationRate();
