@@ -5,8 +5,8 @@ this library includes techniques like Genetic Algorithm , Fuzzy Systems , Neural
 ## Genetic ALgorithm
 
 
-![GeneticAlgorithm Package Diagram](genetic_package_diagram)
+![GeneticAlgorithm Package Diagram](genetic_package_diagram.jpg)
 
 
-![GeneticAlgorithm Class Diagram](genetic_class_diagram)
+![GeneticAlgorithm Class Diagram](genetic_class_diagram.jpg)
 
