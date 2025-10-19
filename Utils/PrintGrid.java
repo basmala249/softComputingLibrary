@@ -23,28 +23,6 @@ public class PrintGrid {
 
         // === Print each row ===
         for (int row = 0; row < n; row++) {
-            System.out.printf("%2d |", row + 1);
-            for (int col = 0; col < n; col++) {
-                if (chromosome.getIndex(col) == row) {
-                    System.out.printf("  %s  |", queen);
-                } else {
-                    System.out.printf("  %s  |", empty);
-                }
-            }
-            System.out.println();
-
-            // Divider line
-            System.out.print("    ");
-            for (int i = 0; i < n; i++) System.out.print("------");
-            System.out.println("-");
-        }
-        // === Print top border ===
-        System.out.print("    ");
-        for (int i = 0; i < n; i++) System.out.print("------");
-        System.out.println("-");
-
-        // === Print each row ===
-        for (int row = 0; row < n; row++) {
             System.out.printf("%2d |", row + 1); 
             for (int col = 0; col < n; col++) {
                 //System.out.println(row + " " + board.get(row) + " " + col);
