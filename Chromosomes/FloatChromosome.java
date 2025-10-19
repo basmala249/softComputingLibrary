@@ -10,10 +10,14 @@ public class FloatChromosome implements Chromosome <Double>{
     private int chromosomeLength;
     private List<Double> chromosome;
     private IFitnessFunction<Double> fitnessFunction;
+    private double min;
+    private double max;
 
-    public FloatChromosome(int chromosomeLength , IFitnessFunction<Double> fitnessFunction) {
+    public FloatChromosome(int chromosomeLength , double min, double max, IFitnessFunction<Double> fitnessFunction) {
         this.chromosomeLength = chromosomeLength;
         this.fitnessFunction = fitnessFunction;
+        this.min = min;
+        this.max = max;
         InitializeChromosome();
     }
     @Override
@@ -21,7 +25,8 @@ public class FloatChromosome implements Chromosome <Double>{
         chromosome = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < chromosomeLength; i++) {
-            double r = rand.nextDouble();
+            
+            double r = rand.nextDouble() * (max - min) + min;  
             chromosome.add(r);
         }
     }

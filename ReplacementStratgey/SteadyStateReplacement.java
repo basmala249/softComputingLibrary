@@ -23,12 +23,20 @@ public class SteadyStateReplacement<T> implements IReplacement<T> {
             oldPopulation.get(i).PrintChromosome();
             
         }
+
+        for(int i = 0;i < newOffSprings.size();i++) {
+            System.out.print("Debug>> New Off Springs before Replacement :: " + " Fitness:: " + fitnessFunction.evaluate(newOffSprings.get(i)));
+            newOffSprings.get(i).PrintChromosome();
+            
+        }
+
+
         for(int i = 0;i < n - k;i++) {
            newOffSprings.add(oldPopulation.get(i));
         }
 
         for(int i = 0;i < newOffSprings.size();i++) {
-            System.out.print("Debug>> New Population After Population :: " + " Fitness:: " + fitnessFunction.evaluate(newOffSprings.get(i)));
+            System.out.print("Debug>> New Population After Replacement :: " + " Fitness:: " + fitnessFunction.evaluate(newOffSprings.get(i)));
             newOffSprings.get(i).PrintChromosome();
         }
         

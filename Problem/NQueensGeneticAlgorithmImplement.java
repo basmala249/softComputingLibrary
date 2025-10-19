@@ -27,15 +27,16 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
             population.add(newChromosome);
         }
       
-        SelectionInterface<Integer> selectionStrategy = new RouletteWheelSelection<Integer>();
-        ICrossOver<Integer> crossoverStrategy = new OrderOneCrossOver<Integer>();
+        SelectionInterface<Integer> selectionStrategy = new RankSelection<Integer>();
+        ICrossOver<Integer> crossoverStrategy = new NPointCrossOver<Integer>(2);
         IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
         IReplacement<Integer> replacementStrategy = new SteadyStateReplacement<Integer>();
+        int numberToBeSelected = 2;
 
         while(currentGeneration < geneticParams.getGenerations()){
 
     
-            List<Chromosome<Integer>> selectedChromosomes = selectionStrategy.select(population, geneticParams.getPopulationSize(), false);
+            List<Chromosome<Integer>> selectedChromosomes = selectionStrategy.select(population, numberToBeSelected, false);
 
             List<Chromosome<Integer>> newPopulation = new ArrayList<>();
         

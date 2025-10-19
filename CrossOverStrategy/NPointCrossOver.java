@@ -1,7 +1,5 @@
 package CrossOverStrategy;
-
 import Chromosomes.Chromosome;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,10 +20,12 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
         if(chromosomes.size() <= 1)
             return null;
 
-        Chromosome<T> firstOffSpring = chromosomes.get(1);
+        Chromosome<T> firstOffSpring = chromosomes.get(0);
         Chromosome<T> secondOffSpring = chromosomes.get(1);
 
         List<Integer> crossPoints = generateRandomCrossPoints(firstOffSpring.getSize());
+        List<Chromosome<T>> offsprings = new ArrayList<>();
+
         crossPoints.add(firstOffSpring.getSize());
         for(int i = 0;i < crossPointsNum - 1;i += 2) {
             int l = crossPoints.get(i);
@@ -39,7 +39,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
             }
 
         }
-        List<Chromosome<T>> offsprings = new ArrayList<>();
+        
         offsprings.add(firstOffSpring);
         offsprings.add(secondOffSpring);
 
@@ -48,12 +48,18 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
 
     private List<Integer> generateRandomCrossPoints(int chromosomeLength) {
         List<Integer> points = new ArrayList<>();
+
+        System.out.print("Debug>> Cross Points Generated:: ");
         for(int i = 0;i < crossPointsNum;i++) {
-            int point = random.nextInt(chromosomeLength - 2) + 1; // to avoid 0
+            int point = random.nextInt(chromosomeLength - 1); 
+            System.out.print(point);
+            System.out.print(" ");
             points.add(point);
         }
+        System.out.println();
 
         Collections.sort(points);
+       
       
         return points;
 

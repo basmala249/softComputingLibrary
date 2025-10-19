@@ -17,10 +17,12 @@ public class BinaryChromosome implements Chromosome<Integer> {
         InitializeChromosome();
     }
 
-    @Override
+   @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
-        // Initialize with random 0s and 1s
+        for (int i = 0; i < chromosomeLength; i++) {
+            chromosome.add((int)(Math.random() * 2));
+        }
     }
 
     @Override

@@ -1,4 +1,5 @@
 package Problem;
+import Chromosomes.FloatChromosome;
 import FitnessFunctions.*;
 //import Chromosomes.Chromosome;
 public class CaseStudyApplication {
@@ -12,7 +13,12 @@ public class CaseStudyApplication {
                                     0.02);
                 GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(geneticParams);
                 ga_engine.run();
-        
+
+                // FloatChromosome floatChromosome = new FloatChromosome(5, -10.0, 10.0, null);
+                // floatChromosome.PrintChromosome();
+
+                //  FloatChromosome floatChromosome02 = new FloatChromosome(5, -10.0, 10.0, null);
+                // floatChromosome02.PrintChromosome();
         }
 
 } 
