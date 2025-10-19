@@ -1,5 +1,4 @@
 package Problem;
-import Chromosomes.FloatChromosome;
 import FitnessFunctions.*;
 //import Chromosomes.Chromosome;
 public class CaseStudyApplication {
