@@ -7,9 +7,9 @@ public class CaseStudyApplication {
         public static void main(String[] args) {
                 GeneticAlgorithmParameters geneticParams =
                       new GeneticAlgorithmParameters(6,
-                                    2,
+                                    100,
                                     8,
-                                    0.8,
+                                    0.5,
                                     0.02);
                 GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(geneticParams);
                 ga_engine.run();
