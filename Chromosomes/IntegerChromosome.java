@@ -19,6 +19,8 @@ public class IntegerChromosome implements Chromosome <Integer> {
     @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
+
+        // Fill with random integers
         for(int i = 0; i < chromosomeLength; i++) {
             Random rand = new Random();
             int r = rand.nextInt();
@@ -44,6 +46,7 @@ public class IntegerChromosome implements Chromosome <Integer> {
     }
     @Override
     public Chromosome<Integer> copy() {
+        // Copy Constructor
         Chromosome<Integer> newChromosome = new IntegerChromosome(this.chromosomeLength, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));

@@ -1,23 +1,48 @@
 package Problem;
-import FitnessFunctions.*;
-//import Chromosomes.Chromosome;
+import java.util.Scanner;
+
 public class CaseStudyApplication {
-        public static IFitnessFunction<Integer> fitnessObject = new N_QueensCaseStudyFitnessFunction(8);
-        public static void main(String[] args) {
-                GeneticAlgorithmParameters geneticParams =
-                      new GeneticAlgorithmParameters(6,
-                                    100,
-                                    8,
-                                    0.5,
-                                    0.02);
-                GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(geneticParams);
-                ga_engine.run();
 
-                // FloatChromosome floatChromosome = new FloatChromosome(5, -10.0, 10.0, null);
-                // floatChromosome.PrintChromosome();
+        // Default Parameters
+        public static int populationSize = 6;
+        public static int generations = 100;
+        public static int chromosomeLength = 8;
+        public static double crossoverRate = 0.5;
+        public static double mutationRate = 0.02;
 
-                //  FloatChromosome floatChromosome02 = new FloatChromosome(5, -10.0, 10.0, null);
-                // floatChromosome02.PrintChromosome();
+    public static void main(String[] args) {
+        // Read parameters from user
+        readParametersFromUser();
+         
+        // Initialize Genetic Algorithm with N-Queens Case Study
+        GeneticAlgorithmParameters params =
+            new GeneticAlgorithmParameters(populationSize, generations, chromosomeLength, crossoverRate, mutationRate);
+        GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
+        ga_engine.run();
+    }
+
+    private static void readParametersFromUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Use default parameters? (y/n): ");
+        String choice = scanner.nextLine().trim().toLowerCase();
+
+        if (!choice.equals("y")) {
+                System.out.print("Enter Population Size: ");
+                populationSize = scanner.nextInt();
+
+                System.out.print("Enter Number of Generations: ");
+                generations = scanner.nextInt();
+
+                System.out.print("Enter Chromosome Length (N for N-Queens): ");
+                chromosomeLength = scanner.nextInt();
+
+                System.out.print("Enter Crossover Rate : ");
+                crossoverRate = scanner.nextDouble();
+
+                System.out.print("Enter Mutation Rate : ");
+                mutationRate = scanner.nextDouble();
         }
-
-} 
+        scanner.close();
+    }
+}

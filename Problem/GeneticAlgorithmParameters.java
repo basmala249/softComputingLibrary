@@ -1,6 +1,6 @@
 package Problem;
 
-
+// Class to hold Genetic Algorithm Parameters
 public class GeneticAlgorithmParameters {
         int populationSize;
         int generations ;

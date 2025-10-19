@@ -18,26 +18,10 @@ public class SteadyStateReplacement<T> implements IReplacement<T> {
         else 
            oldPopulation.sort((ch1, ch2) -> Double.compare(fitnessFunction.evaluate(ch1), fitnessFunction.evaluate(ch2)));
 
-        for(int i = 0;i < oldPopulation.size();i++) {
-            System.out.print("Debug>> Old Population before Replacement :: " + " Fitness:: " + fitnessFunction.evaluate(oldPopulation.get(i)));
-            oldPopulation.get(i).PrintChromosome();
-            
-        }
-
-        for(int i = 0;i < newOffSprings.size();i++) {
-            System.out.print("Debug>> New Off Springs before Replacement :: " + " Fitness:: " + fitnessFunction.evaluate(newOffSprings.get(i)));
-            newOffSprings.get(i).PrintChromosome();
-            
-        }
 
 
         for(int i = 0;i < n - k;i++) {
            newOffSprings.add(oldPopulation.get(i));
-        }
-
-        for(int i = 0;i < newOffSprings.size();i++) {
-            System.out.print("Debug>> New Population After Replacement :: " + " Fitness:: " + fitnessFunction.evaluate(newOffSprings.get(i)));
-            newOffSprings.get(i).PrintChromosome();
         }
         
        

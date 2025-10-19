@@ -37,14 +37,15 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
     void run() {
         int currentGeneration = 0;
         List<Chromosome<Integer>> population = new ArrayList<>();
-        IFitnessFunction<Integer> fitnessFunction = new N_QueensCaseStudyFitnessFunction(8);
+        IFitnessFunction<Integer> fitnessFunction = new N_QueensCaseStudyFitnessFunction(geneticParams.getChromosomeLength());
 
         // Initialize population
         for(int i = 0;i < geneticParams.getPopulationSize();i++) {
             Chromosome<Integer> newChromosome = new PermutationChromosome(geneticParams.getChromosomeLength(), fitnessFunction);
             population.add(newChromosome);
         }
-      
+        
+        // Creation of strategies
         SelectionInterface<Integer> selectionStrategy = new RankSelection<Integer>();
         ICrossOver<Integer> crossoverStrategy = new OrderOneCrossOver<Integer>();
         IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
@@ -55,10 +56,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
 
             // Evaluate population and check for solution
             for (Chromosome<Integer> chromosome : population) {
-                System.out.println("Debug>> Evaluating Chromosome: ");
-                chromosome.PrintChromosome();
                 double fitness = fitnessFunction.evaluate(chromosome);
-                System.out.print(", Fitness: " + fitness);
                 if (fitness == 0) { // Solution found (no conflicts in N-Queens)
                     System.out.println("Solution Found at Generation " + currentGeneration);
                     chromosome.PrintChromosome();
@@ -74,26 +72,15 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
         
             for(int i = 0;i < selectedChromosomes.size();i += 2) {
                 double randomNum = getRandomNumber();
-                System.out.println("Debug>>  " + randomNum + " < " + geneticParams.getCrossoverRate());
                 if(randomNum < geneticParams.getCrossoverRate()) {
                     List<Chromosome<Integer>> parents = new ArrayList<>();
                     parents.add(selectedChromosomes.get(i));
                     parents.add(selectedChromosomes.get(i + 1));
-                    System.out.print("Debug>> Chromosome1:: ");
-                    selectedChromosomes.get(i).PrintChromosome();
-                    System.out.print("Debug>> Chromosome2:: ");
-                    selectedChromosomes.get(i + 1).PrintChromosome();
                    
                     // apply crossover
                     List<Chromosome<Integer>> offSprings = crossoverStrategy.crossOver(parents, true);
                     newOffsprings.add(offSprings.get(0));
                     newOffsprings.add(offSprings.get(1));
-
-                    System.out.println("Debug>> Crossover Applied ");
-                    System.out.print("Debug>> Offspring1:: ");
-                    offSprings.get(0).PrintChromosome();
-                    System.out.print("Debug>> Offspring2:: ");
-                    offSprings.get(1).PrintChromosome();
                    
                 }
                
@@ -104,7 +91,6 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
             double variance = calculateFitnessVariance(population, fitnessFunction);
             if (variance < 1.0) { // Threshold for low diversity (adjust as needed)
                 dynamicMutationRate = Math.min(dynamicMutationRate * 2, 0.5); // Double mutation rate, cap at 0.5
-                System.out.println("Debug>> Low diversity detected, increasing mutation rate to: " + dynamicMutationRate);
             }
             
             // Apply mutation to offspring
@@ -118,9 +104,9 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
 
 
             // Perform replacement 
-            currentGeneration++;
             population = replacementStrategy.replace(population, newOffsprings, fitnessFunction, true);
-            
+
+            currentGeneration++;
            
         }
 

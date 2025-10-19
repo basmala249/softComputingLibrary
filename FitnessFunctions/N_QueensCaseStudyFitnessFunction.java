@@ -20,7 +20,7 @@ public class N_QueensCaseStudyFitnessFunction  implements IFitnessFunction<Integ
                 }
             }
         }//
-        return conflicts + (conflicts > 0 ? 1000 * conflicts : 0); // Penalty for infeasibility
+        return conflicts ;  
     }
     
 }

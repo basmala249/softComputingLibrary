@@ -42,12 +42,6 @@ public class ElitismReplacement<T> implements IReplacement<T> {
                 Double.compare(fitnessFunction.evaluate(ch1), fitnessFunction.evaluate(ch2)));
         }
 
-        // Debug: Print old population before replacement
-        for (int i = 0; i < oldPopulation.size(); i++) {
-            System.out.print("Debug>> Old Population before Replacement :: Fitness:: "
-                    + fitnessFunction.evaluate(oldPopulation.get(i)));
-            oldPopulation.get(i).PrintChromosome();
-        }
 
         // Elitism: Keep top 'eliteCount' chromosomes
         List<Chromosome<T>> newPopulation = new ArrayList<>();
@@ -75,12 +69,7 @@ public class ElitismReplacement<T> implements IReplacement<T> {
             }
         }
 
-        // Debug: Print new population after replacement
-        for (int i = 0; i < newPopulation.size(); i++) {
-            System.out.print("Debug>> New Population after Replacement :: Fitness:: "
-                    + fitnessFunction.evaluate(newPopulation.get(i)));
-            newPopulation.get(i).PrintChromosome();
-        }
+        
 
         return newPopulation;
     }

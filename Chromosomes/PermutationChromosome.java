@@ -18,6 +18,7 @@ public class PermutationChromosome implements Chromosome <Integer>{
     @Override
     public void InitializeChromosome() {
         chromosome = new ArrayList<>();
+        // fill from 1 to n then Shuffle
         for (int i = 1; i <= chromosomeLength; i++) {
             chromosome.add(i);
         }
@@ -44,6 +45,7 @@ public class PermutationChromosome implements Chromosome <Integer>{
     }
     @Override
     public Chromosome<Integer> copy() {
+        // Copy Constructor
         Chromosome<Integer> newChromosome = new PermutationChromosome(this.chromosomeLength, this.fitnessFunction);
         for(int i = 0; i < this.chromosomeLength; i++) {
             newChromosome.setIndex(i, this.getIndex(i));
