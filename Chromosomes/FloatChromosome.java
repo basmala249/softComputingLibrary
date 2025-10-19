@@ -25,10 +25,13 @@ public class FloatChromosome implements Chromosome <Double>{
         chromosome = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < chromosomeLength; i++) {
-            
-            double r = rand.nextDouble() * (max - min) + min;  
+            double r = rand.nextDouble() * (max - min) + min;
             chromosome.add(r);
         }
+        /// doing that because the max value will never appear in the above loop.
+        /// rand.nextDouble returns number less than 1. So I will never get max.
+        int idx = rand.nextInt(chromosomeLength);
+        chromosome.set(idx, max);
     }
 
     @Override
@@ -50,9 +53,8 @@ public class FloatChromosome implements Chromosome <Double>{
     @Override
     public Chromosome<Double> copy() {
         Chromosome<Double> newChromosome = new FloatChromosome(this.chromosomeLength , this.min, this.max, this.fitnessFunction);
-        for(int i = 0; i < this.chromosomeLength; i++) {
+        for(int i = 0; i < this.chromosomeLength; i++)
             newChromosome.setIndex(i, this.getIndex(i));
-        }
         return newChromosome;
     }
     @Override
