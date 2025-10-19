@@ -4,5 +4,5 @@ import java.util.List;
 
 
 public interface ICrossOver<T> {
-    List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes , boolean isMinimization);
+    List<Chromosome<T>> crossOver(Chromosome<T> firstChromosome, Chromosome<T> secondChromosome);
 }

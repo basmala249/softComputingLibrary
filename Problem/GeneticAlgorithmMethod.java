@@ -14,9 +14,11 @@ public abstract class GeneticAlgorithmMethod {
     }
     abstract void run();
 
-    protected double getRandomNumber() {
-            return rand.nextDouble();
+    public  double getRandomNumber() {
+        return rand.nextDouble();
     }
+
+   
     
      
 }

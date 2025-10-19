@@ -16,21 +16,22 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
     }
 
     @Override
-    public List<Chromosome<T>> crossOver(List<Chromosome<T>> chromosomes, boolean isMinimization) {
-        if(chromosomes.size() <= 1)
-            return null;
+    public List<Chromosome<T>> crossOver(Chromosome<T> firstChromosome, Chromosome<T> secondChromosome) {
+       
+        // Get a copy of the parents
+        Chromosome<T> firstOffSpring =firstChromosome.copy();
+        Chromosome<T> secondOffSpring = secondChromosome.copy();
 
-        Chromosome<T> firstOffSpring = chromosomes.get(0);
-        Chromosome<T> secondOffSpring = chromosomes.get(1);
-
+        // Generate sorted Random Cross Points
         List<Integer> crossPoints = generateRandomCrossPoints(firstOffSpring.getSize());
         List<Chromosome<T>> offsprings = new ArrayList<>();
 
         crossPoints.add(firstOffSpring.getSize());
+
         for(int i = 0;i < crossPointsNum - 1;i += 2) {
             int l = crossPoints.get(i);
             int r = crossPoints.get(i + 1);
-
+            // For each two consecutive points, swap the genes between them
             for(int j = l ;j < r;j++) {
                 T firstGene = firstOffSpring.getIndex(j);
                 firstOffSpring.setIndex(j, secondOffSpring.getIndex(j));
@@ -49,14 +50,14 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
     private List<Integer> generateRandomCrossPoints(int chromosomeLength) {
         List<Integer> points = new ArrayList<>();
 
+        // Generate unique random cross points in range [0 , chromosomeLength - 1]
+        // because here we are dealing with arrays 0 based index
         for(int i = 0;i < crossPointsNum;i++) {
             int point = random.nextInt(chromosomeLength - 1); 
             points.add(point);
         }
 
         Collections.sort(points);
-       
-      
         return points;
 
     }
