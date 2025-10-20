@@ -50,11 +50,12 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                 PrintGrid.printNQueensGrid(chromosome);
                 return;
             }
-            
-
+           
+           
             // Select parents 
-            List<Chromosome<Integer>> selectedChromosomes = selectionStrategy.select(population, numberToBeSelected, false);
+            List<Chromosome<Integer>> selectedChromosomes = selectionStrategy.select(population, numberToBeSelected, true);
             
+        
             // Apply Crossover
             List<Chromosome<Integer>> newOffsprings = applyCrossover(selectedChromosomes);
         

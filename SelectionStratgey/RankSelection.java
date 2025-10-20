@@ -26,9 +26,10 @@ public class RankSelection<T> implements SelectionInterface<T> {
         if(isMinimization) 
            Collections.reverse(copyOfChromosomes);
 
+      
+
         // Get Cumulative Ranks of chromsomes
         List<Integer> ranks = getRanks(copyOfChromosomes);
-
         List<Chromosome<T>> selectedChromosomes = new ArrayList<>();
 
         int upper_limit = (n * (n + 1) / 2) + 1;
@@ -36,9 +37,10 @@ public class RankSelection<T> implements SelectionInterface<T> {
         // Select chromosomes based on ranks
         for(int i = 0; i < numberToBeSelected;i++) {
             int randomNum = random.nextInt(upper_limit- 1) + 1;
+            
             int targetChromosomeIndex = SearchHelpers.lowerBound(ranks, randomNum);
             selectedChromosomes.add(copyOfChromosomes.get(targetChromosomeIndex));
-
+           
 
         }
            

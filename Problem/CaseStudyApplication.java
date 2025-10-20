@@ -1,11 +1,16 @@
 package Problem;
+import java.util.List;
 import java.util.Scanner;
+
+import Chromosomes.BinaryChromosome;
+import Chromosomes.Chromosome;
+import CrossOverStrategy.NPointCrossOver;
 
 public class CaseStudyApplication {
 
         // Default Parameters
         public static int populationSize = 6;
-        public static int generations = 800;
+        public static int generations = 10;
         public static int chromosomeLength = 10;
         public static double crossoverRate = 0.5;
         public static double mutationRate = 0.02;
@@ -19,6 +24,10 @@ public class CaseStudyApplication {
             new GeneticAlgorithmParameters(populationSize, generations, chromosomeLength, crossoverRate, mutationRate);
         GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
         ga_engine.run();
+
+    
+
+
     }
 
     private static void readParametersFromUser() {

@@ -28,19 +28,31 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
         List<Integer> crossPoints = generateRandomCrossPoints(firstOffSpring.getSize());
         List<Chromosome<T>> offsprings = new ArrayList<>();
 
+        crossPoints.add(0, 0);
         crossPoints.add(firstOffSpring.getSize());
 
-        for(int i = 0;i < crossPointsNum;i += 2) {
-            int l = crossPoints.get(i);
-            int r = crossPoints.get(i + 1);
-            // For each two consecutive points, swap the genes between them
-            for(int j = l ;j < r;j++) {
-                T firstGene = firstOffSpring.getIndex(j);
-                firstOffSpring.setIndex(j, secondOffSpring.getIndex(j));
-                secondOffSpring.setIndex(j, firstGene);
+     
 
+        boolean swap = false;
+        for(int i = 0;i < crossPoints.size() - 1;i++) {
+           
+            if(swap) {
+                int l = crossPoints.get(i);
+                int r = crossPoints.get(i + 1);
+                // For each two consecutive points, swap the genes between them
+               
+                for(int j = l ;j < r;j++) {
+                    T firstGene = firstOffSpring.getIndex(j);
+                    firstOffSpring.setIndex(j, secondOffSpring.getIndex(j));
+                    secondOffSpring.setIndex(j, firstGene);
+
+                }
+                
+                firstOffSpring.PrintChromosome();
+                secondOffSpring.PrintChromosome();
             }
-
+            swap = !swap;
+           
         }
         
         offsprings.add(firstOffSpring);
