@@ -26,12 +26,15 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
         }
             
             // Support Minimization Problems
+
+            /// using 100 - val was not correct!
+            ///  now it make sense
             double val = 0.0 ;
             for(int i = 0; i < chromosomes.size(); i++) {
                 val = res.get(i) / totalFitness ;
+                //val = customRound(val);
+                val = (isMinimization ? 1 / (val + 1e-9) : val);
                 val *= 100;
-                //val = customRound(val); 
-                val = (isMinimization ? 100 - val : val); 
                 res.set(i, val);
             }
             // Cumulative Sum
