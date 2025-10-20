@@ -4,14 +4,21 @@ import java.util.Scanner;
 
 import Chromosomes.BinaryChromosome;
 import Chromosomes.Chromosome;
+import Chromosomes.PermutationChromosome;
 import CrossOverStrategy.NPointCrossOver;
+import CrossOverStrategy.OrderOneCrossOver;
+import FitnessFunctions.IFitnessFunction;
+import FitnessFunctions.N_QueensCaseStudyFitnessFunction;
+import MutationStratgey.InsertMutationStrategy;
+import ReplacementStratgey.ElitismReplacement;
+import SelectionStratgey.RankSelection;
 
 public class CaseStudyApplication {
 
         // Default Parameters
         public static int populationSize = 6;
-        public static int generations = 10;
-        public static int chromosomeLength = 10;
+        public static int generations = 1000;
+        public static int chromosomeLength = 8;
         public static double crossoverRate = 0.5;
         public static double mutationRate = 0.02;
 
@@ -22,10 +29,22 @@ public class CaseStudyApplication {
         // Initialize Genetic Algorithm with N-Queens Case Study
         GeneticAlgorithmParameters params =
             new GeneticAlgorithmParameters(populationSize, generations, chromosomeLength, crossoverRate, mutationRate);
-        GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
-        ga_engine.run();
 
-    
+            
+        // GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
+        // ga_engine.run();
+
+        GeneralGeneticAlgorithm<Integer> ga = new GeneralGeneticAlgorithm<>(params);
+        ga.runGeneticAlgorithm(
+            new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength()),
+            new RankSelection<>(),
+            new OrderOneCrossOver<>(),
+            new InsertMutationStrategy<>(),
+            new ElitismReplacement<>(2),
+            new PermutationChromosome(params.getChromosomeLength(), new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength())),
+            c -> new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength()).evaluate(c) == 0,
+            true 
+        );
 
 
     }
