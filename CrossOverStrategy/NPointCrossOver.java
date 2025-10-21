@@ -48,8 +48,6 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
 
                 }
                 
-                firstOffSpring.PrintChromosome();
-                secondOffSpring.PrintChromosome();
             }
             swap = !swap;
            
