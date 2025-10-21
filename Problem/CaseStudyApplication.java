@@ -1,17 +1,12 @@
 package Problem;
-import java.util.List;
 import java.util.Scanner;
 
-import Chromosomes.BinaryChromosome;
-import Chromosomes.Chromosome;
-import Chromosomes.PermutationChromosome;
-import CrossOverStrategy.NPointCrossOver;
-import CrossOverStrategy.OrderOneCrossOver;
-import FitnessFunctions.IFitnessFunction;
-import FitnessFunctions.N_QueensCaseStudyFitnessFunction;
-import MutationStratgey.InsertMutationStrategy;
-import ReplacementStratgey.ElitismReplacement;
-import SelectionStratgey.RankSelection;
+import Chromosomes.*;
+import CrossOverStrategy.*;
+import FitnessFunctions.*;
+import MutationStratgey.*;
+import ReplacementStratgey.*;
+import SelectionStratgey.*;
 
 public class CaseStudyApplication {
 

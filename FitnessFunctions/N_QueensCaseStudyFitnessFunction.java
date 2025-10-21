@@ -19,8 +19,8 @@ public class N_QueensCaseStudyFitnessFunction  implements IFitnessFunction<Integ
                     conflicts++;
                 }
             }
-        }//
-        return conflicts ;  
+        }
+        return conflicts;
     }
     
 }

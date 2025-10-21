@@ -12,9 +12,9 @@ public class UniformCrossOver<T> implements ICrossOver<T> {
         int length = firstChromosome.getSize();
         for(int j=0;j<length;j++){
             if(Math.random() < 0.5){
-                    T temp = firstChromosome.getIndex(j);
-                    firstChromosome.setIndex(j,secondChromosome.getIndex(j));
-                    secondChromosome.setIndex(j,temp);
+                T temp = firstChromosome.getIndex(j);
+                firstChromosome.setIndex(j,secondChromosome.getIndex(j));
+                secondChromosome.setIndex(j,temp);
             }
         }
         offspring.add(firstChromosome);
