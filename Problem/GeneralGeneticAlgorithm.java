@@ -2,7 +2,7 @@ package Problem;
 
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+
 
 import Chromosomes.*;
 import CrossOverStrategy.*;
@@ -10,7 +10,7 @@ import FitnessFunctions.*;
 import MutationStratgey.*;
 import ReplacementStratgey.*;
 import SelectionStratgey.*;
-import Utils.*;
+
 
 public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
 
@@ -74,7 +74,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
             if (maybeSolution.isPresent()) {
                 Chromosome<T> solution = maybeSolution.get();
                 System.out.println("Solution found at generation " + generation);
-                solution.PrintChromosome();
+                solution.PrintChromosome(); 
                 return;
             }
 
