@@ -25,9 +25,7 @@ public class CaseStudyApplication {
         GeneticAlgorithmParameters params =
             new GeneticAlgorithmParameters(populationSize, generations, chromosomeLength, crossoverRate, mutationRate);
 
-            
-        // GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
-        // ga_engine.run();
+        
 
         GeneralGeneticAlgorithm<Integer> ga = new GeneralGeneticAlgorithm<>(params);
         ga.runGeneticAlgorithm(
