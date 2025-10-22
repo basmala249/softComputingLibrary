@@ -47,9 +47,6 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
                     secondOffSpring.setIndex(j, firstGene);
 
                 }
-                
-                firstOffSpring.PrintChromosome();
-                secondOffSpring.PrintChromosome();
             }
             swap = !swap;
            
