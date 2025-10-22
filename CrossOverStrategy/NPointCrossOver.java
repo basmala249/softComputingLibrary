@@ -63,7 +63,7 @@ public class NPointCrossOver<T> implements ICrossOver<T> {
 
         
         while (pointSet.size() < crossPointsNum) {
-            int point = random.nextInt(1, chromosomeLength); 
+            int point = random.nextInt(chromosomeLength-1) + 1; // ensure point is between 1 and length-1
             pointSet.add(point);
         }
 

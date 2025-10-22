@@ -102,6 +102,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
 
     private List<Chromosome<Integer>> applyCrossover(List<Chromosome<Integer>> selectedChromosomes) {
         List<Chromosome<Integer>> newOffsprings = new ArrayList<>();
+        int count = 0;
         for(int i = 0;i < selectedChromosomes.size() ;i += 2) {
                 double randomNum =  rand.nextDouble();;
                 if(randomNum < geneticParams.getCrossoverRate()) {
@@ -109,6 +110,8 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                     Chromosome<Integer> firstParent = selectedChromosomes.get(i);
                     Chromosome<Integer> secondParent = selectedChromosomes.get((i + 1) % selectedChromosomes.size());
                    
+                    if(i == 0 || (i + 1) % selectedChromosomes.size() == 0) count++;
+
                     // apply crossover
                     List<Chromosome<Integer>> offSprings = crossoverStrategy.crossOver(firstParent, secondParent);
                     newOffsprings.add(offSprings.get(0));
@@ -118,7 +121,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                
         }
         // Odd Size Choose Best
-        if(selectedChromosomes.size() % 2 != 0) {
+        if(selectedChromosomes.size() % 2 != 0 && count == 2) {
             Chromosome<Integer> last = null;
            
             double fit1 = fitnessFunction.evaluate(newOffsprings.get(newOffsprings.size() - 1));
@@ -139,7 +142,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
     }
 
 
-     private Chromosome<Integer> didReachSolution() {
+    private Chromosome<Integer> didReachSolution() {
         for (Chromosome<Integer> chromosome : population) {
             double fitness = fitnessFunction.evaluate(chromosome);
             if (fitness == 0) { 

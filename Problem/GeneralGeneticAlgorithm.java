@@ -2,7 +2,7 @@ package Problem;
 
 import java.util.*;
 import java.util.function.Predicate;
-
+import java.util.stream.Collectors;
 
 import Chromosomes.*;
 import CrossOverStrategy.*;
@@ -22,6 +22,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
     private ICrossOver<T> crossoverStrategy;
     private IMutation<T> mutationStrategy;
     private IReplacement<T> replacementStrategy;
+    private int numberToBeSelected;
 
     public GeneralGeneticAlgorithm(GeneticAlgorithmParameters geneticParams) {
         super(geneticParams);
@@ -43,7 +44,8 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
             IReplacement<T> replacementStrategy,
             Chromosome<T> initialChromosome,
             Predicate<Chromosome<T>> stopCondition, 
-            Boolean isMinimization
+            Boolean isMinimization,
+            int numberToBeSelected
     ) 
     {
         // --- Assign Strategies ---
@@ -52,6 +54,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         this.crossoverStrategy = crossoverStrategy;
         this.mutationStrategy = mutationStrategy;
         this.replacementStrategy = replacementStrategy;
+        this.numberToBeSelected = numberToBeSelected;
 
         // --- Initialize Population ---
         for (int i = 0; i < geneticParams.getPopulationSize(); i++) {
@@ -61,7 +64,6 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         }
 
         int generation = 0;
-        int numberToBeSelected = 2;
 
         // --- Main Loop ---
         while (generation < geneticParams.getGenerations()) {
@@ -83,8 +85,15 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
                     selectionStrategy.select(population, numberToBeSelected, isMinimization);
 
             // --- Crossover ---
-            List<Chromosome<T>> newOffsprings = applyCrossover(selectedParents);
+            List<Chromosome<T>> newOffsprings = applyCrossover(selectedParents, isMinimization);
             
+            // Adjust mutation rate based on diversity
+            double dynamicMutationRate = geneticParams.getMutationRate();
+            double variance = calculateFitnessVariance(population);
+            if (variance < 1.0) { // Threshold for low diversity 
+                dynamicMutationRate = Math.min(dynamicMutationRate * 2, 0.5); // Double mutation rate, cap at 0.5
+            }
+
             // --- Mutation ---
             for (int i = 0; i < newOffsprings.size(); i++) {
                 if (rand.nextDouble() < geneticParams.getMutationRate()) {
@@ -109,19 +118,52 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
 
     // ---------------------------- 
 
-    private List<Chromosome<T>> applyCrossover(List<Chromosome<T>> parents) {
-        List<Chromosome<T>> offsprings = new ArrayList<>();
+    private List<Chromosome<T>> applyCrossover(List<Chromosome<T>> selectedChromosomes, boolean isMinimization) {
+        int count = 0;
+        List<Chromosome<T>> newOffsprings = new ArrayList<>();
+        for(int i = 0;i < selectedChromosomes.size() ;i += 2) {
+                double randomNum =  rand.nextDouble();
+                if(randomNum < geneticParams.getCrossoverRate()) {
+                    
+                    Chromosome<T> firstParent = selectedChromosomes.get(i);
+                    Chromosome<T> secondParent = selectedChromosomes.get((i + 1) % selectedChromosomes.size());
 
-        for (int i = 0; i < parents.size(); i += 2) {
-            double randomNum = rand.nextDouble();
-            if (randomNum < geneticParams.getCrossoverRate()) {
-                Chromosome<T> p1 = parents.get(i);
-                Chromosome<T> p2 = parents.get((i + 1) % parents.size());
-                offsprings.addAll(crossoverStrategy.crossOver(p1, p2));
-            }
+                    if(i == 0 || (i + 1) % selectedChromosomes.size() == 0) count++;
+                   
+                    // apply crossover
+                    List<Chromosome<T>> offSprings = crossoverStrategy.crossOver(firstParent, secondParent);
+                    newOffsprings.add(offSprings.get(0));
+                    newOffsprings.add(offSprings.get(1));
+                   
+                }
+               
         }
-        return offsprings;
+        // Odd Size Choose Best
+        if(selectedChromosomes.size() % 2 != 0 && count == 2) {
+            Chromosome<T> last = null;
+           
+            double fit1 = fitnessFunction.evaluate(newOffsprings.get(newOffsprings.size() - 1));
+            double fit2 = fitnessFunction.evaluate(newOffsprings.get(0));
+            
+            if(isMinimization) {
+                // Bec Here we are minimization problem
+                last = (fit1 <= fit2) ? newOffsprings.get(newOffsprings.size() - 1) : newOffsprings.get(0);
+            } else {
+                // Maximization Problem
+                last = (fit1 >= fit2) ? newOffsprings.get(newOffsprings.size() - 1) : newOffsprings.get(0);
+            }
+           
+            newOffsprings.set(0, last);
+            newOffsprings.remove(newOffsprings.size() - 1);
+        }
+
+
+        return newOffsprings;
+
+        
+        
     }
+
 
     private Chromosome<T> printBestSolution() {
         Chromosome<T> best = population.stream()
@@ -134,4 +176,19 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         }
         return best;
     }
+
+    // Calculate population fitness variance to monitor diversity
+    private double calculateFitnessVariance(List<Chromosome<T>> population) {
+        List<Double> fitnessValues = population.stream()
+            .map(ch -> fitnessFunction.evaluate(ch))
+            .collect(Collectors.toList());
+        double mean = fitnessValues.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        double variance = fitnessValues.stream()
+            .mapToDouble(f -> Math.pow(f - mean, 2))
+            .average()
+            .orElse(0.0);
+        return variance;
+    }
+
+
 }
