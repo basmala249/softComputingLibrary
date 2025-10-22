@@ -28,7 +28,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
 
 
     @Override
-    void run() {
+    Chromosome<Integer> run() {
         int currentGeneration = 0;
         
 
@@ -48,7 +48,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                 System.out.println("Solution Found at Generation " + currentGeneration);
                 chromosome.PrintChromosome();
                 PrintGrid.printNQueensGrid(chromosome);
-                return;
+                return chromosome;
             }
            
            
@@ -86,14 +86,17 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
 
 
         System.out.println("No Solution Found in " + geneticParams.getGenerations() + " generations.");
-        System.out.println("Best Solution Found: ");        
-        population.stream()
+        System.out.println("Best Solution Found: ");  
+        Chromosome<Integer> solution = population.stream()
                 .min(Comparator.comparingDouble(fitnessFunction::evaluate))
-                .ifPresent(chromosome -> {
-                    System.out.println("Chromosome: ");
-                    chromosome.PrintChromosome();
-                    PrintGrid.printNQueensGrid(chromosome);
-                });
+                .orElse(null);
+        if (solution != null) {
+            System.out.println("Chromosome: ");
+            solution.PrintChromosome();
+            PrintGrid.printNQueensGrid(solution);
+        }
+        return solution;
+
     }
 
 

@@ -1,5 +1,6 @@
 package Problem;
 
+import Chromosomes.Chromosome;
 
 public abstract class GeneticAlgorithmMethod {
     GeneticAlgorithmParameters geneticParams;
@@ -8,6 +9,6 @@ public abstract class GeneticAlgorithmMethod {
         this.geneticParams = geneticParams;
        
     }
-    abstract void run();
+    abstract <T> Chromosome<T> run();
      
 }

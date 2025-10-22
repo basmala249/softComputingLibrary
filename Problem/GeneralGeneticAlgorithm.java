@@ -28,14 +28,14 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
     }
 
     @Override
-    void run() {
+    Chromosome<T> run() {
         throw new UnsupportedOperationException("Use runGeneticAlgorithm() instead.");
     }
 
     /**
      * Run a fully generic genetic algorithm.
      */
-    public void runGeneticAlgorithm(
+    public Chromosome<T> runGeneticAlgorithm(
             IFitnessFunction<T> fitnessFunction,
             SelectionInterface<T> selectionStrategy,
             ICrossOver<T> crossoverStrategy,
@@ -75,7 +75,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
                 Chromosome<T> solution = maybeSolution.get();
                 System.out.println("Solution found at generation " + generation);
                 solution.PrintChromosome(); 
-                return;
+                return solution;
             }
 
             // --- Selection ---
@@ -103,7 +103,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         }
 
         System.out.println("No solution found after " + geneticParams.getGenerations() + " generations.");
-        printBestSolution();
+        return printBestSolution();
     }
 
 
@@ -123,12 +123,15 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         return offsprings;
     }
 
-    private void printBestSolution() {
-        population.stream()
+    private Chromosome<T> printBestSolution() {
+        Chromosome<T> best = population.stream()
                 .min(Comparator.comparingDouble(fitnessFunction::evaluate))
-                .ifPresent(best -> {
-                    System.out.println("Best solution found:");
-                    best.PrintChromosome();
-                });
+                .orElse(null);
+
+        if (best != null) {
+            System.out.println("Best solution found:");
+            best.PrintChromosome();
+        }
+        return best;
     }
 }

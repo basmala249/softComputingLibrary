@@ -26,9 +26,11 @@ public class CaseStudyApplication {
             new GeneticAlgorithmParameters(populationSize, generations, chromosomeLength, crossoverRate, mutationRate);
 
         
+        // GeneticAlgorithmMethod ga_engine = new NQueensGeneticAlgorithmImplement(params);
+        // Chromosome<Integer> solution =ga_engine.run();
 
         GeneralGeneticAlgorithm<Integer> ga = new GeneralGeneticAlgorithm<>(params);
-        ga.runGeneticAlgorithm(
+        Chromosome<Integer> solution = ga.runGeneticAlgorithm(
             new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength()),
             new RankSelection<>(),
             new OrderOneCrossOver<>(),
@@ -39,6 +41,8 @@ public class CaseStudyApplication {
             true 
         );
 
+        System.out.println("Solution Returned:");
+        solution.PrintChromosome();
 
     }
 
