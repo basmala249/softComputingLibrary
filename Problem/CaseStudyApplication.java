@@ -67,7 +67,7 @@ public class CaseStudyApplication {
             new RankSelection<>(),
             new OrderOneCrossOver<>(),
             new InsertMutationStrategy<>(),
-            new ElitismReplacement<>(2),
+            new ElitismReplacement<>(),
             new PermutationChromosome(params.getChromosomeLength(), new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength())),
             c -> new N_QueensCaseStudyFitnessFunction(params.getChromosomeLength()).evaluate(c) == 0,
             true,

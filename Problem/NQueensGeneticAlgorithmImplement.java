@@ -20,7 +20,7 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
     SelectionInterface<Integer> selectionStrategy = new RankSelection<Integer>();
     ICrossOver<Integer> crossoverStrategy = new OrderOneCrossOver<Integer>();
     IMutation<Integer> mutationStrategy = new InsertMutationStrategy<Integer>();
-    IReplacement<Integer> replacementStrategy = new ElitismReplacement<Integer>(2);
+    IReplacement<Integer> replacementStrategy = new ElitismReplacement<Integer>();
     
     public NQueensGeneticAlgorithmImplement(GeneticAlgorithmParameters geneticParams) {
         super(geneticParams);
