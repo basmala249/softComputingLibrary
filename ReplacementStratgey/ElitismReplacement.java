@@ -3,7 +3,7 @@ package ReplacementStratgey;
 import Chromosomes.Chromosome;
 import FitnessFunctions.IFitnessFunction;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class ElitismReplacement<T> implements IReplacement<T> {
