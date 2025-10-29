@@ -33,8 +33,9 @@ public class RouletteWheelSelection<T> implements SelectionInterface<T> {
             for(int i = 0; i < chromosomes.size(); i++) {
                 val = res.get(i) / totalFitness ;
                 //val = customRound(val);
-                val = (isMinimization ? 100 - val : val);
                 val *= 100;
+                val = (isMinimization ? 100 - val : val);
+                
                 res.set(i, val);
             }
             // Cumulative Sum
