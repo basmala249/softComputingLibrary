@@ -111,7 +111,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
         }
 
         System.out.println("No solution found after " + generation + " generations.");
-        return printBestSolution();
+        return printBestSolution(isMinimization);
     }
 
 
@@ -164,9 +164,17 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
     }
 
 
-    private Chromosome<T> printBestSolution() {
+    private Chromosome<T> printBestSolution(boolean isMinimization) {
+        Comparator<Chromosome<T>> comparator =
+                Comparator.comparingDouble(fitnessFunction::evaluate);
+
+        // If we are maximizing fitness, reverse the comparator
+        if (!isMinimization) {
+            comparator = comparator.reversed();
+        }
+
         Chromosome<T> best = population.stream()
-                .min(Comparator.comparingDouble(fitnessFunction::evaluate))
+                .min(comparator)
                 .orElse(null);
 
         if (best != null) {
