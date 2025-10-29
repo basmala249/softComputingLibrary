@@ -80,6 +80,12 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
                 return solution;
             }
 
+            double variance = calculateFitnessVariance(population);
+            if (variance <= 0.0) {
+                System.out.println("at generation: " + generation + " variance = 0, stop for best performance.");
+                break;
+            }
+
             // --- Selection ---
             List<Chromosome<T>> selectedParents =
                     selectionStrategy.select(population, numberToBeSelected, isMinimization);
@@ -87,13 +93,6 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
             // --- Crossover ---
             List<Chromosome<T>> newOffsprings = applyCrossover(selectedParents, isMinimization);
             
-            // Adjust mutation rate based on diversity
-            double dynamicMutationRate = geneticParams.getMutationRate();
-            double variance = calculateFitnessVariance(population);
-            if (variance < 1.0) { // Threshold for low diversity 
-                dynamicMutationRate = Math.min(dynamicMutationRate * 2, 0.5); // Double mutation rate, cap at 0.5
-            }
-
             // --- Mutation ---
             for (int i = 0; i < newOffsprings.size(); i++) {
                 if (rand.nextDouble() < geneticParams.getMutationRate()) {
@@ -111,7 +110,7 @@ public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {
             generation++;
         }
 
-        System.out.println("No solution found after " + geneticParams.getGenerations() + " generations.");
+        System.out.println("No solution found after " + generation + " generations.");
         return printBestSolution();
     }
 

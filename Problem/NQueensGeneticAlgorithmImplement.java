@@ -50,7 +50,12 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
                 PrintGrid.printNQueensGrid(chromosome);
                 return chromosome;
             }
-           
+            
+            double variance = calculateFitnessVariance(population);
+            if (variance <= 0.0) {
+                System.out.println("at generation: " + currentGeneration + " variance = 0, stop for best performance.");
+                break;
+            }
            
             // Select parents 
             List<Chromosome<Integer>> selectedChromosomes = selectionStrategy.select(population, numberToBeSelected, true);
@@ -58,19 +63,11 @@ public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {
         
             // Apply Crossover
             List<Chromosome<Integer>> newOffsprings = applyCrossover(selectedChromosomes);
-        
-     
-            // Adjust mutation rate based on diversity
-            double dynamicMutationRate = geneticParams.getMutationRate();
-            double variance = calculateFitnessVariance(population);
-            if (variance < 1.0) { // Threshold for low diversity 
-                dynamicMutationRate = Math.min(dynamicMutationRate * 2, 0.5); // Double mutation rate, cap at 0.5
-            }
-            
+    
             // Apply mutation to offspring
             for(int i = 0;i < newOffsprings.size();i++) {
                 double randomNum = rand.nextDouble();
-                if(randomNum < dynamicMutationRate) {
+                if(randomNum < geneticParams.getMutationRate()) {
                     newOffsprings.set(i, mutationStrategy.mutate(newOffsprings.get(i)));    
                 }
 
