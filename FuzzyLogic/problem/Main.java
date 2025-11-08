@@ -1,7 +1,12 @@
 package problem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import FuzzySet.FuzzySet;
 import MemberFunction.IMemberFunction;
@@ -10,6 +15,8 @@ import MemberFunction.TrapzoidFunction;
 public class Main {
     public static Integer INF = 1000000;
     public static void main(String[] args) {
+        String Variable = "Temperature" , fuzzySet1 = "Cold" , fuzzySet2 = "Warm" , fuzzySet3 = "Hot";
+        List<String> FuzzysetNames = List.of(fuzzySet1, fuzzySet2, fuzzySet3);
         FuzzySet<Double> fs = new FuzzySet<>();
         List<Double> inputs = List.of(0.0, 0.0, 20.0, 40.0);
         IMemberFunction<Double> mf1 = new TrapzoidFunction<Double>(inputs);
@@ -28,9 +35,20 @@ public class Main {
         yValues = getY(mf3.getPoints());
         mf3.setY(yValues);
         fs.addMemberFunction(mf3);
-        for(IMemberFunction<Double> mf : fs.getMemberFunctions()) {
-            System.out.println("Membership value at 60: " + mf.getMembershipValue(25.0));
+        Map<String , Set<pair>> rules = new HashMap<>();
+        Set<pair> tempSet = new HashSet<>();
+        for(int i = 0; i < fs.getMemberFunctions().size(); i++) {
+            IMemberFunction<Double> mf = fs.getMemberFunctions().get(i);
+            tempSet.add(new pair(FuzzysetNames.get(i), mf.getMembershipValue(25.0)));
         }
+        rules.put(Variable, tempSet);
+        for(String key : rules.keySet()) {
+            System.out.println("Variable: " + key);
+            for(pair p : rules.get(key)) {
+                System.out.println("Fuzzy Set: " + p.getFirst() + " Membership Value: " + p.getSecond());
+            }
+        }
+        
     }
     public <T extends Number> double AND(T A, T B) {
            return (A.doubleValue() < B.doubleValue()) ? A.doubleValue() : B.doubleValue();
@@ -53,5 +71,33 @@ public class Main {
         }
         return yValues;
     }
+    static class pair{
+        String first;
+        double second;
+        pair(String first, double second){
+            this.first=first;
+            this.second=second;
+        }
+        String getFirst() {
+            return first;
+        }
+        double getSecond() {
+            return second;
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            pair pair = (pair) o;
+            return Double.compare(pair.second, second) == 0 &&
+                first.equals(pair.first);
+        }
 
+        @Override
+        public int hashCode() {
+            return Objects.hash(first, second);
+        }
+
+
+    } ;
 }
