@@ -55,4 +55,9 @@ public class TriangleFunction<T extends Number> implements IMemberFunction<T> {
     public void setY(List<T> yValues) {
         this.yValues = yValues;
     }
+
+    @Override
+    public List<T> getPoints() {
+        return points;
+    }
 }

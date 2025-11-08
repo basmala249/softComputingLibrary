@@ -13,11 +13,13 @@ public class TrapzoidFunction<T extends Number> implements IMemberFunction<T> {
     public TrapzoidFunction(List<T> points  ) {
         this.points = points; 
         this.yValues = new ArrayList<>();
-        generateEquations();
     }
 
     public List<IShape<T>> getEquations() {
         return equations;
+    }
+    public List<T> getPoints() {
+        return points;
     }
     private void generateEquations() {
         // Generate equations based on the trapezoidal shape
@@ -55,5 +57,6 @@ public class TrapzoidFunction<T extends Number> implements IMemberFunction<T> {
     @Override
     public void setY(List<T> yValues) {
         this.yValues = yValues;
+        generateEquations();
     }
 }
