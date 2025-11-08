@@ -2,7 +2,8 @@ package GeneticAlgorithm.SelectionStratgey;
 
 import GeneticAlgorithm.Chromosomes.*;
 import GeneticAlgorithm.FitnessFunctions.*;
-import Utils.SearchHelpers;
+import GeneticAlgorithm.Utils.SearchHelpers;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

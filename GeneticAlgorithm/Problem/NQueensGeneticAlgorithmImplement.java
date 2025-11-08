@@ -11,7 +11,7 @@ import GeneticAlgorithm.FitnessFunctions.*;
 import GeneticAlgorithm.MutationStratgey.*;
 import GeneticAlgorithm.ReplacementStratgey.*;
 import GeneticAlgorithm.SelectionStratgey.*;
-import Utils.*;
+import GeneticAlgorithm.Utils.*;
 
 // implementation of N-Queens problem using Genetic Algorithm
 public class NQueensGeneticAlgorithmImplement extends GeneticAlgorithmMethod {

@@ -1,4 +1,4 @@
-package Utils;
+package GeneticAlgorithm.Utils;
 
 import java.util.List;
 
