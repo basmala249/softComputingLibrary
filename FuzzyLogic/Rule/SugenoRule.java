@@ -1,6 +1,6 @@
 package Rule;
 
-public class SurgenoRule implements IRule {
+public class SugenoRule implements IRule {
     private boolean enabled;
     @Override
     public boolean isEnabled() {
