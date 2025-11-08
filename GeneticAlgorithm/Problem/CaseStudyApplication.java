@@ -1,4 +1,4 @@
-package Problem;
+package GeneticAlgorithm.Problem;
 import java.util.Scanner;
 
 import GeneticAlgorithm.Chromosomes.*;

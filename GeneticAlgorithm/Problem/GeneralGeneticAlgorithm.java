@@ -1,4 +1,4 @@
-package Problem;
+package GeneticAlgorithm.Problem;
 
 import java.util.*;
 import java.util.function.Predicate;

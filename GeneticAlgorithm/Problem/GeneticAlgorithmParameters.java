@@ -1,4 +1,4 @@
-package Problem;
+package GeneticAlgorithm.Problem;
 
 // Class to hold Genetic Algorithm Parameters
 public class GeneticAlgorithmParameters {

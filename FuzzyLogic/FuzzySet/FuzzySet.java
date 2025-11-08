@@ -1,9 +1,9 @@
 package FuzzySet;
 
-import MemberFunction.IMemberFunction;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import MemberFunction.IMemberFunction;
 public class FuzzySet<T extends Number> {
     List<IMemberFunction<T>> memberFunctions;
     public FuzzySet(){

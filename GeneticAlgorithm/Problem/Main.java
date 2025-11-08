@@ -1,4 +1,4 @@
-package Problem;
+package GeneticAlgorithm.Problem;
 
 
 public class Main {

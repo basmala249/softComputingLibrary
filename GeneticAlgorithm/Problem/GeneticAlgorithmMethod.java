@@ -1,4 +1,4 @@
-package Problem;
+package GeneticAlgorithm.Problem;
 
 import GeneticAlgorithm.Chromosomes.Chromosome;
 
