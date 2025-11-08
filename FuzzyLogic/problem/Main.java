@@ -1,16 +1,16 @@
 package problem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+// import java.util.HashMap;
+// import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+// import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+// import java.util.Set;
 
-import FuzzySet.FuzzySet;
-import MemberFunction.IMemberFunction;
-import MemberFunction.TrapzoidFunction;
+// import FuzzySet.FuzzySet;
+// import MemberFunction.IMemberFunction;
+// import MemberFunction.TrapzoidFunction;
 
 public class Main {
     public static Integer INF = 1000000;
