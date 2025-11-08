@@ -1,7 +1,7 @@
-package SelectionStratgey;
+package GeneticAlgorithm.SelectionStratgey;
 
-import Chromosomes.Chromosome;
-import FitnessFunctions.IFitnessFunction;
+import GeneticAlgorithm.Chromosomes.Chromosome;
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package Utils;
 
-import Chromosomes.Chromosome;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class PrintGrid {
 

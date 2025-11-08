@@ -1,8 +1,7 @@
-package ReplacementStratgey;
+package GeneticAlgorithm.ReplacementStratgey;
 
-import Chromosomes.Chromosome;
-import FitnessFunctions.IFitnessFunction;
-
+import GeneticAlgorithm.Chromosomes.Chromosome;
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 
 import java.util.List;
 

@@ -4,12 +4,12 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import Chromosomes.*;
-import CrossOverStrategy.*;
-import FitnessFunctions.*;
-import MutationStratgey.*;
-import ReplacementStratgey.*;
-import SelectionStratgey.*;
+import GeneticAlgorithm.Chromosomes.*;
+import GeneticAlgorithm.CrossOverStrategy.*;
+import GeneticAlgorithm.FitnessFunctions.*;
+import GeneticAlgorithm.MutationStratgey.*;
+import GeneticAlgorithm.ReplacementStratgey.*;
+import GeneticAlgorithm.SelectionStratgey.*;
 
 
 public class GeneralGeneticAlgorithm<T> extends GeneticAlgorithmMethod {

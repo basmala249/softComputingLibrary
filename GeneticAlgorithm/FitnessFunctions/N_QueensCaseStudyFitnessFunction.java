@@ -1,5 +1,5 @@
-package FitnessFunctions;
-import Chromosomes.Chromosome;
+package GeneticAlgorithm.FitnessFunctions;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class N_QueensCaseStudyFitnessFunction  implements IFitnessFunction<Integer> {
     private final int N;

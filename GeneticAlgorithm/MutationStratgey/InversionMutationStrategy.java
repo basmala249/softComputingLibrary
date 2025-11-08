@@ -1,6 +1,6 @@
-package MutationStratgey;
+package GeneticAlgorithm.MutationStratgey;
 
-import Chromosomes.Chromosome;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class InversionMutationStrategy <T> implements IMutation<T> {
 

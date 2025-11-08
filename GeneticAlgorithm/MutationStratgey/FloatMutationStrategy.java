@@ -1,8 +1,8 @@
-package MutationStratgey;
-
-import Chromosomes.Chromosome;
+package GeneticAlgorithm.MutationStratgey;
 
 import java.util.Random;
+
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 
 public interface FloatMutationStrategy<T extends Number> extends IMutation<T> {

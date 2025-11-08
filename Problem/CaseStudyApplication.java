@@ -1,12 +1,12 @@
 package Problem;
 import java.util.Scanner;
 
-import Chromosomes.*;
-import CrossOverStrategy.*;
-import FitnessFunctions.*;
-import MutationStratgey.*;
-import ReplacementStratgey.*;
-import SelectionStratgey.*;
+import GeneticAlgorithm.Chromosomes.*;
+import GeneticAlgorithm.CrossOverStrategy.*;
+import GeneticAlgorithm.FitnessFunctions.*;
+import GeneticAlgorithm.MutationStratgey.*;
+import GeneticAlgorithm.ReplacementStratgey.*;
+import GeneticAlgorithm.SelectionStratgey.*;
 
 public class CaseStudyApplication {
 

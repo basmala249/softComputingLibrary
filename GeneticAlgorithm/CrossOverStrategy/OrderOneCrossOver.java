@@ -1,10 +1,10 @@
-package CrossOverStrategy;
-
-import Chromosomes.Chromosome;
+package GeneticAlgorithm.CrossOverStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 
 

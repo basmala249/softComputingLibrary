@@ -1,5 +1,5 @@
-package FitnessFunctions;
-import Chromosomes.Chromosome;
+package GeneticAlgorithm.FitnessFunctions;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class KnapsackFitnessFunction implements IFitnessFunction<Integer> {
     private final int[] weights;

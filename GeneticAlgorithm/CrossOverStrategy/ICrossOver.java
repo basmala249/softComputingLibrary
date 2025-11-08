@@ -1,6 +1,7 @@
-package CrossOverStrategy;
-import Chromosomes.Chromosome;
+package GeneticAlgorithm.CrossOverStrategy;
 import java.util.List;
+
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 
 public interface ICrossOver<T> {

@@ -1,9 +1,10 @@
-package Chromosomes;
+package GeneticAlgorithm.Chromosomes;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import FitnessFunctions.IFitnessFunction;
+
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 
 
 public class BinaryChromosome implements Chromosome<Integer> {

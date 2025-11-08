@@ -1,6 +1,6 @@
-package MutationStratgey;
+package GeneticAlgorithm.MutationStratgey;
 
-import Chromosomes.Chromosome;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class InsertMutationStrategy<T> implements IMutation<T> {
     @Override

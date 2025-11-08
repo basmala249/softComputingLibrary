@@ -1,6 +1,6 @@
-package Chromosomes;
+package GeneticAlgorithm.Chromosomes;
 
-import FitnessFunctions.IFitnessFunction;
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 
 public interface  Chromosome <T> {
     

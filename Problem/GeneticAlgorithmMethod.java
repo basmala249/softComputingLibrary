@@ -1,6 +1,6 @@
 package Problem;
 
-import Chromosomes.Chromosome;
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public abstract class GeneticAlgorithmMethod {
     GeneticAlgorithmParameters geneticParams;

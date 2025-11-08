@@ -1,8 +1,9 @@
-package CrossOverStrategy;
+package GeneticAlgorithm.CrossOverStrategy;
 
-import Chromosomes.Chromosome;
 import java.util.ArrayList;
 import java.util.List;
+
+import GeneticAlgorithm.Chromosomes.Chromosome;
 
 public class UniformCrossOver<T> implements ICrossOver<T> {
     @Override

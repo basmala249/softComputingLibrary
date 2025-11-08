@@ -1,9 +1,10 @@
-package Chromosomes;
+package GeneticAlgorithm.Chromosomes;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import FitnessFunctions.IFitnessFunction;
+
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 public class PermutationChromosome implements Chromosome <Integer>{
     private int chromosomeLength;
     private List<Integer> chromosome;

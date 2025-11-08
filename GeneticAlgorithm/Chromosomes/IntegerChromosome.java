@@ -1,10 +1,10 @@
-package Chromosomes;
+package GeneticAlgorithm.Chromosomes;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import FitnessFunctions.IFitnessFunction;
+import GeneticAlgorithm.FitnessFunctions.IFitnessFunction;
 
 public class IntegerChromosome implements Chromosome <Integer> {
     private int chromosomeLength;
