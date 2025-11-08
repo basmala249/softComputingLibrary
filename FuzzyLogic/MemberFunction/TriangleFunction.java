@@ -40,7 +40,16 @@ public class TriangleFunction<T extends Number> implements IMemberFunction<T> {
     }
     @Override
     public T getMembershipValue(T x) {
-        return null;
+        for(int i = 0; i < points.size() - 1; i++) {
+            T x1 = points.get(i);
+            T x2 = points.get(i + 1);
+            if(x.doubleValue() >= x1.doubleValue() && x.doubleValue() <= x2.doubleValue()) {
+                IShape<T> line = equations.get(i);
+                double y = line.getSlope() * x.doubleValue() + line.getIntercept();
+                return (T) Double.valueOf(y);
+            }
+        }
+        return (T) Double.valueOf(0);
     }
     @Override
     public void setY(List<T> yValues) {
