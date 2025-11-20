@@ -6,9 +6,7 @@ import java.util.List;
 import MemberFunction.IMemberFunction;
 public class FuzzySet {
     List<IMemberFunction> memberFunctions;
-    String name;
-    public FuzzySet(String name){
-        this.name = name;
+    public FuzzySet(){
         memberFunctions = new ArrayList<>();
     }
     public void addMemberFunction(IMemberFunction function) {

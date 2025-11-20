@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         // String Variable = "Temperature" , fuzzySet1 = "Cold" , fuzzySet2 = "Warm" , fuzzySet3 = "Hot";
         // List<String> FuzzysetNames = List.of(fuzzySet1, fuzzySet2, fuzzySet3);
-        // FuzzySet fs = new FuzzySet(Variable);
+        // FuzzySet fs = new FuzzySet();
         // List<Double> inputs = List.of(0.0, 0.0, 20.0, 40.0);
         // IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, inputs);
         // List<Double> yValues = new ArrayList<>();
