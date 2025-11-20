@@ -1,24 +1,23 @@
 package API_Editor;
 
-import java.util.List;
 
 public class Rules {
-    
-    public List<String> ruleList;
-
-    public List<String> getRuleList() {
-        return ruleList;
+    String condition;
+    String consequence;
+    public Rules(String condition, String consequence) {
+        this.condition = condition;
+        this.consequence = consequence;
     }
-
-    public void setRuleList(List<String> ruleList) {
-        this.ruleList = ruleList;
+    public String getCondition() {
+        return condition;
     }
-
-    public void addRule(String rule) {
-        this.ruleList.add(rule);
+    public String getConsequence() {
+        return consequence;
     }
-    
-    public void updateRule(int index, String newRule) {
-        this.ruleList.set(index, newRule);
+    void setCondition(String condition) {
+        this.condition = condition;
+    }
+    void setConsequence(String consequence) {
+        this.consequence = consequence;
     }
 }
