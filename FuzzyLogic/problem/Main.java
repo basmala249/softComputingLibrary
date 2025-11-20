@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Objects;
 
 
-import FuzzySet.FuzzySet;
-import MemberFunction.IMemberFunction;
-import MemberFunction.TrapzoidFunction;
+// import FuzzySet.FuzzySet;
+// import MemberFunction.IMemberFunction;
+// import MemberFunction.TrapzoidFunction;
 
 public class Main {
     public static Integer INF = 1000000;
     public static void main(String[] args) {
-        String Variable = "Temperature" , fuzzySet1 = "Cold" , fuzzySet2 = "Warm" , fuzzySet3 = "Hot";
-        List<String> FuzzysetNames = List.of(fuzzySet1, fuzzySet2, fuzzySet3);
-        FuzzySet fs = new FuzzySet(Variable);
-        List<Double> inputs = List.of(0.0, 0.0, 20.0, 40.0);
-        IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, inputs);
-        List<Double> yValues = new ArrayList<>();
+        // String Variable = "Temperature" , fuzzySet1 = "Cold" , fuzzySet2 = "Warm" , fuzzySet3 = "Hot";
+        // List<String> FuzzysetNames = List.of(fuzzySet1, fuzzySet2, fuzzySet3);
+        // FuzzySet fs = new FuzzySet(Variable);
+        // List<Double> inputs = List.of(0.0, 0.0, 20.0, 40.0);
+        // IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, inputs);
+        // List<Double> yValues = new ArrayList<>();
 
-        yValues = getY(mf1.getPoints());
-        mf1.setY(yValues);
-        fs.addMemberFunction(mf1);
+        // yValues = getY(mf1.getPoints());
+        // mf1.setY(yValues);
+        // fs.addMemberFunction(mf1);
 
-        IMemberFunction mf2 = new TrapzoidFunction(fuzzySet2, List.of(20.0, 40.0, 60.0, 80.0));
-        yValues = getY(mf2.getPoints());
-        mf2.setY(yValues);
-        fs.addMemberFunction(mf2);
+        // IMemberFunction mf2 = new TrapzoidFunction(fuzzySet2, List.of(20.0, 40.0, 60.0, 80.0));
+        // yValues = getY(mf2.getPoints());
+        // mf2.setY(yValues);
+        // fs.addMemberFunction(mf2);
 
-        IMemberFunction mf3 = new TrapzoidFunction(fuzzySet3, List.of(60.0, 80.0, 100.0, 100.0));
-        yValues = getY(mf3.getPoints());
-        mf3.setY(yValues);
-        fs.addMemberFunction(mf3);
+        // IMemberFunction mf3 = new TrapzoidFunction(fuzzySet3, List.of(60.0, 80.0, 100.0, 100.0));
+        // yValues = getY(mf3.getPoints());
+        // mf3.setY(yValues);
+        // fs.addMemberFunction(mf3);
         
         
         
