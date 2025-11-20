@@ -2,14 +2,19 @@ package FuzzyVariables;
 
 import FuzzySet.FuzzySet;
 
-public class Variable<T extends Number> {
+public class Variable{
 
-    private FuzzySet<T> fuzzySet;
-    Variable(FuzzySet<T> fuzzySet) {
+    private FuzzySet fuzzySet;
+    String name;
+    public String getName() {
+        return name;
+    }
+    public  Variable(String name, FuzzySet fuzzySet) {
+        this.name = name;
         this.fuzzySet = fuzzySet;
     }
-
-    public FuzzySet<T> getFuzzySet() {
+    
+    public FuzzySet getFuzzySet() {
         return fuzzySet;
     }
 }

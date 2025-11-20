@@ -9,6 +9,9 @@ public class SugenoEngine extends IEngine {
     public SugenoEngine(List<SugenoRule> rules) {
         this.rules = rules;
     }
-    
+    // @Override
+    // void setConsequenceValue(Double value) {
+
+    // }
     
 }

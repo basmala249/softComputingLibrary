@@ -10,6 +10,10 @@ public class MamdaniEngine extends IEngine {
     public MamdaniEngine(List<MamdaniRule> rules) {
             this.rules = rules;
   }
+   //@Override
+//    void setConsequenceValue(Double value) {
+
+//    }
     
     
 }

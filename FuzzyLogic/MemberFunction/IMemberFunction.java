@@ -4,10 +4,12 @@ import java.util.List;
 
 import Shape.IShape;
 
-public interface IMemberFunction <T extends Number> { 
-    List<IShape<T>> getEquations();
-    List<T> getPoints();
-    boolean inRange(T x);
-    T getMembershipValue(T x); 
-    void setY(List<T> yValues);
+public interface IMemberFunction{ 
+    List<IShape> getEquations();
+    List<Double> getPoints();
+    boolean inRange(Double x);
+    Double getMembershipValue(Double x); 
+    void setY(List<Double> yValues);
+    String getName();
+    void setName(String name);
 }

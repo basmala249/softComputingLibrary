@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import MemberFunction.IMemberFunction;
-public class FuzzySet<T extends Number> {
-    List<IMemberFunction<T>> memberFunctions;
-    public FuzzySet(){
+public class FuzzySet {
+    List<IMemberFunction> memberFunctions;
+    String name;
+    public FuzzySet(String name){
+        this.name = name;
         memberFunctions = new ArrayList<>();
     }
-    public void addMemberFunction(IMemberFunction<T> function) {
+    public void addMemberFunction(IMemberFunction function) {
         memberFunctions.add(function);
     }
-    public List<IMemberFunction<T>> getMemberFunctions() {
+    public List<IMemberFunction> getMemberFunctions() {
         return memberFunctions;
     }
 }
