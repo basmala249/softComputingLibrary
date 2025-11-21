@@ -76,13 +76,13 @@ public class TriangleFunction implements IMemberFunction {
 
     @Override
     public void setDefault(double lb,double up ,int index , int n){
-        double w =(b-a) / (n -1);
-        double left  = a + (index - 1) * w;
-        double peak  = a + index * w;
-        double right = a + (index + 1) * w;
+        double w =(up-lb) / (n -1);
+        double left  = lb + (index - 1) * w;
+        double peak  = lb + index * w;
+        double right = lb + (index + 1) * w;
 
-        left = Math.max(left ,a);
-        right = Math.min(right,b);
+        left = Math.max(left ,lb);
+        right = Math.min(right,up);
 
         points = new ArrayList<>();
         points.add(left);
