@@ -12,4 +12,6 @@ public interface IMemberFunction{
     void setY(List<Double> yValues);
     String getName();
     void setName(String name);
+    void setDefault(double lb,double up ,int index , int n);
+    boolean isDefault();
 }
