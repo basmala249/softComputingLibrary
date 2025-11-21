@@ -1,7 +1,7 @@
 package Rule;
 
 public class MamdaniRule implements IRule {
-    private boolean enabled;
+    private boolean enabled = true;
     String condition;
     String consequence;
     public MamdaniRule(String condition, String consequence) {

@@ -7,35 +7,59 @@ import java.util.List;
 import java.util.Objects;
 
 
-// import FuzzySet.FuzzySet;
-// import MemberFunction.IMemberFunction;
-// import MemberFunction.TrapzoidFunction;
+import FuzzySet.FuzzySet;
+import InferenceEngine.IEngine;
+import InferenceEngine.MamdaniEngine;
+import MemberFunction.IMemberFunction;
+import MemberFunction.TrapzoidFunction;
 
 public class Main {
     public static Integer INF = 1000000;
     public static void main(String[] args) {
-        // String Variable = "Temperature" , fuzzySet1 = "Cold" , fuzzySet2 = "Warm" , fuzzySet3 = "Hot";
-        // List<String> FuzzysetNames = List.of(fuzzySet1, fuzzySet2, fuzzySet3);
-        // FuzzySet fs = new FuzzySet();
-        // List<Double> inputs = List.of(0.0, 0.0, 20.0, 40.0);
-        // IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, inputs);
-        // List<Double> yValues = new ArrayList<>();
+        List<Double> input = List.of(60.0,25.0);
 
-        // yValues = getY(mf1.getPoints());
-        // mf1.setY(yValues);
-        // fs.addMemberFunction(mf1);
+        // Variable 1
+        String Variable = "dirt" , fuzzySet1 = "small" , fuzzySet2 = "medium" , fuzzySet3 = "large";
+        FuzzySet fs = new FuzzySet();
+        IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, List.of(0.0, 0.0, 20.0, 40.0));
+        List<Double> yValues = new ArrayList<>();
 
-        // IMemberFunction mf2 = new TrapzoidFunction(fuzzySet2, List.of(20.0, 40.0, 60.0, 80.0));
-        // yValues = getY(mf2.getPoints());
-        // mf2.setY(yValues);
-        // fs.addMemberFunction(mf2);
+        yValues = getY(mf1.getPoints());
+        mf1.setY(yValues);
+        fs.addMemberFunction(mf1);
+        IMemberFunction mf2 = new TrapzoidFunction(fuzzySet2, List.of(20.0, 40.0, 60.0, 80.0));
+        yValues = getY(mf2.getPoints());
+        mf2.setY(yValues);
+        fs.addMemberFunction(mf2);
 
-        // IMemberFunction mf3 = new TrapzoidFunction(fuzzySet3, List.of(60.0, 80.0, 100.0, 100.0));
-        // yValues = getY(mf3.getPoints());
-        // mf3.setY(yValues);
-        // fs.addMemberFunction(mf3);
+        IMemberFunction mf3 = new TrapzoidFunction(fuzzySet3, List.of(60.0, 80.0, 100.0, 100.0));
+        yValues = getY(mf3.getPoints());
+        mf3.setY(yValues);
+        fs.addMemberFunction(mf3);
+
+
+
+        // Variable 2
+        String Variable1 = "fabric" , fuzzySet12 = "soft" , fuzzySet23 = "ordinary" , fuzzySet34 = "stiff";
+        FuzzySet fs1 = new FuzzySet();
+        IMemberFunction mf12 = new TrapzoidFunction(fuzzySet12, List.of(0.0, 0.0, 20.0, 40.0));
+        List<Double> yValues1 = new ArrayList<>();
+
+        yValues1 = getY(mf12.getPoints());
+        mf12.setY(yValues1);
+        fs1.addMemberFunction(mf12);
+        IMemberFunction mf23 = new TrapzoidFunction(fuzzySet23, List.of(20.0, 40.0, 60.0, 80.0));
+        yValues1 = getY(mf23.getPoints());
+        mf23.setY(yValues1);
+        fs1.addMemberFunction(mf23);
+        IMemberFunction mf34 = new TrapzoidFunction(fuzzySet34, List.of(60.0, 80.0, 100.0, 100.0));
+        yValues1 = getY(mf34.getPoints());
+        mf34.setY(yValues1);
+        fs1.addMemberFunction(mf34);
         
         
+        IEngine engine = new MamdaniEngine() ;
+        engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs) , new FuzzyVariables.Variable(Variable1, fs1)));
         
     }
     public static List<Double> getY(List<Double> inputs) {

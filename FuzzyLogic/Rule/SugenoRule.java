@@ -23,7 +23,7 @@ public class SugenoRule implements IRule {
     public void setConsequence(String consequence) {
         this.consequence = consequence;
     }
-    private boolean enabled;
+    private boolean enabled = true;
     @Override
     public boolean isEnabled() {
         return enabled;
