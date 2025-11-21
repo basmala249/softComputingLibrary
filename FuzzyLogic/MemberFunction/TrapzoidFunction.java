@@ -74,7 +74,7 @@ public class TrapzoidFunction implements IMemberFunction {
     }
 
     @Override
-    void setDefault(double lb,double up ,int index , int n){
+    public void setDefault(double lb,double up ,int index , int n){
         
     }
 

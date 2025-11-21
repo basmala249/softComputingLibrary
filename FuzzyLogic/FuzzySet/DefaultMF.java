@@ -3,8 +3,10 @@ package FuzzySet;
 import java.util.ArrayList;
 import java.util.List;
 
+import MemberFunction.IMemberFunction;
+
 public class DefaultMF {
-    public static DefaultMF (FuzzySet set,double lp,double up){
+    public  DefaultMF (FuzzySet set,double lp,double up){
         List<IMemberFunction> mfs = set.getMemberFunctions();
         int n = mfs.size();
 
@@ -12,7 +14,7 @@ public class DefaultMF {
             IMemberFunction mf = mfs.get(i);
 
             if(mf.isDefault()){
-                mf.setDefault(lb , ub ,i, n);
+                mf.setDefault(lp , up ,i, n);
             }
         }
     }

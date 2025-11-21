@@ -16,13 +16,13 @@ public class Variable{
         this.name = name;
         this.fuzzySet = fuzzySet;
         this.lb=lb;
-        this.ub = ub;
+        this.ub = u;
     }
     
     public FuzzySet getFuzzySet() {
         return fuzzySet;
     }
 
-     public getLowerBound(){return lb;}
-    public getUpperBound(){return ub;}
+    public double getLowerBound(){return lb;}
+    public double getUpperBound(){return ub;}
 }
