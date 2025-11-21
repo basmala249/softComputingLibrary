@@ -67,4 +67,29 @@ public class TriangleFunction implements IMemberFunction {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    @Override
+    public boolean isDefault(){
+        return points == null || points.isEmpty();
+    }
+
+    @Override
+    void setDefault(double lb,double up ,int index , int n){
+        double w =(b-a) / (n -1);
+        double left  = a + (index - 1) * w;
+        double peak  = a + index * w;
+        double right = a + (index + 1) * w;
+
+        left = Math.max(left ,a);
+        right = Math.min(right,b);
+
+        points = new ArrayLsit<>();
+        points.add(left);
+        points.add(right);
+        points.add(peak);
+        yValues=List.of(0.0,1.0,0.0);
+        generateEquations();
+    }
+
 }
