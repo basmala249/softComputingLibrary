@@ -12,6 +12,7 @@ import InferenceEngine.IEngine;
 import InferenceEngine.MamdaniEngine;
 import MemberFunction.IMemberFunction;
 import MemberFunction.TrapzoidFunction;
+import Rule.IRule;
 
 public class Main {
     public static Integer INF = 1000000;
@@ -59,8 +60,17 @@ public class Main {
         
         
         IEngine engine = new MamdaniEngine() ;
+        System.out.println("Fuzzification Results:");
         engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs) , new FuzzyVariables.Variable(Variable1, fs1)));
         
+        IRule rule1 = new Rule.MamdaniRule("(dirt is small & fabric is soft)", "wash time is short");
+        IRule rule2 = new Rule.MamdaniRule("(dirt is medium & fabric is ordinary)", "wash time is medium");
+        IRule rule5 = new Rule.MamdaniRule("(dirt is large & fabric is not soft)", "wash time is long");
+        IRule rule6 = new Rule.MamdaniRule("(dirt is large & fabric is soft)", "wash time is long");
+        IRule rule3 = new Rule.MamdaniRule("((dirt is small & fabric is not soft) | (dirt is medium & fabric is soft))", "wash time is short");
+        IRule rule4 = new Rule.MamdaniRule("(dirt is medium & fabric is stiff)", "wash time is medium");
+        System.out.println("Inference Results:");
+        engine.inferRules(List.of(rule1, rule2, rule3, rule4, rule5, rule6));
     }
     public static List<Double> getY(List<Double> inputs) {
         List<Double> yValues = new ArrayList<>();

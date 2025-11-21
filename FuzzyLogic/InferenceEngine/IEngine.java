@@ -28,7 +28,7 @@ public abstract class IEngine {
             tempList = new ArrayList<>();
         }
         newMap = MS;
-         for (Map.Entry<String, Set<Pair>> entry : newMap.entrySet()) {
+        for (Map.Entry<String, Set<Pair>> entry : newMap.entrySet()) {
             String key = entry.getKey();
             Set<Pair> valueSet = entry.getValue();
             System.out.print(key + ": ");
@@ -46,7 +46,7 @@ public abstract class IEngine {
             if(rule.isEnabled()) {
                 Double conditionValue = extractCondition(rule.getCondition());
                 System.out.println("Condition Value: " + conditionValue);
-                //setConsequenceValue(conditionValue);
+                //setConsequenceValue(rule.getConsequence(), conditionValue);
             }
            
         }
@@ -54,13 +54,14 @@ public abstract class IEngine {
         
     }
     public Double extractCondition(String rule ) {
+        System.out.println("Evaluating Rule: " + rule);
         return interpretRule.evaluteRule(rule);
     }
 
     public Map<String, Set<Pair>> getNewMap() {
         return newMap;
     }
-    public void setConsequenceValue(Double value){
+    public void setConsequenceValue(String Consquence , Double value){
 
     }
 

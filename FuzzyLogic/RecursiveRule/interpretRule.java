@@ -7,13 +7,12 @@ import GeneticAlgorithm.Utils.Pair;
 
 public class interpretRule {
 
-    private final  Map<String, Set<Pair>> newMap;
+    private Map<String, Set<Pair>> newMap;
     public interpretRule(Map<String, Set<Pair>> newMap) {
         this.newMap = newMap;
     }
     public Double evaluteRule(String rule) {
-
-    String[] parts = rule.split(" is ");
+     String[] parts = rule.split(" is ");
  
         if (parts.length == 2) {
             String X = parts[0].trim();  
@@ -53,16 +52,15 @@ public class interpretRule {
         // Split the rule into left and right parts
         String leftrule = rule.substring(0, operatorIndex).trim();
         String rightrule = rule.substring(operatorIndex + 1).trim();
- 
         // Recursively evaluate both sides
         Double leftResult = evaluteRule(leftrule);
         Double rightResult = evaluteRule(rightrule);
  
         // Apply the operator (AND or OR)
         char operator = rule.charAt(operatorIndex);
-        if (operator == '^') {  // AND operation
+        if (operator == '&') {  // AND operation
             return Math.min(leftResult, rightResult);
-        } else if (operator == 'v') {  // OR operation
+        } else if (operator == '|') {  // OR operation
             return Math.max(leftResult, rightResult);
         }
  
@@ -77,7 +75,7 @@ public class interpretRule {
             if (c == '(') depth++;
             if (c == ')') depth--;
             // Find the operator at the outermost depth level
-            if (depth == 0 && (c == '^' || c == 'v')) {
+            if (depth == 0 && (c == '&' || c == '|')) {
                 return i;
             }
         }
