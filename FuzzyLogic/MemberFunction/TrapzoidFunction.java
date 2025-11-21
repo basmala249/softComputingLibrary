@@ -67,4 +67,15 @@ public class TrapzoidFunction implements IMemberFunction {
         this.yValues = yValues;
         generateEquations();
     }
+
+    @Override
+    public boolean isDefault(){
+        return points == null || points.isEmpty();
+    }
+
+    @Override
+    void setDefault(double lb,double up ,int index , int n){
+        
+    }
+
 }
