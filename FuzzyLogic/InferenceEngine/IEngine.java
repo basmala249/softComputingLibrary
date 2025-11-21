@@ -1,18 +1,17 @@
 package InferenceEngine;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-
 import FuzzyVariables.Variable;
 import GeneticAlgorithm.Utils.Pair;
 import MemberFunction.IMemberFunction;
 import RecursiveRule.interpretRule;
 import Rule.IRule;
+
+
 public abstract class IEngine {
     public interpretRule interpretRule = null;
     private Map<String , Set<Pair>> newMap = new HashMap<>();
