@@ -12,11 +12,11 @@ public class Variable{
     public String getName() {
         return name;
     }
-    public  Variable(String name, FuzzySet fuzzySet,double lb,double u) {
+    public  Variable(String name, FuzzySet fuzzySet,double lb,double ub) {
         this.name = name;
         this.fuzzySet = fuzzySet;
         this.lb=lb;
-        this.ub = u;
+        this.ub = ub;
     }
     
     public FuzzySet getFuzzySet() {

@@ -61,7 +61,7 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
         System.out.println("Fuzzification Results:");
-        engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs ) , new FuzzyVariables.Variable(Variable1, fs1)));
+        engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
         
         IRule rule1 = new Rule.MamdaniRule("(dirt is small & fabric is soft)", "wash time is short");
         IRule rule2 = new Rule.MamdaniRule("(dirt is medium & fabric is ordinary)", "wash time is medium");
