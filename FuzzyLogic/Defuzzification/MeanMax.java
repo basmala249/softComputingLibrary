@@ -3,16 +3,18 @@ package Defuzzification;
 import java.util.List;
 import java.util.Map;
 
+import GeneticAlgorithm.Utils.Pair;
+
 import MemberFunction.IMemberFunction;
 import Shape.IShape;
 
 public class MeanMax implements IDefuzzification {
 	@Override
-    public double defuzzify(List<IMemberFunction> fuzzySets) {
+    public Pair defuzzify(List<IMemberFunction> fuzzySets) {
         List<IMemberFunction> maxSets = getMaxMembership(fuzzySets);
         if(maxSets == null || maxSets.isEmpty()) {
             System.err.println("No fuzzy sets with maximum membership found.");
-            return 0.0;
+            return new Pair("", 0.0);
         }
         double sum = 0.0;
         int count = 0;
@@ -29,7 +31,8 @@ public class MeanMax implements IDefuzzification {
                 }
             }
         }
-        return count == 0 ? 0.0 : sum / count;
+        String setName = maxSets.get((int)(maxSets.size()/2)).getName();
+        return count == 0 ? new Pair("", 0.0) : new Pair(setName, sum / count);
     }
 
     private List<IMemberFunction> getMaxMembership(List<IMemberFunction> fuzzySets) {

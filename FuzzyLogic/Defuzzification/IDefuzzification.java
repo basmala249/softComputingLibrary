@@ -2,9 +2,10 @@ package Defuzzification;
 
 import java.util.List;
 
+import GeneticAlgorithm.Utils.Pair;
 import MemberFunction.IMemberFunction;
 
 public interface IDefuzzification {
-    double defuzzify(List<IMemberFunction> fuzzySets);
+    Pair defuzzify(List<IMemberFunction> fuzzySets);
     
 }
