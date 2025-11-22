@@ -12,10 +12,10 @@ public class TriangleFunction implements IMemberFunction {
     List<IShape> equations;
     String name;
     Double finalY;
-    public TriangleFunction(String name , List<Double> points) {
+    public TriangleFunction(String name , List<Double> points, List<Double> yValues) {
         this.points = points;
         this.name = name;
-        this.yValues = new ArrayList<>();
+        this.yValues = yValues;
         this.equations = new ArrayList<>(); 
         generateEquations();
     }
@@ -23,7 +23,7 @@ public class TriangleFunction implements IMemberFunction {
         return equations;
     }
     private void generateEquations() {
-         // Generate equations based on the trapezoidal shape
+        // Generate equations based on the triangular shape
         equations = new ArrayList<>();
         for(int i = 0; i < points.size() - 1; i++) {
             Double x1 = points.get(i);

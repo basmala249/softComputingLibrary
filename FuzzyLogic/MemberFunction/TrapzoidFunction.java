@@ -12,10 +12,11 @@ public class TrapzoidFunction implements IMemberFunction {
     List<IShape> equations; 
     String name;
     Double finalY;
-    public TrapzoidFunction(String name, List<Double> points  ) {
+    public TrapzoidFunction(String name, List<Double> points , List<Double> yValues) {
         this.name = name;
         this.points = points; 
-        this.yValues = new ArrayList<>();
+        this.yValues = yValues;
+        generateEquations();
     }
     public String getName() {
         return name;
