@@ -56,6 +56,7 @@ public class MeanMax implements IDefuzzification {
         for (int i = 0; i < equations.size(); i++) {
             IShape line = equations.get(i);
             double slope = line.getSlope();
+            if(slope == 0) continue; 
             double intercept = line.getIntercept();
             double x = (y - intercept) / slope;
             xValues.add(x);
