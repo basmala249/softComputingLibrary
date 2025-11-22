@@ -11,6 +11,7 @@ public class TrapzoidFunction implements IMemberFunction {
     List<Double> yValues;
     List<IShape> equations; 
     String name;
+    Double finalY;
     public TrapzoidFunction(String name, List<Double> points  ) {
         this.name = name;
         this.points = points; 
@@ -76,6 +77,16 @@ public class TrapzoidFunction implements IMemberFunction {
     @Override
     public void setDefault(double lb,double up ,int index , int n){
         
+    }
+
+    @Override
+    public void setfinalY(Double y) {
+        this.finalY = y;
+    }
+
+    @Override
+    public Double getMembership(){
+        return finalY;
     }
 
 }

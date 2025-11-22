@@ -11,6 +11,7 @@ public class TriangleFunction implements IMemberFunction {
     List<Double> yValues;
     List<IShape> equations;
     String name;
+    Double finalY;
     public TriangleFunction(String name , List<Double> points) {
         this.points = points;
         this.name = name;
@@ -92,4 +93,13 @@ public class TriangleFunction implements IMemberFunction {
         generateEquations();
     }
 
+    @Override
+    public void setfinalY(Double y) {
+        this.finalY = y;
+    }
+
+    @Override
+    public Double getMembership(){
+        return finalY;
+    }
 }
