@@ -15,6 +15,7 @@ import Rule.IRule;
 public abstract class IEngine {
     public interpretRule interpretRule = null;
     private Map<String , Set<Pair>> newMap = new HashMap<>();
+    
     public Map<String, Set<Pair>> fuzzify(List<Double> inputs ,  List<Variable> Variables) {
         Map<String , Set<Pair>> MS = new HashMap<>();
         List<Pair> tempList = new ArrayList<>();
@@ -45,7 +46,7 @@ public abstract class IEngine {
             if(rule.isEnabled()) {
                 Double conditionValue = extractCondition(rule.getCondition());
                 System.out.println("Condition Value: " + conditionValue);
-                //setConsequenceValue(rule.getConsequence(), conditionValue);
+                setConsequenceValue(rule.getConsequence(), conditionValue);
             }
            
         }
