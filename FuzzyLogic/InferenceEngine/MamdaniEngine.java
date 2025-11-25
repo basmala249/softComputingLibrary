@@ -14,7 +14,7 @@ public class MamdaniEngine extends IEngine {
    public Map<String, Set<Pair>> newMap = new java.util.HashMap<>();
 
    @Override/// <"wash time is short", value>
-   public void setConsequenceValue(String conseq ,  Double value) {
+   public void setConsequenceValue(String conseq ,  Double value, Map<String, Double> variables) {
        
        String[] parts = conseq.split(" is ");
  
@@ -41,8 +41,8 @@ public class MamdaniEngine extends IEngine {
         String leftrule = conseq.substring(0, operatorIndex).trim();
         String rightrule = conseq.substring(operatorIndex + 1).trim();
         // Recursively evaluate both sides
-        setConsequenceValue(leftrule, value);
-        setConsequenceValue(rightrule, value);
+        setConsequenceValue(leftrule, value, variables);
+        setConsequenceValue(rightrule, value, variables);
    }
 
 

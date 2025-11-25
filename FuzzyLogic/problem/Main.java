@@ -1,15 +1,16 @@
 package problem;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import java.util.Objects;
 
 
 import FuzzySet.FuzzySet;
 import InferenceEngine.IEngine;
 import InferenceEngine.MamdaniEngine;
+import InferenceEngine.SugenoEngine;
 import MemberFunction.IMemberFunction;
 import MemberFunction.TrapzoidFunction;
 import MemberFunction.TriangleFunction;
@@ -44,7 +45,33 @@ public class Main {
         fs1.addMemberFunction(mf34);
         
         
-        IEngine engine = new MamdaniEngine() ;
+        // IEngine engine = new MamdaniEngine() ;
+        // System.out.println("Fuzzification Results:");
+        // engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
+        // System.out.println("Fuzzification Done:");
+
+        // RuleStorage storage =new RuleStorage("rules.json");
+        // RuleEditor editor =new RuleEditor(storage);
+        // if (editor.getAll().isEmpty()) {
+        //     System.out.println("No rules found → creating initial rules...");
+
+        //     editor.addRule(new MamdaniRule("(dirt is small & fabric is soft)", "wash time is short"));
+        //     editor.addRule(new MamdaniRule("(dirt is medium & fabric is ordinary)", "wash time is medium"));
+        //     editor.addRule(new MamdaniRule("(dirt is large & fabric is not soft)", "wash time is long"));
+        //     editor.addRule(new MamdaniRule("(dirt is large & fabric is soft)", "wash time is long"));
+        //     editor.addRule(new MamdaniRule("((dirt is small & fabric is not soft) | (dirt is medium & fabric is soft))", "wash time is short"));
+        //     editor.addRule(new MamdaniRule("(dirt is medium & fabric is stiff)", "wash time is medium"));
+
+        //     System.out.println("Initial rules created and saved to rules.json\n");
+        // }
+
+        // List<IRule> rules = editor.getAll();
+        
+        
+        // engine.inferRules(rules);
+
+
+        IEngine engine = new SugenoEngine() ;
         System.out.println("Fuzzification Results:");
         engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
         System.out.println("Fuzzification Done:");
@@ -54,20 +81,22 @@ public class Main {
         if (editor.getAll().isEmpty()) {
             System.out.println("No rules found → creating initial rules...");
 
-            editor.addRule(new MamdaniRule("(dirt is small & fabric is soft)", "wash time is short"));
-            editor.addRule(new MamdaniRule("(dirt is medium & fabric is ordinary)", "wash time is medium"));
-            editor.addRule(new MamdaniRule("(dirt is large & fabric is not soft)", "wash time is long"));
-            editor.addRule(new MamdaniRule("(dirt is large & fabric is soft)", "wash time is long"));
-            editor.addRule(new MamdaniRule("((dirt is small & fabric is not soft) | (dirt is medium & fabric is soft))", "wash time is short"));
-            editor.addRule(new MamdaniRule("(dirt is medium & fabric is stiff)", "wash time is medium"));
+            editor.addRule(new SugenoRule("(dirt is small & fabric is soft)", "y1 = (-x1) + x2 + 1"));
+            editor.addRule(new SugenoRule("(dirt is medium & fabric is ordinary)", "y2 = (-x2) + 3"));
+            editor.addRule(new SugenoRule("(dirt is large & fabric is not soft)", "y3 = (-x1) + 3"));
+            editor.addRule(new SugenoRule("(dirt is large & fabric is soft)", "y4 = (-x1) + x2 + 2"));
+            editor.addRule(new SugenoRule("(dirt is medium & fabric is stiff)", "y5 = 2*x1 + (-x2) + 1"));
 
             System.out.println("Initial rules created and saved to rules.json\n");
         }
 
         List<IRule> rules = editor.getAll();
         
+        Map<String, Double> variables = new HashMap<>();
+        variables.put("X1", 1.5);
+        variables.put("X2", 2.5);
         
-        engine.inferRules(rules);
+        engine.inferRules(rules, variables);
 
 
 
