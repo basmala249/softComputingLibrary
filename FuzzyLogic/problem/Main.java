@@ -47,6 +47,7 @@ public class Main {
         IEngine engine = new MamdaniEngine() ;
         System.out.println("Fuzzification Results:");
         engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
+        System.out.println("Fuzzification Done:");
 
         RuleStorage storage =new RuleStorage("rules.json");
         RuleEditor editor =new RuleEditor(storage);

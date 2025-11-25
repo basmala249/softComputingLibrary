@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "problem.Main",
+            "projectName": "softComputingLibrary_3dc94835"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "problem.Main",
             "projectName": "Phase2_e64ed38"
         },
         {
