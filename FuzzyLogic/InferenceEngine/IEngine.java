@@ -45,14 +45,14 @@ public abstract class IEngine {
     }
 
 
-    public Map<String, Set<Pair>> inferRules(List<IRule> rules) {
+    public Map<String, Set<Pair>> inferRules(List<IRule> rules, Map<String, Double> variables) {
         interpretRule = new interpretRule(mainMap);
         
         for(IRule rule : rules) {/// (dirt is small & fabric is soft)", "wash time is short"
             if(rule.isEnabled()) {
                 Double conditionValue = extractCondition(rule.getCondition());
                 // System.out.println("Condition Value: " + conditionValue);
-                setConsequenceValue(rule.getConsequence(), conditionValue);
+                setConsequenceValue(rule.getConsequence(), conditionValue, variables);
             }
         }
         return runConsequences();
@@ -66,7 +66,7 @@ public abstract class IEngine {
     public Map<String, Set<Pair>> getMainMap() {
         return mainMap;
     }
-    public void setConsequenceValue(String Consquence , Double value){
+    public void setConsequenceValue(String Consquence , Double value, Map<String, Double> variables){
 
     }
 
