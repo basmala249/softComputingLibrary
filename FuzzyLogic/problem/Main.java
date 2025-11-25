@@ -93,8 +93,8 @@ public class Main {
         List<IRule> rules = editor.getAll();
         
         Map<String, Double> variables = new HashMap<>();
-        variables.put("X1", 1.5);
-        variables.put("X2", 2.5);
+        variables.put("x1", 1.5);
+        variables.put("x2", 2.5);
         
         engine.inferRules(rules, variables);
 
