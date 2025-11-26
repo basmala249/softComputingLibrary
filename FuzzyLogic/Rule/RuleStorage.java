@@ -22,6 +22,7 @@ public class RuleStorage {
         try (FileReader reader = new FileReader(filePath) ){
             return gson.fromJson(reader,new TypeToken<List<IRule>>(){}.getType());
         }catch (Exception e) {
+            System.out.println("error loading rules: " + e.getMessage());
             return new ArrayList<>();
         }
     }
