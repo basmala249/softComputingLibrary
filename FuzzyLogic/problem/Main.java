@@ -4,19 +4,14 @@ package problem;
 import java.util.List;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 import Defuzzification.IDefuzzification;
-import Defuzzification.WeightAverageMean;
 import FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
 import InferenceEngine.IEngine;
 import InferenceEngine.MamdaniEngine;
-import InferenceEngine.SugenoEngine;
 import MemberFunction.IMemberFunction;
 import MemberFunction.TrapzoidFunction;
 import MemberFunction.TriangleFunction;
