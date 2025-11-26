@@ -16,13 +16,12 @@ public class TriangleFunction implements IMemberFunction {
         this.points = points;
         this.name = name;
         this.yValues = yValues;
-        this.equations = new ArrayList<>(); 
-        generateEquations();
+        this.equations  = generateEquations();
     }
     public List<IShape> getEquations() {
         return equations;
     }
-    private void generateEquations() {
+    private List<IShape> generateEquations() {
         // Generate equations based on the triangular shape
         equations = new ArrayList<>();
         for(int i = 0; i < points.size() - 1; i++) {
@@ -33,8 +32,13 @@ public class TriangleFunction implements IMemberFunction {
             IShape line = new Line();
             line.setSlope((y2.doubleValue() - y1.doubleValue()) / (x2.doubleValue() - x1.doubleValue()));
             line.setIntercept(y1.doubleValue() - line.getSlope() * x1.doubleValue());
+            if(x1 - x2 == 0) {
+                line.setSlope(Double.POSITIVE_INFINITY);
+                line.setIntercept(x1);
+            }
             equations.add(line);
         }
+        return equations;
     }
     @Override
     public boolean inRange(Double x) {
