@@ -1,5 +1,10 @@
 package problem;
 
+<<<<<<< HEAD
+import java.util.List;
+
+
+=======
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +14,7 @@ import java.util.Set;
 
 import Defuzzification.IDefuzzification;
 import Defuzzification.WeightAverageMean;
+>>>>>>> 490018d427530ccb647ca6076285f5d0d5553352
 import FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
 import InferenceEngine.IEngine;

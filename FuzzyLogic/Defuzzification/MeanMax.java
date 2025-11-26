@@ -1,7 +1,6 @@
 package Defuzzification;
 
 import java.util.List;
-import java.util.Map;
 
 import GeneticAlgorithm.Utils.Pair;
 
