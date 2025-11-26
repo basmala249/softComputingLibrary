@@ -40,7 +40,9 @@ public class MeanMax extends IDefuzzification {
                 }
             }
         }
-        String setName = maxSets.get((int)(maxSets.size()/2)).getName();
+        //String setName = maxSets.get((int)(maxSets.size()/2)).getName();
+        List<IMemberFunction> fuzzySetValues = parentFuzzySet.getMemberFunctions();
+        String setName = getFuzzySetNameOfOutput(fuzzySetValues, sum / count);
         return count == 0 ? new Pair("", 0.0) : new Pair(setName, sum / count);
     }
 
@@ -89,5 +91,18 @@ public class MeanMax extends IDefuzzification {
         return xValues;
     }
 
+    private String getFuzzySetNameOfOutput(List<IMemberFunction> fuzzySetValues, Double value) {
+        Double mx = 0.0;
+        String setName = "";
+        for(IMemberFunction mf : fuzzySetValues) {
+            Double curVal = mf.getMembershipValue(value);
+            if(curVal > mx) {
+                mx = curVal;
+                setName = mf.getName();
+            }
+        }
+
+        return setName;
+    }
     
 }
