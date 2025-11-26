@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        ".",
+        "FuzzyLogic"
+    ],
+    "java.project.referencedLibraries": [
+        "FuzzyLogic/lib/gson-2.11.0.jar"
+    ]
+}
