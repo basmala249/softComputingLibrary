@@ -33,7 +33,8 @@ public class MeanMax extends IDefuzzification {
                 List<Double> xValues = getXValues(equations, membershipValue);
                 if(xValues != null && !xValues.isEmpty()) {
                     for(Double x : xValues) {
-                        sum += x.doubleValue();
+                        double xValue = x.doubleValue();
+                        sum += xValue;
                         count++;
                     }
                 }
@@ -62,8 +63,8 @@ public class MeanMax extends IDefuzzification {
             }
 
         for (int i = 0; i < fuzzySets.size(); i++) {
-            Double v = fuzzySets.get(i).getMembership();
-            if (v != null &&  v ==  maxMembership) {
+            Double v = getFuzzifyResult(parentFuzzySet.getFuzzySetName(), fuzzySets.get(i).getName(), fuzzifyResults);
+            if (v != null &&  v.doubleValue() ==  maxMembership) {
                 maxSets.add(fuzzySets.get(i));
             }
         }
@@ -75,7 +76,7 @@ public class MeanMax extends IDefuzzification {
         for (int i = 0; i < equations.size(); i++) {
             IShape line = equations.get(i);
             double slope = line.getSlope();
-            if(slope == 0) continue; 
+            if(slope == 0 || slope == Double.POSITIVE_INFINITY || slope == Double.NEGATIVE_INFINITY) continue; 
             double intercept = line.getIntercept();
             double x = (y - intercept) / slope;
             xValues.add(x);

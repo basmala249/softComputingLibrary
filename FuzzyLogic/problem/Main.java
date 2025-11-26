@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import Defuzzification.IDefuzzification;
+import Defuzzification.MeanMax;
 import FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
 import InferenceEngine.IEngine;
@@ -39,7 +40,8 @@ public class Main {
          , fuzzySetSD1 = "Easy" , fuzzySetSD2 = "Moderate" , fuzzySetSD3 = "Hard";
         FuzzySet sd_fs = new FuzzySet(subjectDifficultyVar);
 
-        IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(0.0, 0.0, 30.0, 50.0)));
+        //IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(0.0, 0.0, 30.0, 50.0)));
+        IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(1.0,1.0,3.0,5.0)));
         sd_fs.addMemberFunction(sd_mf1);
 
         IMemberFunction sd_mf2 = new TriangleFunction(fuzzySetSD2, List.of(4.0, 6.0, 8.0), getYUtil.getY(List.of(4.0, 6.0, 8.0)));
@@ -80,7 +82,7 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("C:\\Users\\Lenovo\\OneDrive\\Desktop\\Phase2\\mamdani.json");
+        RuleStorage storage =new RuleStorage("D:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         List<IRule> rules  = editor.getAll();
 
@@ -118,10 +120,13 @@ public class Main {
 
      
         
-        IDefuzzification defuzz = new Defuzzification.WeightAverageMean<>();
+        //IDefuzzification defuzz = new Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzz = new MeanMax();
 
-        defuzz.defuzzify(sl_fs, mp);
+        Pair result = defuzz.defuzzify(sl_fs, mp);
 
+        System.out.println("\nDefuzzification Result:");
+        System.out.println("Fuzzy Set: " + result.getFirst() + ", Crisp Value: " + result.getSecond());
 
 
 
