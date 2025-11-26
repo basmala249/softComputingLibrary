@@ -16,7 +16,7 @@ public class TrapzoidFunction implements IMemberFunction {
         this.name = name;
         this.points = points; 
         this.yValues = yValues;
-        generateEquations();
+        this.equations  = generateEquations();
     }
     public String getName() {
         return name;
@@ -31,7 +31,7 @@ public class TrapzoidFunction implements IMemberFunction {
     public List<Double> getPoints() {
         return points;
     }
-    private void generateEquations() {
+    private List<IShape> generateEquations() {
         // Generate equations based on the trapezoidal shape
         equations = new ArrayList<>();
         for(int i = 0; i < points.size() - 1; i++) {
@@ -43,8 +43,13 @@ public class TrapzoidFunction implements IMemberFunction {
             double slope =  (Double.valueOf(y2.doubleValue() - y1.doubleValue()) / (x2.doubleValue() - x1.doubleValue()));
             line.setSlope(slope);
             line.setIntercept((Double.valueOf(y1.doubleValue() - slope * x1.doubleValue())));
+            if(x1 - x2 == 0) {
+                line.setSlope(Double.POSITIVE_INFINITY);
+                line.setIntercept(x1);
+            }
             equations.add(line);
         }
+        return equations;
     }
     @Override
     public boolean inRange(Double x) {
