@@ -15,11 +15,7 @@ public class SugenoEngine extends IEngine {
 
     @Override
     public void setConsequenceValue(String consequence, Double value, Map<String, Double> variables) {
-        // System.out.println("///////////////////");
-        // System.err.println(variables);
-        // System.out.println("///////////////////");
 
-        ///
         String expr = consequence.split("=")[1].trim();
 
         Expression expression = new ExpressionBuilder(expr)
@@ -27,7 +23,11 @@ public class SugenoEngine extends IEngine {
                 .build()
                 .setVariables(variables);
 
+        System.out.println("Evaluating Consequence Expression: " + expr);
+
+
         double val = expression.evaluate();
+        System.out.println("Evaluated Consequence Value: " + val);
 
         numerator += val * value;
         denominator += value;

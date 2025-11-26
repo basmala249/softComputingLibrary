@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Sugino",
+            "request": "launch",
+            "mainClass": "problem.Sugino",
+            "projectName": "softComputingLibrary_104b5f5e"
+        },
+        {
+            "type": "java",
+            "name": "Mamdani",
+            "request": "launch",
+            "mainClass": "problem.Mamdani",
+            "projectName": "softComputingLibrary_104b5f5e"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "problem.Main",
+            "projectName": "softComputingLibrary_104b5f5e"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "problem.Main",

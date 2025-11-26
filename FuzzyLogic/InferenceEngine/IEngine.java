@@ -53,7 +53,7 @@ public abstract class IEngine {
         for(IRule rule : rules) {/// (dirt is small & fabric is soft)", "wash time is short"
             if(rule.isEnabled()) {
                 Double conditionValue = extractCondition(rule.getCondition());
-            //    System.out.println("Evaluated Condition for Rule IF " + rule.getCondition() + " THEN " + rule.getConsequence());
+              //  System.out.println("Evaluated Condition for Rule IF " + rule.getCondition() + " THEN " + rule.getConsequence());
                 System.out.println("Condition Value: " + conditionValue);
                 setConsequenceValue(rule.getConsequence(), conditionValue, variables);
             }
