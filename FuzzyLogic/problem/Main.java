@@ -1,9 +1,12 @@
 package problem;
 
+<<<<<<< HEAD
 
 import java.util.List;
 
 
+=======
+>>>>>>> 07e8e33d4545fe09a469abde68d02b3ba79a5c29
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,56 +30,84 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(60.0,25.0);
+        List<Double> input = List.of(33.0,8.0,7.0);
         GetY getYUtil = new GetY();
-        // Variable 1
-        String Variable = "dirt" , fuzzySet1 = "small" , fuzzySet2 = "medium" , fuzzySet3 = "large";
-        FuzzySet fs = new FuzzySet(Variable);
-        IMemberFunction mf1 = new TrapzoidFunction(fuzzySet1, List.of(0.0, 0.0, 20.0, 40.0), getYUtil.getY(List.of(0.0, 0.0, 20.0, 40.0)));
-        fs.addMemberFunction(mf1);
-        IMemberFunction mf2 = new TrapzoidFunction(fuzzySet2, List.of(20.0, 40.0, 60.0, 80.0), getYUtil.getY(List.of(20.0, 40.0, 60.0, 80.0)));
-        fs.addMemberFunction(mf2);
-        IMemberFunction mf3 = new TrapzoidFunction(fuzzySet3, List.of(60.0, 80.0, 100.0, 100.0), getYUtil.getY(List.of(60.0, 80.0, 100.0, 100.0)));
-        fs.addMemberFunction(mf3);
+          String studyPreparationVar = "Study_Preparation"
+         , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
+
+        FuzzySet sp_fs = new FuzzySet(studyPreparationVar);
+
+        IMemberFunction sp_mf1 = new TrapzoidFunction(fuzzySetSP1, List.of(0.0, 0.0, 30.0, 50.0), getYUtil.getY(List.of(0.0, 0.0, 30.0, 50.0)));
+        sp_fs.addMemberFunction(sp_mf1);
+        IMemberFunction sp_mf2 = new TriangleFunction(fuzzySetSP2, List.of(40.0, 60.0, 80.0), getYUtil.getY(List.of(40.0, 60.0, 80.0)));
+        sp_fs.addMemberFunction(sp_mf2);
+        IMemberFunction sp_mf3 = new TrapzoidFunction(fuzzySetSP3, List.of(70.0, 85.0, 100.0, 100.0), getYUtil.getY(List.of(70.0, 85.0, 100.0, 100.0)));
+        sp_fs.addMemberFunction(sp_mf3);
+
+        //Subject Difficulty
+        String subjectDifficultyVar = "Subject_Difficulty"
+         , fuzzySetSD1 = "Easy" , fuzzySetSD2 = "Moderate" , fuzzySetSD3 = "Hard";
+        FuzzySet sd_fs = new FuzzySet(subjectDifficultyVar);
+
+        IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(0.0, 0.0, 30.0, 50.0)));
+        sd_fs.addMemberFunction(sd_mf1);
+
+        IMemberFunction sd_mf2 = new TriangleFunction(fuzzySetSD2, List.of(4.0, 6.0, 8.0), getYUtil.getY(List.of(4.0, 6.0, 8.0)));
+        sd_fs.addMemberFunction(sd_mf2);
+
+        IMemberFunction sd_mf3 = new TrapzoidFunction(fuzzySetSD3, List.of(7.0, 9.0, 10.0, 10.0), getYUtil.getY(List.of(7.0, 9.0, 10.0, 10.0)));
+        sd_fs.addMemberFunction(sd_mf3);
+
+        // Sleep Quality
+        String sleepQualityVar = "Sleep_Quality"
+         , fuzzySetSQ1 = "Poor" , fuzzySetSQ2 = "Adequate" , fuzzySetSQ3 = "Excellent";
+
+        FuzzySet sq_fs = new FuzzySet(sleepQualityVar);
+        IMemberFunction sq_mf1 = new TrapzoidFunction(fuzzySetSQ1, List.of(0.0,0.0,3.0,5.0), getYUtil.getY(List.of(0.0,0.0,3.0,5.0)));
+        sq_fs.addMemberFunction(sq_mf1);
+        IMemberFunction sq_mf2 = new TriangleFunction(fuzzySetSQ2, List .of(4.0,6.0,8.0), getYUtil.getY(List.of(4.0,6.0,8.0)));
+        sq_fs.addMemberFunction(sq_mf2);        
+        IMemberFunction sq_mf3 = new TrapzoidFunction(fuzzySetSQ3, List.of(7.0,9.0,10.0,10.0), getYUtil.getY(List.of(7.0,9.0,10.0,10.0)));
+        sq_fs.addMemberFunction(sq_mf3);
+
+
+      
+        // outputs stress level
+        String stressLevelVar = "Stress_Level"
+         , fuzzySetSL1 = "Low" , fuzzySetSL2 = "Medium" , fuzzySetSL3 = "High";
+        FuzzySet sl_fs = new FuzzySet(stressLevelVar);
+        IMemberFunction sl_mf1 = new TrapzoidFunction(fuzzySetSL1, List.of(0.0,0.0,25.0,45.0), getYUtil.getY(List.of(0.0,0.0,25.0,45.0)));
+        sl_fs.addMemberFunction(sl_mf1);
+        IMemberFunction sl_mf2 = new TriangleFunction(fuzzySetSL2, List.of(30.0,50.0,70.0), getYUtil.getY(List.of(30.0,50.0,70.0)));
+        sl_fs.addMemberFunction(sl_mf2);
+        IMemberFunction sl_mf3 = new TrapzoidFunction(fuzzySetSL3, List.of(55.0,75.0,100.0,100.0), getYUtil.getY(List.of(55.0,75.0,100.0,100.0)));
+        sl_fs.addMemberFunction(sl_mf3);
 
 
 
-        // Variable 2
-        String Variable1 = "fabric" , fuzzySet12 = "soft" , fuzzySet23 = "ordinary" , fuzzySet34 = "stiff";
-        FuzzySet fs1 = new FuzzySet(Variable1);
-        IMemberFunction mf12 = new TrapzoidFunction(fuzzySet12, List.of(0.0, 0.0, 20.0, 40.0), getYUtil.getY(List.of(0.0, 0.0, 20.0, 40.0)));
-        fs1.addMemberFunction(mf12);
-        IMemberFunction mf23 = new TrapzoidFunction(fuzzySet23, List.of(20.0, 40.0, 60.0, 80.0), getYUtil.getY(List.of(20.0, 40.0, 60.0, 80.0)));
-        fs1.addMemberFunction(mf23);
-        IMemberFunction mf34 = new TrapzoidFunction(fuzzySet34, List.of(60.0, 80.0, 100.0, 100.0), getYUtil.getY(List.of(60.0, 80.0, 100.0, 100.0)));
-        fs1.addMemberFunction(mf34);
-        
-        
+        List<IRule> rules = new ArrayList<>();
         IEngine engine = new MamdaniEngine() ;
-        // System.out.println("Fuzzification Results:");
-        // engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
-        // System.out.println("Fuzzification Done:");
-
-        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\rules.json");
+                
+        RuleStorage storage =new RuleStorage("mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
-        if (editor.getAll().isEmpty()) {
-            System.out.println("No rules found → creating initial rules...");
+        rules = editor.getAll();
 
-            editor.addRule(new MamdaniRule("(dirt is small & fabric is soft)", "wash time is short"));
-            editor.addRule(new MamdaniRule("(dirt is medium & fabric is ordinary)", "wash time is medium"));
-            editor.addRule(new MamdaniRule("(dirt is large & fabric is not soft)", "wash time is long"));
-            editor.addRule(new MamdaniRule("(dirt is large & fabric is soft)", "wash time is long"));
-            editor.addRule(new MamdaniRule("((dirt is small & fabric is not soft) | (dirt is medium & fabric is soft))", "wash time is short"));
-            editor.addRule(new MamdaniRule("(dirt is medium & fabric is stiff)", "wash time is medium"));
-
-            System.out.println("Initial rules created and saved to rules.json\n");
+        if (rules.isEmpty()) {
+            System.out.println("Error Reading Json File\n");
+            return;
         }
-       
-
-        List<IRule> rules = editor.getAll();
         
+
+        engine.fuzzify(input, 
+            List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
+                    new FuzzyVariables.Variable(subjectDifficultyVar, sq_fs,1, 10),
+                    new FuzzyVariables.Variable(stressLevelVar, sl_fs,0, 10))
+        );
+    
+    
         System.out.println("Inference Results:");
         Map<String, Set<Pair>> mp = engine.inferRules(rules, null);
+
         for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
             String key = entry.getKey();
             Set<Pair> valueSet = entry.getValue();
@@ -87,63 +118,14 @@ public class Main {
             System.out.println();
         }
 
-        String output = "wash time" , output_1 = "short" , output_2 = "medium" , output_3 = "long";
-        FuzzySet output_fs = new FuzzySet(output);
-        IMemberFunction output_m1 = new TrapzoidFunction(output_1, List.of(0.0, 0.0, 20.0, 40.0), getYUtil.getY(List.of(0.0, 0.0, 20.0, 40.0)));
-        output_fs.addMemberFunction(output_m1);
-        IMemberFunction output_m2 = new TrapzoidFunction(output_2, List.of(20.0, 40.0, 60.0, 80.0), getYUtil.getY(List.of(20.0, 40.0, 60.0, 80.0)));
-        output_fs.addMemberFunction(output_m2);
-        IMemberFunction output_m3 = new TrapzoidFunction(output_3, List.of(60.0, 80.0, 100.0, 100.0), getYUtil.getY(List.of(60.0, 80.0, 100.0, 100.0)));
-        output_fs.addMemberFunction(output_m3);
+     
         
         IDefuzzification defuzz = new Defuzzification.WeightAverageMean<>();
 
-        defuzz.defuzzify(output_fs, mp);
-
-        //IEngine engine = new SugenoEngine() ;
-        System.out.println("Fuzzification Results:");
-        engine.fuzzify(input, List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , new FuzzyVariables.Variable(Variable1, fs1,0, 100)));
-        System.out.println("Fuzzification Done:");
-
-        // RuleStorage storage =new RuleStorage("rules.json");
-        // RuleEditor editor =new RuleEditor(storage);
-        // if (editor.getAll().isEmpty()) {
-        //     System.out.println("No rules found → creating initial rules...");
-
-        //     editor.addRule(new SugenoRule("(dirt is small & fabric is soft)", "y1 = (-x1) + x2 + 1"));
-        //     editor.addRule(new SugenoRule("(dirt is medium & fabric is ordinary)", "y2 = (-x2) + 3"));
-        //     editor.addRule(new SugenoRule("(dirt is large & fabric is not soft)", "y3 = (-x1) + 3"));
-        //     editor.addRule(new SugenoRule("(dirt is large & fabric is soft)", "y4 = (-x1) + x2 + 2"));
-        //     editor.addRule(new SugenoRule("(dirt is medium & fabric is stiff)", "y5 = 2*x1 + (-x2) + 1"));
-
-        //     System.out.println("Initial rules created and saved to rules.json\n");
-        // }
-
-        // List<IRule> rules = editor.getAll();
-        
-        Map<String, Double> variables = new HashMap<>();
-        variables.put("x1", 1.5);
-        variables.put("x2", 2.5);
-        
-        engine.inferRules(rules, variables);
+        defuzz.defuzzify(sl_fs, mp);
 
 
 
-        // test defuzzification separately
-        System.out.println("Defuzzification Results:");
-        // output
-        String fSet1 = "small" , fSet2 = "standard";
-        FuzzySet outputfs = new FuzzySet();
-        IMemberFunction small = new TriangleFunction(fSet1, List.of(0.0, 15.0, 30.0), getYUtil.getY(List.of(0.0, 15.0, 30.0)));
-        small.setfinalY(0.75);
-        outputfs.addMemberFunction(small);
-        IMemberFunction standard = new TriangleFunction(fSet2, List.of(15.0, 30.0, 45.0), getYUtil.getY(List.of(15.0, 30.0, 45.0)));
-        standard.setfinalY(0.25);
-        outputfs.addMemberFunction(standard);
-
-        // Defuzzification.MeanMax defuzz = new Defuzzification.MeanMax();
-        // var result = defuzz.defuzzify(outputfs.getMemberFunctions());
-        // System.out.println("Defuzzified Output: Set Name = " + result.getFirst() + ", Value = " + result.getSecond());
 
 
 

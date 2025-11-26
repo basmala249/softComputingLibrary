@@ -1,0 +1,243 @@
+[
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 20"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "Low_Stress = 25"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 30"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 35"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 45"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 50"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "Moderate_Stress = 55"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Moderate_Stress = 60"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 65"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 70"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "High_Stress = 75"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 80"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 85"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 90"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 95"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Excellent)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Moderate & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  }
+][
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 20"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "Low_Stress = 25"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 30"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Low_Stress = 35"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 45"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 50"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "Moderate_Stress = 55"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Easy & Sleep_Quality is Excellent)",
+    "consequence": "Moderate_Stress = 60"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "Moderate_Stress = 65"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Easy & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 70"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Excellent)",
+    "consequence": "High_Stress = 75"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 80"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 85"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 90"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 95"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Excellent)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Adequate)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Hard & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Poor & Subject_Difficulty is Moderate & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  },
+  {
+    "type": "SugenoRule",
+    "enabled": true,
+    "condition": "(Study_Preparation is Average & Subject_Difficulty is Moderate & Sleep_Quality is Poor)",
+    "consequence": "High_Stress = 100"
+  }
+]
