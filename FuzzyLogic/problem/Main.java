@@ -87,7 +87,8 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
+        // RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
+        RuleStorage storage =new RuleStorage("mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         List<IRule> rules  = editor.getAll();
 
@@ -112,6 +113,7 @@ public class Main {
         System.out.println("Inference Results:");
         Map<String, Set<Pair>> mp = engine.inferRules(rules, null);
 
+        System.out.println("//////////////////////////////////");
         for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
             String key = entry.getKey();
             Set<Pair> valueSet = entry.getValue();
@@ -121,6 +123,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println("//////////////////////////////////");
 
      
         
@@ -147,7 +150,8 @@ public class Main {
         IEngine engine2 = new SugenoEngine();
         List<IRule> rules2= new ArrayList<>();
                
-        RuleStorage storage02 =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\sugino.json");
+        // RuleStorage storage02 =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\sugino.json");
+        RuleStorage storage02 =new RuleStorage("sugino.json");
         RuleEditor editor02 =new RuleEditor(storage02);
         rules2 = editor02.getAll();
 
@@ -168,6 +172,8 @@ public class Main {
             "Sleep_Quality", input.get(2)
         );
 
+        System.out.println("======================= START =======================");
+
         Map<String, Set<Pair>> res = engine2.inferRules(rules2, variablesMap);
          for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
             String key = entry.getKey();
@@ -180,7 +186,8 @@ public class Main {
         }
 
     
-
+        System.out.println("======================= END =======================");
+        // return;
         // Lab Example ---------------------------------------------------------------------------------
 
 
@@ -210,7 +217,8 @@ public class Main {
         
         IEngine engineLab = new MamdaniEngine() ;
                 
-        RuleStorage storageLab =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\rules.json");
+        // RuleStorage storageLab =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\rules.json");
+        RuleStorage storageLab =new RuleStorage("rules.json");
         RuleEditor editorLab =new RuleEditor(storageLab);
         List<IRule> rulesLab  = editorLab.getAll();
 
