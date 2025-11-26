@@ -1,44 +1,22 @@
 [
   {
-    "type": "SugenoRule", 
+    "type": "SugenoRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Easy) & Sleep_Quality is Excellent)",
-    "consequence": "Stress_Level = ((100 - Study_Preparation) * 0.05 + Subject_Difficulty * 0.8 + (10 - Sleep_Quality) * 2) * 0.8"
+    "condition": "(Study_Preparation is Excellent)",
+    "consequence": "Stress_Level =  (10 - (0.1*(Study_Preparation))) + 0.2*(Subject_Difficulty*10) + 0.2*((10 - Sleep_Quality)*10)"
   },
+
   {
     "type": "SugenoRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Moderate) & Sleep_Quality is Adequate)", 
-    "consequence": "Stress_Level = ((100 - Study_Preparation) * 0.15 + Subject_Difficulty * 2 + (10 - Sleep_Quality) * 3) * 0.7"
+    "condition": "(Study_Preparation is Average)",
+    "consequence": "Stress_Level = 15 + (20 - (0.15*(Study_Preparation))) + 0.25*(Subject_Difficulty*10) + 0.2*((10 - Sleep_Quality)*10)"
   },
+
   {
     "type": "SugenoRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Average & Subject_Difficulty is Easy) & Sleep_Quality is Adequate)",
-    "consequence": "Stress_Level = (100 - Study_Preparation) * 0.2 + (Subject_Difficulty * 1.2) + (10 - Sleep_Quality)"
-  },
-  {
-    "type": "SugenoRule",
-    "enabled": true, 
-    "condition": "((Study_Preparation is Average & Subject_Difficulty is Moderate) & Sleep_Quality is Adequate)",
-    "consequence": "Stress_Level = (100 - Study_Preparation) * 0.25 + Subject_Difficulty * 2.5 + (10 - Sleep_Quality) * 4.5"
-  },
-  {
-    "type": "SugenoRule",
-    "enabled": true,
-    "condition": "((Study_Preparation is Poor & Subject_Difficulty is Easy) & Sleep_Quality is Excellent)",
-    "consequence": "Stress_Level = (100 - Study_Preparation) * 0.3 + Subject_Difficulty * 1.5 + (10 - Sleep_Quality) * 5"
-  },
-  {
-    "type": "SugenoRule",
-    "enabled": true,
-    "condition": "((Study_Preparation is Poor & Subject_Difficulty is Moderate) & Sleep_Quality is Adequate)",
-    "consequence": "Stress_Level = (100 - Study_Preparation) * 0.4 + Subject_Difficulty  + (10 - Sleep_Quality) * 6"
-  },
-  {
-    "type": "SugenoRule", 
-    "enabled": true,
-    "condition": "((Study_Preparation is Poor & Subject_Difficulty is Hard) & Sleep_Quality is Poor)",
-    "consequence": "Stress_Level = ((100 - Study_Preparation) * 0.5 + Subject_Difficulty  + (10 - Sleep_Quality) * 7) * 0.4"
+    "condition": "(Study_Preparation is Poor)",
+    "consequence": "Stress_Level = 30 + (20 - (0.2*(Study_Preparation))) + 0.3*(Subject_Difficulty*10) + 0.2*((10 - Sleep_Quality)*10)"
   }
 ]

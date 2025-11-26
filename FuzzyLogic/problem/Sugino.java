@@ -23,7 +23,7 @@ import Utils.GetY;
 public class Sugino {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(90.0,4.0,8.0);
+        List<Double> input = List.of(80.0,5.0,8.0);
         GetY getYUtil = new GetY();
         String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -86,7 +86,7 @@ public class Sugino {
         IEngine engine2 = new SugenoEngine();
         List<IRule> rules2= new ArrayList<>();
                
-        RuleStorage storage02 =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\sugino.json");
+        RuleStorage storage02 =new RuleStorage("sugino.json");
        // RuleStorage storage02 =new RuleStorage("sugino.json");
         RuleEditor editor02 =new RuleEditor(storage02);
         rules2 = editor02.getAll();
