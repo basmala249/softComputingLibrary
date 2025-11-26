@@ -23,7 +23,7 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(50.0,6.0,6.0);
+        List<Double> input = List.of(90.0,3.0,9.0);
         GetY getYUtil = new GetY();
           String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -87,7 +87,7 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("D:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\mamdani.json");
+        RuleStorage storage =new RuleStorage("softComputingLibrary\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         List<IRule> rules  = editor.getAll();
 
@@ -101,7 +101,6 @@ public class Main {
 
             
         
-        
 
         engine.fuzzify(input, 
             List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
@@ -113,15 +112,15 @@ public class Main {
         System.out.println("Inference Results:");
         Map<String, Set<Pair>> mp = engine.inferRules(rules, null);
 
-        for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
-            String key = entry.getKey();
-            Set<Pair> valueSet = entry.getValue();
-            System.out.print(key + ": ");
-            for (Pair pair : valueSet) {
-                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-            }
-            System.out.println();
-        }
+        // for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
+        //     String key = entry.getKey();
+        //     Set<Pair> valueSet = entry.getValue();
+        //     System.out.print(key + ": ");
+        //     for (Pair pair : valueSet) {
+        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+        //     }
+        //     System.out.println();
+        // }
 
      
         
@@ -163,16 +162,16 @@ public class Main {
                     new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
         );
 
-        Map<String, Set<Pair>> res = engine2.inferRules(rules2, null);
-         for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
-            String key = entry.getKey();
-            Set<Pair> valueSet = entry.getValue();
-            System.out.print(key + ": ");
-            for (Pair pair : valueSet) {
-                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-            }
-            System.out.println();
-        }
+        // Map<String, Set<Pair>> res = engine2.inferRules(rules2, null);
+        //  for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
+        //     String key = entry.getKey();
+        //     Set<Pair> valueSet = entry.getValue();
+        //     System.out.print(key + ": ");
+        //     for (Pair pair : valueSet) {
+        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+        //     }
+        //     System.out.println();
+        // }
 
     
         
