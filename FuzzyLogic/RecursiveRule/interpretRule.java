@@ -12,7 +12,12 @@ public class interpretRule {
         this.newMap = newMap;
     }
     public Double evaluteRule(String rule) {
-     String[] parts = rule.split(" is ");
+
+        if (rule.startsWith("(") && rule.endsWith(")")) {
+            rule = rule.substring(1, rule.length() - 1);
+        }
+
+        String[] parts = rule.split(" is ");
  
         if (parts.length == 2) {
             String X = parts[0].trim();  
@@ -27,7 +32,8 @@ public class interpretRule {
                         }
                     }
                 }
-            } else {
+            } 
+            else {
                 Set<Pair> set = newMap.get(X);
                 
                 if (set != null) {
@@ -40,10 +46,6 @@ public class interpretRule {
             }
         }
 
-        if (rule.startsWith("(") && rule.endsWith(")")) {
-            rule = rule.substring(1, rule.length() - 1);
-        }
- 
        
         int operatorIndex = findOperatorIndex(rule);
         if (operatorIndex == -1) {
