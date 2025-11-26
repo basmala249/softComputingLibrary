@@ -77,7 +77,7 @@ public class TrapzoidFunction implements IMemberFunction {
 
     @Override
     public void setDefault(double lb,double up ,int index , int n){
-        double w =  (ub - lb) / (n-1);
+        double w =  (up - lb) / (n-1);
         double center = lb + index*w;
         double topWidth = w/2;
 
@@ -87,7 +87,7 @@ public class TrapzoidFunction implements IMemberFunction {
         double d = center + topWidth;
 
         a = Math.max(a,lb);
-        d = Math.min(b,ub);
+        d = Math.min(b,up);
 
         points = new ArrayList<>();
         points.add(a);
