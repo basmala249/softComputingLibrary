@@ -1,6 +1,7 @@
 package problem;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Map;
@@ -12,6 +13,7 @@ import FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
 import InferenceEngine.IEngine;
 import InferenceEngine.MamdaniEngine;
+import InferenceEngine.SugenoEngine;
 import MemberFunction.IMemberFunction;
 import MemberFunction.TrapzoidFunction;
 import MemberFunction.TriangleFunction;
@@ -21,7 +23,7 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(88.0,9.0,7.0);
+        List<Double> input = List.of(50.0,6.0,6.0);
         GetY getYUtil = new GetY();
           String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -40,8 +42,11 @@ public class Main {
          , fuzzySetSD1 = "Easy" , fuzzySetSD2 = "Moderate" , fuzzySetSD3 = "Hard";
         FuzzySet sd_fs = new FuzzySet(subjectDifficultyVar);
 
+
         //IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(0.0, 0.0, 30.0, 50.0)));
         IMemberFunction sd_mf1 = new TrapzoidFunction(fuzzySetSD1, List.of(1.0,1.0,3.0,5.0), getYUtil.getY(List.of(1.0,1.0,3.0,5.0)));
+
+       
         sd_fs.addMemberFunction(sd_mf1);
 
         IMemberFunction sd_mf2 = new TriangleFunction(fuzzySetSD2, List.of(4.0, 6.0, 8.0), getYUtil.getY(List.of(4.0, 6.0, 8.0)));
@@ -123,13 +128,54 @@ public class Main {
         //IDefuzzification defuzz = new Defuzzification.WeightAverageMean<>();
         IDefuzzification defuzz = new MeanMax();
 
+
         Pair result = defuzz.defuzzify(sl_fs, mp);
+
+        Pair weighted_output = defuzz.defuzzify(sl_fs, mp);
 
         System.out.println("\nDefuzzification Result:");
         System.out.println("Fuzzy Set: " + result.getFirst() + ", Crisp Value: " + result.getSecond());
 
+        IDefuzzification defuzz2 = new Defuzzification.MeanMax();
+        Pair meanmax_output = defuzz2.defuzzify(sl_fs, mp);
+
+        System.out.println("\nDefuzzification Results:");
+        System.out.println("Weight Average Mean Output: " + weighted_output.getSecond());   
+        System.out.println("Mean Max Output: " + meanmax_output.getSecond());
+        
 
 
+        IEngine engine2 = new SugenoEngine();
+        List<IRule> rules2= new ArrayList<>();
+               
+        RuleStorage storage02 =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\sugino.json");
+        RuleEditor editor02 =new RuleEditor(storage02);
+        rules2 = editor02.getAll();
+
+        if (rules2.isEmpty()) {
+            System.out.println("Error Reading Json File\n");
+            return;
+        }
+
+       engine2.fuzzify(input, 
+            List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
+                    new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                    new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
+        );
+
+        Map<String, Set<Pair>> res = engine2.inferRules(rules2, null);
+         for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
+            String key = entry.getKey();
+            Set<Pair> valueSet = entry.getValue();
+            System.out.print(key + ": ");
+            for (Pair pair : valueSet) {
+                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+            }
+            System.out.println();
+        }
+
+    
+        
 
 
     }

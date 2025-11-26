@@ -76,6 +76,7 @@ public class MamdaniEngine extends IEngine {
 
                 // Divide the value by the count
                 pair.setSecond(second / count);
+               
             }
             res.put(str, valueSet);
         }
