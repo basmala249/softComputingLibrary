@@ -27,4 +27,7 @@ public class Pair {
         return Objects.hash(first, second);
     }
 
+    public void setSecond(Double X){
+        second = X;
+    }
 }
