@@ -117,7 +117,7 @@ public class Sugino {
 
             }else if (input.get(j) > ub){
                 System.out.println("input is out of range new default = " +ub);
-                input.set(j,ub-1);
+                input.set(j,ub);
             }
         }
         
