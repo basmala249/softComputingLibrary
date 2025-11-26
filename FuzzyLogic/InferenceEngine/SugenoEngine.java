@@ -15,7 +15,7 @@ public class SugenoEngine extends IEngine {
 
     public SugenoEngine() {
         ScriptEngineManager manager = new ScriptEngineManager();
-        engine = manager.getEngineByName("JavaScript"); // JS engine
+        engine = manager.getEngineByName("Nashorn"); // JS engine
     }
 
     @Override

@@ -23,7 +23,7 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(90.0,3.0,9.0);
+        List<Double> input = List.of(75.0,5.0,8.0);
         GetY getYUtil = new GetY();
         String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -112,15 +112,15 @@ public class Main {
         System.out.println("Inference Results:");
         Map<String, Set<Pair>> mp = engine.inferRules(rules, null);
 
-        // for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
-        //     String key = entry.getKey();
-        //     Set<Pair> valueSet = entry.getValue();
-        //     System.out.print(key + ": ");
-        //     for (Pair pair : valueSet) {
-        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-        //     }
-        //     System.out.println();
-        // }
+        for (Map.Entry<String, Set<Pair>> entry : mp.entrySet()) {
+            String key = entry.getKey();
+            Set<Pair> valueSet = entry.getValue();
+            System.out.print(key + ": ");
+            for (Pair pair : valueSet) {
+                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+            }
+            System.out.println();
+        }
 
      
         
@@ -144,34 +144,40 @@ public class Main {
         
 
 
-    //     IEngine engine2 = new SugenoEngine();
-    //     List<IRule> rules2= new ArrayList<>();
+        IEngine engine2 = new SugenoEngine();
+        List<IRule> rules2= new ArrayList<>();
                
-    //     RuleStorage storage02 =new RuleStorage("D:\\\\study\\\\SC\\\\SoftComputingTool\\\\softComputingLibrary\\sugino.json");
-    //     RuleEditor editor02 =new RuleEditor(storage02);
-    //     rules2 = editor02.getAll();
+        RuleStorage storage02 =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\sugino.json");
+        RuleEditor editor02 =new RuleEditor(storage02);
+        rules2 = editor02.getAll();
 
-    //     if (rules2.isEmpty()) {
-    //         System.out.println("Error Reading Json File\n");
-    //         return;
-    //     }
+        if (rules2.isEmpty()) {
+            System.out.println("Error Reading Json File\n");
+            return;
+        }
 
-    //    engine2.fuzzify(input, 
-    //         List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
-    //                 new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
-    //                 new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
-    //     );
+       engine2.fuzzify(input, 
+            List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
+                    new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                    new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
+        );
 
-        // Map<String, Set<Pair>> res = engine2.inferRules(rules2, null);
-        //  for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
-        //     String key = entry.getKey();
-        //     Set<Pair> valueSet = entry.getValue();
-        //     System.out.print(key + ": ");
-        //     for (Pair pair : valueSet) {
-        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-        //     }
-        //     System.out.println();
-        // }
+        Map<String, Double> variablesMap = Map.of(
+            "Study_Preparation", input.get(0),
+            "Subject_Difficulty", input.get(1),
+            "Sleep_Quality", input.get(2)
+        );
+
+        Map<String, Set<Pair>> res = engine2.inferRules(rules2, variablesMap);
+         for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
+            String key = entry.getKey();
+            Set<Pair> valueSet = entry.getValue();
+            System.out.print(key + ": ");
+            for (Pair pair : valueSet) {
+                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+            }
+            System.out.println();
+        }
 
     
 
@@ -256,8 +262,8 @@ public class Main {
         outputfs.addMemberFunction(verySmall);
         
         
-        //IDefuzzification defuzzLab = new Defuzzification.WeightAverageMean<>();
-        IDefuzzification defuzzLab = new MeanMax();
+        IDefuzzification defuzzLab = new Defuzzification.WeightAverageMean<>();
+        //IDefuzzification defuzzLab = new MeanMax();
 
 
         Pair resultLab = defuzzLab.defuzzify(outputfs, mpLab);
