@@ -87,7 +87,7 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("D:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\mamdani.json");
+        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         List<IRule> rules  = editor.getAll();
 
@@ -144,23 +144,23 @@ public class Main {
         
 
 
-        IEngine engine2 = new SugenoEngine();
-        List<IRule> rules2= new ArrayList<>();
+    //     IEngine engine2 = new SugenoEngine();
+    //     List<IRule> rules2= new ArrayList<>();
                
-        RuleStorage storage02 =new RuleStorage("D:\\\\study\\\\SC\\\\SoftComputingTool\\\\softComputingLibrary\\sugino.json");
-        RuleEditor editor02 =new RuleEditor(storage02);
-        rules2 = editor02.getAll();
+    //     RuleStorage storage02 =new RuleStorage("D:\\\\study\\\\SC\\\\SoftComputingTool\\\\softComputingLibrary\\sugino.json");
+    //     RuleEditor editor02 =new RuleEditor(storage02);
+    //     rules2 = editor02.getAll();
 
-        if (rules2.isEmpty()) {
-            System.out.println("Error Reading Json File\n");
-            return;
-        }
+    //     if (rules2.isEmpty()) {
+    //         System.out.println("Error Reading Json File\n");
+    //         return;
+    //     }
 
-       engine2.fuzzify(input, 
-            List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
-                    new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
-                    new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
-        );
+    //    engine2.fuzzify(input, 
+    //         List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
+    //                 new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+    //                 new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
+    //     );
 
         // Map<String, Set<Pair>> res = engine2.inferRules(rules2, null);
         //  for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
@@ -204,7 +204,7 @@ public class Main {
         
         IEngine engineLab = new MamdaniEngine() ;
                 
-        RuleStorage storageLab =new RuleStorage("D:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\rules.json");
+        RuleStorage storageLab =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\rules.json");
         RuleEditor editorLab =new RuleEditor(storageLab);
         List<IRule> rulesLab  = editorLab.getAll();
 
@@ -256,8 +256,8 @@ public class Main {
         outputfs.addMemberFunction(verySmall);
         
         
-        IDefuzzification defuzzLab = new Defuzzification.WeightAverageMean<>();
-        //IDefuzzification defuzzLab = new MeanMax();
+        //IDefuzzification defuzzLab = new Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzzLab = new MeanMax();
 
 
         Pair resultLab = defuzzLab.defuzzify(outputfs, mpLab);
