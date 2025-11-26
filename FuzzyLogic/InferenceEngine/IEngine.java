@@ -32,15 +32,15 @@ public abstract class IEngine {
             tempList = new ArrayList<>();
         }
         mainMap = MS;
-        // for (Map.Entry<String, Set<Pair>> entry : mainMap.entrySet()) {
-        //     String key = entry.getKey();
-        //     Set<Pair> valueSet = entry.getValue();
-        //     System.out.print(key + ": ");
-        //     for (Pair pair : valueSet) {
-        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-        //     }
-        //     System.out.println();
-        // }
+        for (Map.Entry<String, Set<Pair>> entry : mainMap.entrySet()) {
+            String key = entry.getKey();
+            Set<Pair> valueSet = entry.getValue();
+            System.out.print(key + ": ");
+            for (Pair pair : valueSet) {
+                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+            }
+            System.out.println();
+        }
 
         return MS;
     }
@@ -69,9 +69,7 @@ public abstract class IEngine {
     public Map<String, Set<Pair>> getMainMap() {
         return mainMap;
     }
-    public void setConsequenceValue(String Consquence , Double value, Map<String, Double> variables){
-
-    }
+    public abstract void setConsequenceValue(String Consquence , Double value, Map<String, Double> variables);
 
     public abstract Map<String, Set<Pair>> runConsequences();
 

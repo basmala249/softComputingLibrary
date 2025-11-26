@@ -23,7 +23,7 @@ import Utils.GetY;
 public class Mamdani {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(75.0,6.0,8.0);
+        List<Double> input = List.of(80.0,6.0,8.0);
         GetY getYUtil = new GetY();
         String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";

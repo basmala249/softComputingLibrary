@@ -2,7 +2,7 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Easy) & Sleep_Quality is not Poor)",
+    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Easy) | Sleep_Quality is Excellent)",
     "consequence": "Stress_Level is Low"
   },
   {
@@ -14,19 +14,19 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Excellent | Subject_Difficulty is Easy) & Sleep_Quality is Excellent)",
+    "condition": "((Study_Preparation is not Poor | Subject_Difficulty is Easy) & Sleep_Quality is Adequate)",
     "consequence": "Stress_Level is Low"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Hard) & Sleep_Quality is not Poor)",
+    "condition": "((Study_Preparation is Excellent & Subject_Difficulty is Hard) & Sleep_Quality is Adequate)",
     "consequence": "Stress_Level is Medium"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Average | Subject_Difficulty is Moderate) & Sleep_Quality is Adequate)",
+    "condition": "((Study_Preparation is Average | Subject_Difficulty is Moderate)& Sleep_Quality is not Poor)",
     "consequence": "Stress_Level is Medium"
   },
   {
@@ -38,7 +38,7 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Poor & Subject_Difficulty is not Easy) & Sleep_Quality is Poor)",
+    "condition": "((Study_Preparation is Poor & Subject_Difficulty is Moderate) & Sleep_Quality is Poor)",
     "consequence": "Stress_Level is High"
   },
   {
@@ -50,7 +50,7 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((Study_Preparation is Poor & Subject_Difficulty is not Easy) | Sleep_Quality is Poor)",
+    "condition": "((Study_Preparation is Poor & Subject_Difficulty is Hard) | Sleep_Quality is Poor)",
     "consequence": "Stress_Level is High"
   }
 ]
