@@ -10,10 +10,8 @@ public class interpretRule {
     private Map<String, Set<Pair>> newMap;
     public interpretRule(Map<String, Set<Pair>> newMap) {
         this.newMap = newMap;
-        printMap();
     }
     public Double evaluteRule(String rule) {
-        //System.out.println("Evaluating Rule: " + rule);
      String[] parts = rule.split(" is ");
  
         if (parts.length == 2) {
@@ -33,7 +31,6 @@ public class interpretRule {
                 Set<Pair> set = newMap.get(X);
                 
                 if (set != null) {
-                    System.out.println("Set for " + X + ": " + "Y = " + Y);
                     for (Pair pair : set) {
                         if (pair.getFirst().equals(Y)) {
                             return pair.getSecond();  
@@ -86,7 +83,7 @@ public class interpretRule {
         return -1;  // If no operator is found
     }
 
-    void printMap() {
+    public void printMap() {
         for (Map.Entry<String, Set<Pair>> entry : newMap.entrySet()) {
             String key = entry.getKey();
             Set<Pair> valueSet = entry.getValue();
@@ -97,7 +94,7 @@ public class interpretRule {
             System.out.println();
         }
     }
-    void setMap( Map<String, Set<Pair>> newMap) {
+    public void setMap( Map<String, Set<Pair>> newMap) {
         for (Map.Entry<String, Set<Pair>> entry : newMap.entrySet()) {
             String key = entry.getKey();
             Set<Pair> valueSet = entry.getValue();
@@ -108,7 +105,7 @@ public class interpretRule {
             System.out.println();
         }
     }
-    Map<String, Set<Pair>> getMap( Map<String, Set<Pair>> newMap) {
+    public Map<String, Set<Pair>> getMap( Map<String, Set<Pair>> newMap) {
         return newMap;
     }
 }

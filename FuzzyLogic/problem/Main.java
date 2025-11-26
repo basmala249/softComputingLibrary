@@ -89,14 +89,12 @@ public class Main {
             return;
         }
         for(IRule r : rules){
-<<<<<<< HEAD
-            System.out.println( r.getCondition());
-        }
-=======
             System.out.println("Rule Condition: " + r.getCondition() + " => Consequence: " + r.getConsequence());
         }
+
+            
         
->>>>>>> 13bb940b606632b4aaf0e1a1bbc5b235322aed8f
+        
 
         engine.fuzzify(input, 
             List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
