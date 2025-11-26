@@ -1,12 +1,8 @@
 package problem;
 
-<<<<<<< HEAD
 
 import java.util.List;
 
-
-=======
->>>>>>> 07e8e33d4545fe09a469abde68d02b3ba79a5c29
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
