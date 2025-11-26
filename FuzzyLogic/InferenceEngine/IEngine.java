@@ -32,15 +32,15 @@ public abstract class IEngine {
             tempList = new ArrayList<>();
         }
         mainMap = MS;
-        for (Map.Entry<String, Set<Pair>> entry : mainMap.entrySet()) {
-            String key = entry.getKey();
-            Set<Pair> valueSet = entry.getValue();
-            System.out.print(key + ": ");
-            for (Pair pair : valueSet) {
-                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-            }
-            System.out.println();
-        }
+        // for (Map.Entry<String, Set<Pair>> entry : mainMap.entrySet()) {
+        //     String key = entry.getKey();
+        //     Set<Pair> valueSet = entry.getValue();
+        //     System.out.print(key + ": ");
+        //     for (Pair pair : valueSet) {
+        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+        //     }
+        //     System.out.println();
+        // }
 
         return MS;
     }
@@ -53,7 +53,7 @@ public abstract class IEngine {
         for(IRule rule : rules) {/// (dirt is small & fabric is soft)", "wash time is short"
             if(rule.isEnabled()) {
                 Double conditionValue = extractCondition(rule.getCondition());
-               System.out.println("Evaluated Condition for Rule IF " + rule.getCondition() + " THEN " + rule.getConsequence());
+            //    System.out.println("Evaluated Condition for Rule IF " + rule.getCondition() + " THEN " + rule.getConsequence());
                 System.out.println("Condition Value: " + conditionValue);
                 setConsequenceValue(rule.getConsequence(), conditionValue, variables);
             }

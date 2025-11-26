@@ -82,17 +82,17 @@ public class MamdaniEngine extends IEngine {
         }
 
 
-        System.out.println("\n//////////////////////////////////////");
-        for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
-            String key = entry.getKey();
-            Set<Pair> valueSet = entry.getValue();
-            System.out.print(key + ": ");
-            for (Pair pair : valueSet) {
-                System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
-            }
-            System.out.println();
-        }
-        System.out.println("//////////////////////////////////////");
+        // System.out.println("\n//////////////////////////////////////");
+        // for (Map.Entry<String, Set<Pair>> entry : res.entrySet()) {
+        //     String key = entry.getKey();
+        //     Set<Pair> valueSet = entry.getValue();
+        //     System.out.print(key + ": ");
+        //     for (Pair pair : valueSet) {
+        //         System.out.print("[" + pair.getFirst() + ", " + pair.getSecond() + "] ");
+        //     }
+        //     System.out.println();
+        // }
+        // System.out.println("//////////////////////////////////////");
         
         return res;
     }
