@@ -1,0 +1,38 @@
+[
+  {
+    "type": "MamdaniRule",
+    "enabled": true,
+    "condition": "(dirt is small \u0026 fabric is soft)",
+    "consequence": "wash time is short"
+  },
+  {
+    "type": "MamdaniRule", 
+    "enabled": true,
+    "condition": "(dirt is medium \u0026 fabric is ordinary)",
+    "consequence": "wash time is medium"
+  },
+  {
+    "type": "MamdaniRule",
+    "enabled": true, 
+    "condition": "(dirt is large \u0026 fabric is not soft)",
+    "consequence": "wash time is long"
+  },
+  {
+    "type": "MamdaniRule",
+    "enabled": true,
+    "condition": "(dirt is large \u0026 fabric is soft)",
+    "consequence": "wash time is long"
+  },
+  {
+    "type": "MamdaniRule",
+    "enabled": true,
+    "condition": "((dirt is small \u0026 fabric is not soft) | (dirt is medium \u0026 fabric is soft))",
+    "consequence": "wash time is short"
+  },
+  {
+    "type": "MamdaniRule",
+    "enabled": true,
+    "condition": "(dirt is medium \u0026 fabric is stiff)",
+    "consequence": "wash time is medium"
+  }
+]
