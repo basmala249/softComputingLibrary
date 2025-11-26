@@ -79,7 +79,7 @@ public class Main {
         List<IRule> rules = new ArrayList<>();
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("mamdani.json");
+        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         rules = editor.getAll();
 

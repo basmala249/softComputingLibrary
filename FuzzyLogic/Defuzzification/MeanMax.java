@@ -7,6 +7,7 @@ import GeneticAlgorithm.Utils.Pair;
 import MemberFunction.IMemberFunction;
 import Shape.IShape;
 import java.util.Set;
+import java.util.Map;
 
 import FuzzySet.FuzzySet;   
 
