@@ -5,8 +5,14 @@ import java.util.List;
 
 import MemberFunction.IMemberFunction;
 public class FuzzySet {
+    private String fuzzySetName;
     List<IMemberFunction> memberFunctions;
-    public FuzzySet(){
+    public FuzzySet() {
+        memberFunctions = new ArrayList<>();
+    }
+
+    public FuzzySet(String fuzzySetName) {
+        this.fuzzySetName = fuzzySetName;
         memberFunctions = new ArrayList<>();
     }
     public void addMemberFunction(IMemberFunction function) {
@@ -14,5 +20,8 @@ public class FuzzySet {
     }
     public List<IMemberFunction> getMemberFunctions() {
         return memberFunctions;
+    }
+    public String getFuzzySetName() {
+        return fuzzySetName;
     }
 }

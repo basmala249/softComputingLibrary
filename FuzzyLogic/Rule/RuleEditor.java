@@ -1,14 +1,20 @@
 package Rule;
 
-import Rule.IRule;
+import java.util.ArrayList;
+// import Rule.IRule;
 import java.util.List;
 
 public class RuleEditor {
 
     private List<IRule> rules;
-    private final RuleStorage storage;
+   private final RuleStorage storage;
 
+    public RuleEditor() {
+       this.storage = null;
+        this.rules = new ArrayList<>();
+    }
     public RuleEditor(RuleStorage storage) {
+        
         this.storage = storage;
         this.rules = storage.loadRules();
     }
@@ -24,7 +30,7 @@ public class RuleEditor {
 
     public void deleteRule(int index) {
         rules.remove(index);
-        storage.saveRules(rules);
+       storage.saveRules(rules);
     }
 
     public void updateRule(int index, String newCondition, String newConsequence) {

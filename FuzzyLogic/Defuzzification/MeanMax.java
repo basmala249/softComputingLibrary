@@ -7,11 +7,17 @@ import GeneticAlgorithm.Utils.Pair;
 
 import MemberFunction.IMemberFunction;
 import Shape.IShape;
+import java.util.Set;
 
-public class MeanMax implements IDefuzzification {
-	@Override
-    public Pair defuzzify(List<IMemberFunction> fuzzySets) {
-        List<IMemberFunction> maxSets = getMaxMembership(fuzzySets);
+import FuzzySet.FuzzySet;   
+
+
+public class MeanMax extends IDefuzzification {
+	
+    @Override
+    public Pair defuzzify(FuzzySet parentFuzzySet, Map<String, Set<Pair>> fuzzifyResults) {
+        
+        List<IMemberFunction> maxSets = getMaxMembership(parentFuzzySet, fuzzifyResults);
         if(maxSets == null || maxSets.isEmpty()) {
             System.err.println("No fuzzy sets with maximum membership found.");
             return new Pair("", 0.0);
@@ -21,7 +27,9 @@ public class MeanMax implements IDefuzzification {
         for(IMemberFunction mf : maxSets) {
             if(mf != null) {
                 List<IShape> equations = mf.getEquations();
-                Double membershipValue = mf.getMembership();
+                
+                Double membershipValue = getFuzzifyResult(parentFuzzySet.getFuzzySetName(), mf.getName(), fuzzifyResults);
+
                 List<Double> xValues = getXValues(equations, membershipValue);
                 if(xValues != null && !xValues.isEmpty()) {
                     for(Double x : xValues) {
@@ -35,15 +43,23 @@ public class MeanMax implements IDefuzzification {
         return count == 0 ? new Pair("", 0.0) : new Pair(setName, sum / count);
     }
 
-    private List<IMemberFunction> getMaxMembership(List<IMemberFunction> fuzzySets) {
+    private List<IMemberFunction> getMaxMembership(FuzzySet parentFuzzySet, Map<String, Set<Pair>> fuzzifyResults) {
         List<IMemberFunction> maxSets = new java.util.ArrayList<>();
+        List<IMemberFunction> fuzzySets = parentFuzzySet.getMemberFunctions();
         if (fuzzySets == null) {
             System.err.println("Invalid input: fuzzySets must be non-null.");
             return maxSets;
         }
         double maxMembership = 0.0;
         for (IMemberFunction mf : fuzzySets)
-            if (mf != null)  maxMembership = Math.max(maxMembership, mf.getMembership());
+           
+            if (mf != null) {
+
+                double curMembership = getFuzzifyResult(parentFuzzySet.getFuzzySetName(), mf.getName(), fuzzifyResults);
+
+                maxMembership = Math.max(maxMembership, curMembership);
+
+            }
 
         for (int i = 0; i < fuzzySets.size(); i++) {
             Double v = fuzzySets.get(i).getMembership();
@@ -66,4 +82,6 @@ public class MeanMax implements IDefuzzification {
         }
         return xValues;
     }
+
+    
 }
