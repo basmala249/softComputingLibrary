@@ -20,7 +20,7 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(33.0,8.0,7.0);
+        List<Double> input = List.of(88.0,9.0,7.0);
         GetY getYUtil = new GetY();
           String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -47,6 +47,8 @@ public class Main {
 
         IMemberFunction sd_mf3 = new TrapzoidFunction(fuzzySetSD3, List.of(7.0, 9.0, 10.0, 10.0), getYUtil.getY(List.of(7.0, 9.0, 10.0, 10.0)));
         sd_fs.addMemberFunction(sd_mf3);
+
+
 
         // Sleep Quality
         String sleepQualityVar = "Sleep_Quality"
@@ -87,8 +89,14 @@ public class Main {
             return;
         }
         for(IRule r : rules){
+<<<<<<< HEAD
             System.out.println( r.getCondition());
         }
+=======
+            System.out.println("Rule Condition: " + r.getCondition() + " => Consequence: " + r.getConsequence());
+        }
+        
+>>>>>>> 13bb940b606632b4aaf0e1a1bbc5b235322aed8f
 
         engine.fuzzify(input, 
             List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 

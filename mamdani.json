@@ -2,19 +2,19 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate)",
+    "condition": "(Study_Preparation is Excellent \u0026 Subject_Difficulty is Hard)",
     "consequence": "Stress_Level is Low"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(Study_Preparation is Average & Subject_Difficulty is Easy)",
+    "condition": "(Study_Preparation is Average | Subject_Difficulty is Hard)",
     "consequence": "Stress_Level is Low"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(Study_Preparation is Excellent & Subject_Difficulty is Moderate)",
+    "condition": "(Study_Preparation is Excellent \u0026 Subject_Difficulty is Moderate)",
     "consequence": "Stress_Level is Medium"
   }
 ]
