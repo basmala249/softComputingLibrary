@@ -2,37 +2,37 @@
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(dirt is small \u0026 fabric is soft)",
-    "consequence": "wash time is short"
+    "condition": "(dirt is small & fabric is soft)",
+    "consequence": "wash time is verySmall"
   },
   {
     "type": "MamdaniRule", 
     "enabled": true,
-    "condition": "(dirt is medium \u0026 fabric is ordinary)",
-    "consequence": "wash time is medium"
+    "condition": "(dirt is medium & fabric is ordinary)",
+    "consequence": "wash time is standard"
   },
   {
     "type": "MamdaniRule",
     "enabled": true, 
-    "condition": "(dirt is large \u0026 fabric is not soft)",
-    "consequence": "wash time is long"
+    "condition": "(dirt is large & fabric is not soft)",
+    "consequence": "wash time is veryLarge"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(dirt is large \u0026 fabric is soft)",
-    "consequence": "wash time is long"
+    "condition": "(dirt is large & fabric is soft)",
+    "consequence": "wash time is standard"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "((dirt is small \u0026 fabric is not soft) | (dirt is medium \u0026 fabric is soft))",
-    "consequence": "wash time is short"
+    "condition": "((dirt is small & fabric is not soft) | (dirt is medium & fabric is soft))",
+    "consequence": "wash time is small"
   },
   {
     "type": "MamdaniRule",
     "enabled": true,
-    "condition": "(dirt is medium \u0026 fabric is stiff)",
-    "consequence": "wash time is medium"
+    "condition": "(dirt is medium & fabric is stiff)",
+    "consequence": "wash time is larg"
   }
 ]
