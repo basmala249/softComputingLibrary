@@ -1,8 +1,4 @@
 package Rule;
-
-import Rule.IRule;
-import Rule.MamdaniRule;
-import Rule.SugenoRule;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
