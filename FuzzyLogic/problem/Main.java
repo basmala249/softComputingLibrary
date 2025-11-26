@@ -84,7 +84,7 @@ public class Main {
 
             }else if (inputLab.get(j) > ub){
                 System.out.println("input is out of range new default = " +ub);
-                inputLab.set(j,ub-1);
+                inputLab.set(j,ub);
             }
         }
         
