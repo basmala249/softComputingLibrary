@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
     
-        List<Double> inputLab = List.of(60.0,25.0);
+        List<Double> inputLab = List.of(50.0,80.0);
 
 
         // Variable 1
@@ -51,7 +51,7 @@ public class Main {
         
         IEngine engineLab = new MamdaniEngine() ;
                 
-        RuleStorage storageLab =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\rules.json");
+        RuleStorage storageLab =new RuleStorage("rules.json");
        // RuleStorage storageLab =new RuleStorage("rules.json");
         RuleEditor editorLab =new RuleEditor(storageLab);
         List<IRule> rulesLab  = editorLab.getAll();
@@ -104,13 +104,14 @@ public class Main {
         outputfs.addMemberFunction(verySmall);
         
         
-        IDefuzzification defuzzLab = new Defuzzification.WeightAverageMean<>();
-        //IDefuzzification defuzzLab = new MeanMax();
+        IDefuzzification defuzzLabAvg = new Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzzLabMax = new MeanMax();
 
 
-        Pair resultLab = defuzzLab.defuzzify(outputfs, mpLab);
-        System.out.println("Defuzzified Output: Set Name = " + resultLab.getFirst() + ", Value = " + resultLab.getSecond());
-
+        Pair resultLab = defuzzLabAvg.defuzzify(outputfs, mpLab);
+        System.out.println("Defuzzified Weight Average Mean Output: Set Name = " + resultLab.getFirst() + ", Value = " + resultLab.getSecond());
+        Pair resultLabMax = defuzzLabMax.defuzzify(outputfs, mpLab);
+        System.out.println("Defuzzified Mean Max Output: Set Name = " + resultLabMax.getFirst() + ", Value = " + resultLabMax.getSecond());
 
     }
 }

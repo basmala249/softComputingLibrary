@@ -33,6 +33,6 @@
     "type": "MamdaniRule",
     "enabled": true,
     "condition": "(dirt is medium & fabric is stiff)",
-    "consequence": "wash time is larg"
+    "consequence": "wash time is large"
   }
 ]
