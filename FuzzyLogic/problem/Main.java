@@ -23,7 +23,7 @@ import Utils.GetY;
 public class Main {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(75.0,5.0,8.0);
+        List<Double> input = List.of(75.0,6.0,8.0);
         GetY getYUtil = new GetY();
         String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -87,7 +87,7 @@ public class Main {
         
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
+        RuleStorage storage =new RuleStorage("D:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
         List<IRule> rules  = editor.getAll();
 
@@ -124,23 +124,19 @@ public class Main {
 
      
         
-        //IDefuzzification defuzz = new Defuzzification.WeightAverageMean<>();
-        IDefuzzification defuzz = new MeanMax();
+        IDefuzzification defuzzAvg = new Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzzMax = new MeanMax();
 
 
-        Pair result = defuzz.defuzzify(sl_fs, mp);
+        Pair result = defuzzMax.defuzzify(sl_fs, mp);
 
-        Pair weighted_output = defuzz.defuzzify(sl_fs, mp);
+        Pair weighted_output = defuzzAvg.defuzzify(sl_fs, mp);
 
         System.out.println("\nDefuzzification Result:");
+        System.out.println("\nMean Max Output:");
         System.out.println("Fuzzy Set: " + result.getFirst() + ", Crisp Value: " + result.getSecond());
-
-        IDefuzzification defuzz2 = new Defuzzification.MeanMax();
-        Pair meanmax_output = defuzz2.defuzzify(sl_fs, mp);
-
-        System.out.println("\nDefuzzification Results:");
-        System.out.println("Weight Average Mean Output: " + weighted_output.getSecond());   
-        System.out.println("Mean Max Output: " + meanmax_output.getSecond());
+        System.out.println("\nWeight Average Mean Output:");
+        System.out.println( "Fuzzy Set: " + weighted_output.getFirst() + ", Crisp Value:  " + weighted_output.getSecond());   
         
 
 
