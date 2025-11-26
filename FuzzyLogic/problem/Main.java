@@ -3,7 +3,6 @@ package problem;
 
 import java.util.List;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -76,23 +75,25 @@ public class Main {
 
 
 
-        List<IRule> rules = new ArrayList<>();
+        
         IEngine engine = new MamdaniEngine() ;
                 
-        RuleStorage storage =new RuleStorage("C:\\Users\\lojay\\Downloads\\Fuzzyyyyyyyyyyyy\\softComputingLibrary\\mamdani.json");
+        RuleStorage storage =new RuleStorage("C:\\Users\\Lenovo\\OneDrive\\Desktop\\Phase2\\mamdani.json");
         RuleEditor editor =new RuleEditor(storage);
-        rules = editor.getAll();
+        List<IRule> rules  = editor.getAll();
 
         if (rules.isEmpty()) {
             System.out.println("Error Reading Json File\n");
             return;
         }
-        
+        for(IRule r : rules){
+            System.out.println( r.getCondition());
+        }
 
         engine.fuzzify(input, 
             List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
-                    new FuzzyVariables.Variable(subjectDifficultyVar, sq_fs,1, 10),
-                    new FuzzyVariables.Variable(stressLevelVar, sl_fs,0, 10))
+                    new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                    new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
         );
     
     

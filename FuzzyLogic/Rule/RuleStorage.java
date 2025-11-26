@@ -1,6 +1,5 @@
 package Rule;
 
-import Rule.*;
 import com.google.gson.*;
 
 import com.google.gson.Gson;

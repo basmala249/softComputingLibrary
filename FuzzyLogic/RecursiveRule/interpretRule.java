@@ -10,8 +10,10 @@ public class interpretRule {
     private Map<String, Set<Pair>> newMap;
     public interpretRule(Map<String, Set<Pair>> newMap) {
         this.newMap = newMap;
+        printMap();
     }
     public Double evaluteRule(String rule) {
+        //System.out.println("Evaluating Rule: " + rule);
      String[] parts = rule.split(" is ");
  
         if (parts.length == 2) {
@@ -29,7 +31,9 @@ public class interpretRule {
                 }
             } else {
                 Set<Pair> set = newMap.get(X);
+                
                 if (set != null) {
+                    System.out.println("Set for " + X + ": " + "Y = " + Y);
                     for (Pair pair : set) {
                         if (pair.getFirst().equals(Y)) {
                             return pair.getSecond();  

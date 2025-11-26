@@ -22,6 +22,7 @@ public abstract class IEngine {
         Map<String , Set<Pair>> MS = new HashMap<>();
         List<Pair> tempList = new ArrayList<>();
         for(int j = 0; j < Variables.size(); j++) {
+            System.out.println("Variable: " + Variables.get(j).getName());
             for(int i = 0; i < Variables.get(j).getFuzzySet().getMemberFunctions().size(); i++) {
                 IMemberFunction mf = Variables.get(j).getFuzzySet().getMemberFunctions().get(i);
                 System.out.println(", Member Function: " + mf.getName() + ", Input Value: " + inputs.get(j));

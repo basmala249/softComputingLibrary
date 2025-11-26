@@ -4,10 +4,7 @@
         "FuzzyLogic"
     ],
     "java.project.referencedLibraries": [
-<<<<<<< HEAD
-        "FuzzyLogic\\lib\\gson-2.11.0.jar"
-=======
-        "FuzzyLogic/lib/gson-2.11.0.jar"
->>>>>>> 07e8e33d4545fe09a469abde68d02b3ba79a5c29
+        "FuzzyLogic/lib/**/*.jar"
+
     ]
 }
