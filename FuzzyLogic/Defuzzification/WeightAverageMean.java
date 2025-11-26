@@ -39,6 +39,9 @@ public class WeightAverageMean<T extends Number> extends IDefuzzification {
 
         }
 
+        if(crispValueDenimenator == 0.0) {
+            return new Pair("", 0.0);
+        }
 
 
         double result = crispValue / crispValueDenimenator;
