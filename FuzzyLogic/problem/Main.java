@@ -24,8 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
     
-        //List<Double> inputLab = List.of(100.0,25.0);
-        List<Double> inputLab = new ArrayList<>( List.of(100.0,25.0));
+        List<Double> inputLab = List.of(60.0,25.0);
 
 
         // Variable 1
@@ -63,29 +62,6 @@ public class Main {
         }
         for(IRule r : rulesLab){
             System.out.println("Rule Condition: " + r.getCondition() + " => Consequence: " + r.getConsequence());
-        }
-
-
-
-        List<FuzzyVariables.Variable> Variables = List.of(
-                new FuzzyVariables.Variable(Variable, fs,0, 100 ) ,
-                new FuzzyVariables.Variable(Variable1, fs1,1, 10)
-        );
-        for(int j = 0 ; j < inputLab.size();j++){
-            double lb = Variables.get(j).getLowerBound();
-            double ub = Variables.get(j).getUpperBound();
-            if(inputLab.get(j) == null || Double.isNaN(inputLab.get(j))){
-                inputLab.set(j,(lb+ub)/2);
-                System.out.println("input is null new default = " +(lb+ub)/2);
-            }
-            else if (inputLab.get(j) < lb) {
-                inputLab.set(j,lb);
-                System.out.println("input is out of range new default = " +lb);
-
-            }else if (inputLab.get(j) > ub){
-                System.out.println("input is out of range new default = " +ub);
-                inputLab.set(j,ub);
-            }
         }
         
         
