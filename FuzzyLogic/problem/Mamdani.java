@@ -23,7 +23,8 @@ import Utils.GetY;
 public class Mamdani {
 
     public static void main(String[] args) {
-        List<Double> input = List.of(80.0,6.0,8.0);
+        //List<Double> input = List.of(80.0,6.0,8.0);
+        List<Double> input = new ArrayList<>(List.of(80.0,6.0,8.0));
         GetY getYUtil = new GetY();
         String studyPreparationVar = "Study_Preparation"
          , fuzzySetSP1 = "Poor" , fuzzySetSP2 = "Average" , fuzzySetSP3 = "Excellent";
@@ -99,6 +100,32 @@ public class Mamdani {
         }
         for(IRule r : rules){
             System.out.println("Rule Condition: " + r.getCondition() + " => Consequence: " + r.getConsequence());
+        }
+
+
+
+
+
+        List<FuzzyVariables.Variable> Variables = List.of(
+                new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) ,
+                new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10)
+        );
+        for(int j = 0 ; j < input.size();j++){
+            double lb = Variables.get(j).getLowerBound();
+            double ub = Variables.get(j).getUpperBound();
+            if(input.get(j) == null || Double.isNaN(input.get(j))){
+                input.set(j,(lb+ub)/2);
+                System.out.println("input is null new default = " +(lb+ub)/2);
+            }
+            else if (input.get(j) < lb) {
+                input.set(j,lb);
+                System.out.println("input is out of range new default = " +lb);
+
+            }else if (input.get(j) > ub){
+                System.out.println("input is out of range new default = " +ub);
+                input.set(j,ub);
+            }
         }
 
 
