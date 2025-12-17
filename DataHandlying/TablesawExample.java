@@ -55,9 +55,6 @@ public class TablesawExample {
     //             decoders.put(sc.name(), decoder);
     //         }
     //     }
-
-    //     // Add all encoded columns at once
-    //    // Add all encoded columns at once
     //     table.addColumns(newColumns.toArray(new IntColumn[0]));
 
     //    
@@ -65,3 +62,4 @@ public class TablesawExample {
     
     }
 }
+
