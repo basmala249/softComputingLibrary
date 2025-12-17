@@ -87,7 +87,7 @@ public class NeuralLayer {
     public void UpdateWeights(double learningRate) {
         for(int i = 0; i < numberOfNeurons; i++) {
             for(int j = 0; j < numberOfInputs; j++) {
-                double newWeight = weights.get(i).get(j) + learningRate * alphas.get(i) * lastInput.get(j);
+                double newWeight = weights.get(i).get(j) - learningRate * alphas.get(i) * lastInput.get(j);
                 weights.get(i).set(j, newWeight);
             }
         }
