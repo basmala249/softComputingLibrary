@@ -30,6 +30,7 @@ public class NullValuesHandle {
                         boolean hasOutlier = false;
                         
                         for (int i = 0; i < dc.size(); i++) {
+                            if((dc.isMissing(i)))continue;
                             double val = dc.getDouble(i);
                             if (val < lower || val > upper) {
                                 hasOutlier = true;
@@ -56,8 +57,9 @@ public class NullValuesHandle {
                         boolean hasOutlier = false;
                         
                         for (int i = 0; i < ic.size(); i++) {
+                            if((ic.isMissing(i)))continue;
                             int val = ic.get(i);
-                            if (val < lower || val > upper) {
+                            if ((val < lower || val > upper)) {
                                 hasOutlier = true;
                                 break;
                             }
@@ -73,6 +75,7 @@ public class NullValuesHandle {
                     case StringColumn sc -> {
                         Map<String, Integer> counts = new HashMap<>();
                         for (int i = 0; i < sc.size(); i++) {
+                            if((sc.isMissing(i)))continue;
                             String val = sc.get(i);
                             if (val != null && !val.isEmpty()) {
                                 counts.put(val, counts.getOrDefault(val, 0) + 1);
