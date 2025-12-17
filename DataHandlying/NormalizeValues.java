@@ -32,7 +32,7 @@ public class NormalizeValues {
                     if (max != min) {
                         for (int i = 0; i < ic.size(); i++) {
                             double normalized = (ic.get(i) - min) / (max - min);
-                            ic.set(i, (int) Math.round(normalized * 100));
+                            ic.set(i, (int) normalized);
                         }
                     } else {
                         for (int i = 0; i < ic.size(); i++) {
