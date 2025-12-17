@@ -2,6 +2,7 @@ package NeuralNetwork;
 
 import LossFunctions.ILossFunction;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,6 @@ public class NeuralNetwork {
     private ArrayList<Double> trainingLossHistory = new ArrayList<>();
 
 
-
-
     private List<NeuralLayer> layers = new ArrayList<>();   
 
     public NeuralNetwork(double learningRate, int epochs, int batchSize,ILossFunction lossFunction,double acceptableLoss) {
@@ -27,7 +26,6 @@ public class NeuralNetwork {
         this.lossFunction = lossFunction;
         this.accLoss = acceptableLoss;
     }
-
 
     public void addLayer(NeuralLayer layer) {
 
@@ -78,7 +76,17 @@ public class NeuralNetwork {
         }
     } 
     
-    
+
+    // public ArrayList<ArrayList<Double>> predict(ArrayList<ArrayList<Double>> inputs) {
+    //     ArrayList<ArrayList<Double>> outputs = new ArrayList<>();
+    //     for(int i = 0; i < inputs.size();i++){
+    //         ArrayList<Double> output = forwardPass(inputs.get(i));
+    //         outputs.add(output);
+    //     }
+    //     return outputs;
+    // }
+
+
 
     private ArrayList<Double> forwardPass(ArrayList<Double> input) {
         for(NeuralLayer layer : layers) {
