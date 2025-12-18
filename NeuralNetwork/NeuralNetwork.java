@@ -19,6 +19,15 @@ public class NeuralNetwork {
 
     private List<NeuralLayer> layers = new ArrayList<>();
 
+    // Setters for hyperparameters (for customization)
+    public void setLearningRate(double lr) { this.learningRate = lr; }
+
+    public void setEpochs(int epochs) {this.epochs = epochs;}
+    public void setBatchSize(int batchSize) {this.batchSize = batchSize;}
+    public void setAccLoss(double accLoss) {this.accLoss = accLoss;}
+    //for debugging or evaluation
+    public ArrayList<Double> getTrainingLossHistory() { return trainingLossHistory; }
+    public NeuralLayer getLayer(int index) { return layers.get(index); }
     public NeuralNetwork() {} // For full customization via setters
 
     public NeuralNetwork(double learningRate, int epochs, int batchSize, ILossFunction lossFunction, double acceptableLoss) {
@@ -28,13 +37,6 @@ public class NeuralNetwork {
         this.lossFunction = lossFunction;
         this.accLoss = acceptableLoss;
     }
-
-    // Setters for hyperparameters (for customization)
-    public void setLearningRate(double lr) { this.learningRate = lr; }
-
-    public void setEpochs(int epochs) {this.epochs = epochs;}
-    public void setBatchSize(int batchSize) {this.batchSize = batchSize;}
-    public void setAccLoss(double accLoss) {this.accLoss = accLoss;}
 
     public void addLayer(NeuralLayer layer) {
         if (!layers.isEmpty()) {
@@ -68,7 +70,7 @@ public class NeuralNetwork {
                     batchLoss += sampleLoss;
 
                     // Compute initial deltas for output layer
-                    backwardPass(output, expectedOutputs.get(i));
+                    backwardPass(expectedOutputs.get(i));
 
                     // Accumulate grads for all layers
                     for (NeuralLayer layer : layers) {
@@ -101,45 +103,15 @@ public class NeuralNetwork {
         return input;
     }
 
-    private void backwardPass(ArrayList<Double> output, ArrayList<Double> expout) {
-        ArrayList<Double> passedErrors = null;
+    private void backwardPass(ArrayList<Double> expout) {
+        ArrayList<Double> errors = null;
         for (int i = layers.size() - 1; i >= 0; i--) {
             NeuralLayer layer = layers.get(i);
-            ArrayList<Double> out = layer.getOutputs();
-            ArrayList<Double> deltas = new ArrayList<>();
-
             if (i == layers.size() - 1) {
-                // Output layer: handle based on loss and activation
-                boolean isSoftmaxCE = (layer.getActivationFunction() instanceof SoftmaxActivationFunction) && (lossFunction instanceof CrossEntropy);
-                ArrayList<Double> ders = layer.getActivationFunction().getBatchDerivative(out); // Get derivatives
-                for (int j = 0; j < out.size(); j++) {
-                    double error = out.get(j) - expout.get(j);
-                    double delta;
-                    if (lossFunction instanceof MeanSquaredErrorLoss) {
-                        delta = error * ders.get(j);
-                    } else if (lossFunction instanceof CrossEntropy) {
-                        if (isSoftmaxCE) {
-                            delta = error; // Simplified for CE + softmax
-                        } else {
-                            delta = error * ders.get(j); // For sigmoid + CE, etc.
-                        }
-                    } else {
-                        throw new UnsupportedOperationException("Unsupported loss function");
-                    }
-                    deltas.add(delta);
-                }
+                errors = layer.BackwardOutlayer(expout, lossFunction);
             } else {
-                // Hidden layer: error * der
-                ArrayList<Double> ders = layer.getActivationFunction().getBatchDerivative(out);
-                for (int j = 0; j < out.size(); j++) {
-                    double error = passedErrors.get(j);
-                    deltas.add(error * ders.get(j));
-                }
+                errors = layer.BackwardHidden(errors);
             }
-            layer.setAlphas(deltas);
-
-            // Compute passed errors for previous layer
-            passedErrors = layer.computeBackErrors();
         }
     }
 
@@ -155,7 +127,5 @@ public class NeuralNetwork {
         return predictions;
     }
 
-    //for debugging or evaluation
-    public ArrayList<Double> getTrainingLossHistory() { return trainingLossHistory; }
-    public NeuralLayer getLayer(int index) { return layers.get(index); }
+
 }
