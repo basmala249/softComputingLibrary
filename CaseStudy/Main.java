@@ -20,7 +20,7 @@ public class Main {
         Table table = Table.read().csv("iris_data.csv");
         OneHotEncoding encoder = new OneHotEncoding(table);
         table = encoder.encode();
-=        TrainTestSplit splitter = new TrainTestSplit(table);
+        TrainTestSplit splitter = new TrainTestSplit(table);
         List<Table> split = splitter.split(0.8);
         Table train = split.get(0);
         Table test = split.get(1);
