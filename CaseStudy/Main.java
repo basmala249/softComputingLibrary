@@ -20,8 +20,7 @@ public class Main {
         Table table = Table.read().csv("iris_data.csv");
         OneHotEncoding encoder = new OneHotEncoding(table);
         table = encoder.encode();
-        //System.out.println(table.first(5));
-        TrainTestSplit splitter = new TrainTestSplit(table);
+=        TrainTestSplit splitter = new TrainTestSplit(table);
         List<Table> split = splitter.split(0.8);
         Table train = split.get(0);
         Table test = split.get(1);
@@ -56,11 +55,8 @@ public class Main {
             y.add((double) Y3.get(i));
             Y_test.add(y);
         }
-        for(int i = 0 ; i < X_train.size(); i++) {
-            System.out.println(X_train.get(i) + " => " + Y_train.get(i));
-        }
 
-        // Create and train NN
+
         NeuralNetwork nn = new NeuralNetwork(0.01, 200, 10, new CrossEntropy(), 0.001);
         NeuralLayer hidden = new NeuralLayer(5, 4, new ReluActivationFunction(), new XavierInitializer());
         nn.addLayer(hidden);
@@ -69,7 +65,6 @@ public class Main {
 
         nn.train(X_train, Y_train);
 
-        // Predict and evaluate
         ArrayList<ArrayList<Double>> preds = nn.predictBatch(X_test);
         int correct = 0;
         String[] labels = {"Iris-setosa", "Iris-versicolor", "Iris-virginica"};
