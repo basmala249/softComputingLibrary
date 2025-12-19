@@ -10,25 +10,23 @@ import java.util.List;
 
 public class NeuralNetwork {
 
-    private double learningRate = 0.01; // Default
-    private int epochs = 100; // Default
-    private int batchSize = 1; // Default (SGD)
+    private double learningRate = 0.01;
+    private int epochs = 100;
+    private int batchSize = 1;
     private ILossFunction lossFunction;
-    private double accLoss = 0.01; // Default
+    private double accLoss = 0.01;
     private ArrayList<Double> trainingLossHistory = new ArrayList<>();
 
     private List<NeuralLayer> layers = new ArrayList<>();
 
-    // Setters for hyperparameters (for customization)
     public void setLearningRate(double lr) { this.learningRate = lr; }
 
     public void setEpochs(int epochs) {this.epochs = epochs;}
     public void setBatchSize(int batchSize) {this.batchSize = batchSize;}
     public void setAccLoss(double accLoss) {this.accLoss = accLoss;}
-    //for debugging or evaluation
     public ArrayList<Double> getTrainingLossHistory() { return trainingLossHistory; }
     public NeuralLayer getLayer(int index) { return layers.get(index); }
-    public NeuralNetwork() {} // For full customization via setters
+    public NeuralNetwork() {}
 
     public NeuralNetwork(double learningRate, int epochs, int batchSize, ILossFunction lossFunction, double acceptableLoss) {
         this.learningRate = learningRate;
@@ -59,7 +57,6 @@ public class NeuralNetwork {
                 int end = Math.min(b + batchSize, inputs.size());
                 double batchLoss = 0.0;
 
-                // Clear grads for all layers
                 for (NeuralLayer layer : layers) {
                     layer.clearGrads();
                 }
@@ -68,21 +65,15 @@ public class NeuralNetwork {
                     ArrayList<Double> output = forwardPass(inputs.get(i));
                     double sampleLoss = lossFunction.computeLoss(output, expectedOutputs.get(i));
                     batchLoss += sampleLoss;
-
-                    // Compute initial deltas for output layer
                     backwardPass(expectedOutputs.get(i));
 
-                    // Accumulate grads for all layers
                     for (NeuralLayer layer : layers) {
-                        layer.accumulateGrads();
+                        layer.updateWeightsImmediately(learningRate);
                     }
                 }
                 epochLoss += batchLoss;
 
-                // Update weights (averaged over batch)
-                for (NeuralLayer layer : layers) {
-                    layer.updateWeights(learningRate, end - b); // Actual batch size
-                }
+
             }
 
             double avgLoss = epochLoss / inputs.size();
