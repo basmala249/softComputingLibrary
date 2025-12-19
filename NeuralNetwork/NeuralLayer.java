@@ -20,17 +20,9 @@ public class NeuralLayer {
     private IWeightInitializer weightInitializer;
     private ArrayList<Double> zs;
     private ArrayList<Double> biases;
-    // Gradient accumulators for batching
     private ArrayList<ArrayList<Double>> gradWeights;
     private ArrayList<Double> gradBiases;
 
-
-
-
-
-
-
-    // Getters for debugging
     public ArrayList<Double> getOutputs() { return outputs; }
     public ArrayList<ArrayList<Double>> getWeights() { return weights; }
     public ArrayList<Double> getBiases() { return biases; }
@@ -44,7 +36,7 @@ public class NeuralLayer {
         this.activationFunction = activationFunction;
         this.weightInitializer = weightInitializer;
         InitializeLayerWeights();
-        clearGrads(); // Initialize gradients
+        clearGrads();
     }
 
 
@@ -53,7 +45,7 @@ public class NeuralLayer {
         weights = weightInitializer.InitializeWeights(numberOfNeurons, numberOfInputs);
         biases = new ArrayList<>();
         for (int i = 0; i < numberOfNeurons; i++) {
-            biases.add(1.0); // Or use initializer for biases
+            biases.add(1.0);
         }
     }
 
@@ -72,13 +64,11 @@ public class NeuralLayer {
             zs.add(neuronOutput);
         }
 
-        // Use batch activation for all (handles scalar or vector)
         outputs = activationFunction.getBatchActivation(preActs);
         return outputs;
     }
 
 
-    // Compute errors to pass to previous layer (W^T * alphas)
     public ArrayList<Double> BackwardOutlayer(ArrayList<Double> expout, ILossFunction lossFunction) {
         alphas = new ArrayList<>();
         ArrayList<Double> propagatedErrors = new ArrayList<>();
@@ -98,7 +88,7 @@ public class NeuralLayer {
                 alpha = error * ders.get(i);
             } else if (lossFunction instanceof CrossEntropy) {
                 if (isSoftmaxCE) {
-                    alpha = error; // Simplified
+                    alpha = error;
                 } else {
                     alpha = error * ders.get(i);
                 }
@@ -135,29 +125,15 @@ public class NeuralLayer {
         return propagatedErrors;
     }
 
-    // Accumulate gradients (called after setting alphas)
-    public void accumulateGrads() {
+    public void updateWeightsImmediately(double learningRate) {
         for (int i = 0; i < numberOfNeurons; i++) {
             for (int j = 0; j < numberOfInputs; j++) {
-                double gw = gradWeights.get(i).get(j) + alphas.get(i) * lastInput.get(j);
-                gradWeights.get(i).set(j, gw);
+                double deltaW = learningRate * alphas.get(i) * lastInput.get(j);
+                weights.get(i).set(j, weights.get(i).get(j) - deltaW);
             }
-            double gb = gradBiases.get(i) + alphas.get(i);
-            gradBiases.set(i, gb);
+            double deltaB = learningRate * alphas.get(i);
+            biases.set(i, biases.get(i) - deltaB);
         }
-    }
-
-    public void updateWeights(double learningRate, int batchSize) {
-        double avgFactor = learningRate / batchSize;
-        for (int i = 0; i < numberOfNeurons; i++) {
-            for (int j = 0; j < numberOfInputs; j++) {
-                double newWeight = weights.get(i).get(j) - avgFactor * gradWeights.get(i).get(j);
-                weights.get(i).set(j, newWeight);
-            }
-            double newBias = biases.get(i) - avgFactor * gradBiases.get(i);
-            biases.set(i, newBias);
-        }
-        clearGrads();
     }
 
     public void clearGrads() {
