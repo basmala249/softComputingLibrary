@@ -1,4 +1,4 @@
-package problem;
+package FuzzyLogic.problem;
 
 
 import java.util.ArrayList;
@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import Defuzzification.IDefuzzification;
-import Defuzzification.MeanMax;
-import FuzzySet.FuzzySet;
+import FuzzyLogic.Defuzzification.IDefuzzification;
+import FuzzyLogic.Defuzzification.MeanMax;
+import FuzzyLogic.FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
-import InferenceEngine.IEngine;
-import InferenceEngine.MamdaniEngine;
-import InferenceEngine.SugenoEngine;
-import MemberFunction.IMemberFunction;
-import MemberFunction.TrapzoidFunction;
-import MemberFunction.TriangleFunction;
-import Rule.*;
-import Utils.GetY;
+import FuzzyLogic.InferenceEngine.IEngine;
+import FuzzyLogic.InferenceEngine.MamdaniEngine;
+import FuzzyLogic.InferenceEngine.SugenoEngine;
+import FuzzyLogic.MemberFunction.IMemberFunction;
+import FuzzyLogic.MemberFunction.TrapzoidFunction;
+import FuzzyLogic.MemberFunction.TriangleFunction;
+import FuzzyLogic.Rule.*;
+import FuzzyLogic.Utils.GetY;
 
 public class Main {
 
@@ -70,9 +70,9 @@ public class Main {
 
 
 
-        List<FuzzyVariables.Variable> Variables = List.of(
-                new FuzzyVariables.Variable(Variable, fs,0, 100 ) ,
-                new FuzzyVariables.Variable(Variable1, fs1,1, 100)
+        List<FuzzyLogic.FuzzyVariables.Variable> Variables = List.of(
+                new FuzzyLogic.FuzzyVariables.Variable(Variable, fs,0, 100 ) ,
+                new FuzzyLogic.FuzzyVariables.Variable(Variable1, fs1,1, 100)
         );
         for(int j = 0 ; j < inputLab.size();j++){
             double lb = Variables.get(j).getLowerBound();
@@ -93,8 +93,8 @@ public class Main {
         
 
         engineLab.fuzzify(inputLab, 
-            List.of(new FuzzyVariables.Variable(Variable, fs,0, 100 ) , 
-                    new FuzzyVariables.Variable(Variable1, fs1,1, 100))
+            List.of(new FuzzyLogic.FuzzyVariables.Variable(Variable, fs,0, 100 ) , 
+                    new FuzzyLogic.FuzzyVariables.Variable(Variable1, fs1,1, 100))
         );
     
     
@@ -128,8 +128,8 @@ public class Main {
         outputfs.addMemberFunction(verySmall);
         
         
-        IDefuzzification defuzzLabAvg = new Defuzzification.WeightAverageMean<>();
-        IDefuzzification defuzzLabMax = new MeanMax();
+        IDefuzzification defuzzLabAvg = new FuzzyLogic.Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzzLabMax = new FuzzyLogic.Defuzzification.MeanMax();
 
 
         Pair resultLab = defuzzLabAvg.defuzzify(outputfs, mpLab);

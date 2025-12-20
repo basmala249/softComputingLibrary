@@ -1,10 +1,10 @@
-package MemberFunction;
+package FuzzyLogic.MemberFunction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Shape.IShape;
-import Shape.Line;
+import FuzzyLogic.Shape.IShape;
+import FuzzyLogic.Shape.Line;
 
 public class TriangleFunction implements IMemberFunction {
     List<Double> points;

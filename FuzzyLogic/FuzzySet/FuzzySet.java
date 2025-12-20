@@ -1,9 +1,9 @@
-package FuzzySet;
+package FuzzyLogic.FuzzySet;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import MemberFunction.IMemberFunction;
+import FuzzyLogic.MemberFunction.IMemberFunction;
 public class FuzzySet {
     private String fuzzySetName;
     List<IMemberFunction> memberFunctions;

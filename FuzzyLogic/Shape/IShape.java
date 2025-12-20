@@ -1,4 +1,4 @@
-package Shape;
+package FuzzyLogic.Shape;
 
 import java.util.List;
 

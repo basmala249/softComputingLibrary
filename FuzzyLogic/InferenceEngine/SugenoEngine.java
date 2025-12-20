@@ -1,4 +1,4 @@
-package InferenceEngine;
+package FuzzyLogic.InferenceEngine;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;

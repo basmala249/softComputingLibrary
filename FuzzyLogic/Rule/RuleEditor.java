@@ -1,4 +1,4 @@
-package Rule;
+package FuzzyLogic.Rule;
 
 import java.util.ArrayList;
 // import Rule.IRule;

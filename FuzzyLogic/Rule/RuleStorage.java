@@ -1,4 +1,4 @@
-package Rule;
+package FuzzyLogic.Rule;
 
 import com.google.gson.*;
 

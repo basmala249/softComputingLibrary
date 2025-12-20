@@ -1,4 +1,4 @@
-package Rule;
+package FuzzyLogic.Rule;
 
 public class SugenoRule implements IRule {
     String condition;

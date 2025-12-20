@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "NN.CaseStudy.Main",
+            "projectName": "softComputingLibrary_cd6be49e"
+        },
+        {
+            "type": "java",
+            "name": "CaseStudyApplication",
+            "request": "launch",
+            "mainClass": "GeneticAlgorithm.Problem.CaseStudyApplication",
+            "projectName": "softComputingLibrary_cd6be49e"
+        },
+        {
+            "type": "java",
+            "name": "Sugino",
+            "request": "launch",
+            "mainClass": "FuzzyLogic.problem.Sugino",
+            "projectName": "softComputingLibrary_cd6be49e"
+        },
+        {
+            "type": "java",
+            "name": "Mamdani",
+            "request": "launch",
+            "mainClass": "FuzzyLogic.problem.Mamdani",
+            "projectName": "softComputingLibrary_cd6be49e"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "FuzzyLogic.problem.Main",
+            "projectName": "softComputingLibrary_cd6be49e"
+        },
+        {
+            "type": "java",
             "name": "Sugino",
             "request": "launch",
             "mainClass": "problem.Sugino",

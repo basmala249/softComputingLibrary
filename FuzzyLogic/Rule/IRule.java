@@ -1,4 +1,4 @@
-package Rule;
+package FuzzyLogic.Rule;
 
 public interface IRule {
     boolean isEnabled();

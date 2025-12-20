@@ -1,10 +1,19 @@
 {
     "java.project.sourcePaths": [
-        ".",
-        "FuzzyLogic"
+        "."
     ],
     "java.project.referencedLibraries": [
-        "FuzzyLogic/lib/**/*.jar"
-
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\fastutil-8.5.2.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\classgraph-4.8.90.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\slf4j-api-1.7.36.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\commons-math3-3.6.1.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\univocity-parsers-2.9.1.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\RoaringBitmap-0.9.44.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\slf4j-simple-1.7.36.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\guava-31.1-jre.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\tablesaw-core-0.38.1.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\FuzzyLogic\\lib\\gson-2.11.0.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\NN\\lib\\icu4j-72.1.jar",
+        "d:\\study\\SC\\SoftComputingTool\\softComputingLibrary\\FuzzyLogic\\lib\\exp4j-0.4.8.jar"
     ]
 }

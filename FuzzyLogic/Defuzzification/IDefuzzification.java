@@ -1,10 +1,10 @@
-package Defuzzification;
+package FuzzyLogic.Defuzzification;
 
 import GeneticAlgorithm.Utils.Pair;
 import java.util.Map;
 import java.util.Set;
 
-import FuzzySet.FuzzySet;
+import FuzzyLogic.FuzzySet.FuzzySet;
 
 public abstract class IDefuzzification {
     public abstract Pair defuzzify(FuzzySet fuzzySets, Map<String, Set<Pair>> fuzzifyResults);

@@ -1,9 +1,9 @@
-package FuzzySet;
+package FuzzyLogic.FuzzySet;
 
 
 import java.util.List;
 
-import MemberFunction.IMemberFunction;
+import FuzzyLogic.MemberFunction.IMemberFunction;
 
 public class DefaultMF {
     public  DefaultMF (FuzzySet set,double lp,double up){

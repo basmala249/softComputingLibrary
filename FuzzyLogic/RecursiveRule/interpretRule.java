@@ -1,4 +1,4 @@
-package RecursiveRule;
+package FuzzyLogic.RecursiveRule;
 
 import java.util.Map;
 import java.util.Set;
