@@ -1,15 +1,15 @@
-package Defuzzification;
+package FuzzyLogic.Defuzzification;
 
 import java.util.List;
 
 import GeneticAlgorithm.Utils.Pair;
 
-import MemberFunction.IMemberFunction;
-import Shape.IShape;
+import FuzzyLogic.MemberFunction.IMemberFunction;
+import FuzzyLogic.Shape.IShape;
 import java.util.Set;
 import java.util.Map;
 
-import FuzzySet.FuzzySet;   
+import FuzzyLogic.FuzzySet.FuzzySet;   
 
 
 public class MeanMax extends IDefuzzification {

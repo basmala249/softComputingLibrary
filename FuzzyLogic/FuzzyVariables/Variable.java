@@ -1,6 +1,6 @@
-package FuzzyVariables;
+package FuzzyLogic.FuzzyVariables;
 
-import FuzzySet.FuzzySet;
+import FuzzyLogic.FuzzySet.FuzzySet;
 
 public class Variable{
 

@@ -1,8 +1,8 @@
-package MemberFunction;
+package FuzzyLogic.MemberFunction;
 
 import java.util.List;
 
-import Shape.IShape;
+import FuzzyLogic.Shape.IShape;
 
 public interface IMemberFunction{ 
     List<IShape> getEquations();

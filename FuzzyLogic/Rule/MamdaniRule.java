@@ -1,4 +1,4 @@
-package Rule;
+package FuzzyLogic.Rule;
 
 public class MamdaniRule implements IRule {
     private boolean enabled = true;

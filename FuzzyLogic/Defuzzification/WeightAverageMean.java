@@ -1,12 +1,12 @@
-package Defuzzification;
+package FuzzyLogic.Defuzzification;
 import java.util.List;
 
 import GeneticAlgorithm.Utils.Pair;
-import MemberFunction.IMemberFunction;
+import FuzzyLogic.MemberFunction.IMemberFunction;
 import java.util.Map;
 import java.util.Set;
 
-import FuzzySet.FuzzySet;
+import FuzzyLogic.FuzzySet.FuzzySet;
 
 public class WeightAverageMean<T extends Number> extends IDefuzzification {
 

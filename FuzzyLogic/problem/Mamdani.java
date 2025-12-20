@@ -1,4 +1,4 @@
-package problem;
+package FuzzyLogic.problem;
 
 
 import java.util.ArrayList;
@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import Defuzzification.IDefuzzification;
-import Defuzzification.MeanMax;
-import FuzzySet.FuzzySet;
+import FuzzyLogic.Defuzzification.IDefuzzification;
+import FuzzyLogic.Defuzzification.MeanMax;
+import FuzzyLogic.FuzzySet.FuzzySet;
 import GeneticAlgorithm.Utils.Pair;
-import InferenceEngine.IEngine;
-import InferenceEngine.MamdaniEngine;
-import InferenceEngine.SugenoEngine;
-import MemberFunction.IMemberFunction;
-import MemberFunction.TrapzoidFunction;
-import MemberFunction.TriangleFunction;
-import Rule.*;
-import Utils.GetY;
+import FuzzyLogic.InferenceEngine.IEngine;
+import FuzzyLogic.InferenceEngine.MamdaniEngine;
+import FuzzyLogic.InferenceEngine.SugenoEngine;
+import FuzzyLogic.MemberFunction.IMemberFunction;
+import FuzzyLogic.MemberFunction.TrapzoidFunction;
+import FuzzyLogic.MemberFunction.TriangleFunction;
+import FuzzyLogic.Rule.*;
+import FuzzyLogic.Utils.GetY;
 
 public class Mamdani {
 
@@ -106,10 +106,10 @@ public class Mamdani {
 
 
 
-        List<FuzzyVariables.Variable> Variables = List.of(
-                new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) ,
-                new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
-                new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10)
+        List<FuzzyLogic.FuzzyVariables.Variable> Variables = List.of(
+                new FuzzyLogic.FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) ,
+                new FuzzyLogic.FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                new FuzzyLogic.FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10)
         );
         for(int j = 0 ; j < input.size();j++){
             double lb = Variables.get(j).getLowerBound();
@@ -130,9 +130,9 @@ public class Mamdani {
 
 
         engine.fuzzify(input, 
-            List.of(new FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
-                    new FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
-                    new FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
+            List.of(new FuzzyLogic.FuzzyVariables.Variable(studyPreparationVar, sp_fs,0, 100 ) , 
+                    new FuzzyLogic.FuzzyVariables.Variable(subjectDifficultyVar, sd_fs,1, 10),
+                    new FuzzyLogic.FuzzyVariables.Variable(sleepQualityVar, sq_fs,0, 10))
         );
     
     
@@ -151,10 +151,10 @@ public class Mamdani {
         }
         System.out.println("//////////////////////////////////");
 
-     
-        
-        IDefuzzification defuzzAvg = new Defuzzification.WeightAverageMean<>();
-        IDefuzzification defuzzMax = new MeanMax();
+
+
+        IDefuzzification defuzzAvg = new FuzzyLogic.Defuzzification.WeightAverageMean<>();
+        IDefuzzification defuzzMax = new FuzzyLogic.Defuzzification.MeanMax();
 
 
         Pair result = defuzzMax.defuzzify(sl_fs, mp);
