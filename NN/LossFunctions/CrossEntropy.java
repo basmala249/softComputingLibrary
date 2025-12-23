@@ -11,7 +11,7 @@ public class CrossEntropy implements ILossFunction {
     public double computeLoss(ArrayList<Double> predicted, ArrayList<Double> actual) {
        double sum = 0.0;
         for (int i = 0; i < actual.size(); i++) {
-            sum += actual.get(i) * Math.log(predicted.get(i));
+            sum += actual.get(i) * Math.log(predicted.get(i) + EPS);
         }
         return -sum;
     }
